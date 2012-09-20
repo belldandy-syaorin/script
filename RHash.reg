@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\RHash]
+
+[HKEY_CLASSES_ROOT\*\shell\RHash\command]
+@="wscript.exe C:\\portable\\RHash.vbs \"%1\""
+
