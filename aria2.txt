@@ -1,0 +1,3 @@
+Download Manager //aria2.vbs
+Executable path: //C:\Windows\System32\wscript.exe
+Command line arguments template: //C:\portable\aria2.vbs [URL]
