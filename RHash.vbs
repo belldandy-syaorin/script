@@ -1,6 +1,7 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Dim argument(2)
 	argument(0) = "C:\portable\RHash-1.2.9-win64\rhash.exe" 'application path
+Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
 Else
@@ -10,6 +11,15 @@ Call featureselect
 Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
                                         &Chr(32) &argument(1) _
                                         &Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
+
+Sub checksetting
+Set fso = CreateObject("Scripting.FileSystemObject")
+If Not (fso.FileExists(argument(0))) Then
+	MsgBox "Application Path Error & Exit" , 0 , "Message"
+	WScript.Quit
+End If
+Exit Sub
+End Sub
 
 Sub manualinputargument
 argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _

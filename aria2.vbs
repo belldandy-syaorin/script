@@ -4,6 +4,7 @@ Dim argument(9)
 	argument(2) = "--check-certificate=false"
 	argument(3) = "--dir="&WshShell.ExpandEnvironmentStrings("%USERPROFILE%")&"\Downloads" 'download path
 	argument(4) = "--remote-time=true"
+Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
 Else
@@ -16,6 +17,19 @@ Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
                                         &Chr(32) &argument(4) _
                                         &Chr(32) &argument(5) _
                                         &Chr(32) &Chr(34) &argument(1) &Chr(34) , 1 , True)
+
+Sub checksetting
+Set fso = CreateObject("Scripting.FileSystemObject")
+If Not (fso.FileExists(argument(0))) Then
+	MsgBox "Application Path Error & Exit" , 0 , "Message"
+	WScript.Quit
+End If
+If Not (fso.FolderExists(Replace(argument(3) , "--dir=" , ""))) Then
+	MsgBox "Download Path Error & Exit" , 0 , "Message"
+	WScript.Quit
+End If
+Exit Sub
+End Sub
 
 Sub manualinputargument
 argument(1) = InputBox("Null(Empty) = Exit" &Chr(10) & _
