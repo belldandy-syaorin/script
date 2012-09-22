@@ -55,7 +55,7 @@ argumentselect = InputBox("1 = Unrestricted" &Chr(10) & _
                           "3 = 256K" &Chr(10) & _
                           "4 = 128K" &Chr(10) & _
                           "Select Feature (Other Number = Exit)" , _
-                          "Input A Number For Your Choice")
+                          "Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1

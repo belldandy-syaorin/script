@@ -25,7 +25,7 @@ Sub manualinputargument
 argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _
                        "Notice :" &Chr(10) & _
                        "Wrong Path&FileName Will Cause An Error" , _
-                       "Manual Input (Link)")
+                       "Manual Input (Path&FileName)")
 If argument(2) = "" Then
 	WScript.Quit
 End If
@@ -45,7 +45,7 @@ argumentselect = InputBox("1 = MD5" &Chr(10) & _
                           "3 = ED2K" &Chr(10) & _
                           "4 = CHECK" &Chr(10) & _
                           "Select Feature (Other Number = Exit)" , _
-                          "Input A Number For Your Choice")
+                          "Input A Number For Your Choice" , 4)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1

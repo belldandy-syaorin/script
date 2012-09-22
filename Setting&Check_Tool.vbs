@@ -24,28 +24,27 @@ osselect = InputBox("1 = Setting Windows 7" &Chr(10) & _
                     "2 = Setting Windows Server 2008 R2" &Chr(10) & _
                     "3 = Check Setting" &Chr(10) & _
                     "4 = Misc Setting" &Chr(10) & _
-                    "9 = Readme" , _
-                    "Select Feature (0=Exit)" , _
-                    "Input A Number For Your Choice")
+                    "9 = Readme" &Chr(10) & _
+                    "Select Feature (Other Number = Exit)" , _
+                    "Input A Number For Your Choice" , 9)
 Loop While IsNumeric(osselect) = Flase
 Select Case osselect
-Case 0
-Case 1
-	' Return = WshShell.run("%COMSPEC% /k sc config wscsvc start= disabled" , 1 , True)
-	Return = WshShell.run("sc config wscsvc start= disabled" , 1 , True)
-	Call sharesetting
-Case 2
-	Return = WshShell.run("sc config Themes start= auto" , 1 , True)
-	Return = WshShell.run("sc config AudioSrv start= auto" , 1 , True)
-	Call sharesetting
-Case 3
-	Call checksetting
-Case 4
-	Call miscsetting
-Case 9
-	Call readme
-Case else
-	MsgBox "Error Select & Exit" , 0 , "Message"
+	Case 1
+		' Return = WshShell.run("%COMSPEC% /k sc config wscsvc start= disabled" , 1 , True)
+		Return = WshShell.run("sc config wscsvc start= disabled" , 1 , True)
+		Call sharesetting
+	Case 2
+		Return = WshShell.run("sc config Themes start= auto" , 1 , True)
+		Return = WshShell.run("sc config AudioSrv start= auto" , 1 , True)
+		Call sharesetting
+	Case 3
+		Call checksetting
+	Case 4
+		Call miscsetting
+	Case 9
+		Call readme
+	Case else
+		WScript.Quit
 End select
 
 Sub sharesetting
@@ -105,40 +104,39 @@ Set MpsSvc = objWMIService.Get("Win32_Service.Name='MpsSvc'")
 Dim checkosselect
 Do
 checkosselect = InputBox("1 = Check Windows 7" &Chr(10) & _
-                         "2 = Check Windows Server 2008 R2" , _
-                         "Select Feature (0=Exit)" , _
-                         "Input A Number For Your Choice")
+                         "2 = Check Windows Server 2008 R2" &Chr(10) & _
+                         "Select Feature (Other Number = Exit)" , _
+                         "Input A Number For Your Choice" , 0)
 Loop While IsNumeric(checkosselect) = Flase
 Select Case checkosselect
-Case 0
-Case 1
-Set wscsvc = objWMIService.Get("Win32_Service.Name='wscsvc'")
-MsgBox "ComputerName = " &co(9) &Chr(10) & _
-       "ComputerWorkgroup = " &co(10) &Chr(10) & _
-       "RegisteredOwner = " &co(0) &Chr(10) & _
-       "RegisteredOrganization = " &co(1) &Chr(10) & _
-       "Folder Options Setting = " &co(8) &Chr(10) & _
-       "Autoplay = " &co(12) &Chr(10) & _
-       "UAC = " &co(14) &Chr(10) & _
-       "Security Center : " &wscsvc.State &" , " &wscsvc.StartMode &Chr(10) & _
-       "Windows Defender : " &WinDefend.State &" , " &WinDefend.StartMode &Chr(10) & _
-       "Windows Firewall : " &MpsSvc.State &" , " &MpsSvc.StartMode  , 0 , "Message"
-Case 2
-Set Themes = objWMIService.Get("Win32_Service.Name='Themes'")
-Set AudioSrv = objWMIService.Get("Win32_Service.Name='AudioSrv'")
-MsgBox "ComputerName = " &co(9) &Chr(10) & _
-       "ComputerWorkgroup = " &co(10) &Chr(10) & _
-       "RegisteredOwner = " &co(0) &Chr(10) & _
-       "RegisteredOrganization = " &co(1) &Chr(10) & _
-       "Folder Options Setting = " &co(8) &Chr(10) & _
-       "Autoplay = " &co(12) &Chr(10) & _
-       "UAC = " &co(14) &Chr(10) & _
-       "Windows Defender : " &WinDefend.State &" , " &WinDefend.StartMode &Chr(10) & _
-       "Windows Firewall : " &MpsSvc.State &" , " &MpsSvc.StartMode &Chr(10) & _
-       "Themes : " &Themes.State &" , " &Themes.StartMode &Chr(10) & _
-       "Windows Audio : " &AudioSrv.State &" , " &AudioSrv.StartMode , 0 , "Message"
-Case else
-MsgBox "Error Select & Exit" , 0 , "Message"
+	Case 1
+		Set wscsvc = objWMIService.Get("Win32_Service.Name='wscsvc'")
+		MsgBox "ComputerName = " &co(9) &Chr(10) & _
+		       "ComputerWorkgroup = " &co(10) &Chr(10) & _
+		       "RegisteredOwner = " &co(0) &Chr(10) & _
+		       "RegisteredOrganization = " &co(1) &Chr(10) & _
+		       "Folder Options Setting = " &co(8) &Chr(10) & _
+		       "Autoplay = " &co(12) &Chr(10) & _
+		       "UAC = " &co(14) &Chr(10) & _
+		       "Security Center : " &wscsvc.State &" , " &wscsvc.StartMode &Chr(10) & _
+		       "Windows Defender : " &WinDefend.State &" , " &WinDefend.StartMode &Chr(10) & _
+		       "Windows Firewall : " &MpsSvc.State &" , " &MpsSvc.StartMode  , 0 , "Message"
+	Case 2
+		Set Themes = objWMIService.Get("Win32_Service.Name='Themes'")
+		Set AudioSrv = objWMIService.Get("Win32_Service.Name='AudioSrv'")
+		MsgBox "ComputerName = " &co(9) &Chr(10) & _
+		       "ComputerWorkgroup = " &co(10) &Chr(10) & _
+		       "RegisteredOwner = " &co(0) &Chr(10) & _
+		       "RegisteredOrganization = " &co(1) &Chr(10) & _
+		       "Folder Options Setting = " &co(8) &Chr(10) & _
+		       "Autoplay = " &co(12) &Chr(10) & _
+		       "UAC = " &co(14) &Chr(10) & _
+		       "Windows Defender : " &WinDefend.State &" , " &WinDefend.StartMode &Chr(10) & _
+		       "Windows Firewall : " &MpsSvc.State &" , " &MpsSvc.StartMode &Chr(10) & _
+		       "Themes : " &Themes.State &" , " &Themes.StartMode &Chr(10) & _
+		       "Windows Audio : " &AudioSrv.State &" , " &AudioSrv.StartMode , 0 , "Message"
+	Case else
+		WScript.Quit
 End select
 Exit Sub
 End Sub
