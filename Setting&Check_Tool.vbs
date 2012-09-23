@@ -24,7 +24,7 @@ osselect = InputBox("1 = Setting Windows 7" &Chr(10) & _
                     "2 = Setting Windows Server 2008 R2" &Chr(10) & _
                     "3 = Check Setting" &Chr(10) & _
                     "4 = Misc Setting" &Chr(10) & _
-                    "9 = Readme" &Chr(10) & _
+                    "9 = Readme (Default)" &Chr(10) & _
                     "Select Feature (Other Number = Exit)" , _
                     "Input A Number For Your Choice" , 9)
 Loop While IsNumeric(osselect) = Flase
