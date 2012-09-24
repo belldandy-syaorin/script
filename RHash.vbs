@@ -43,19 +43,19 @@ Do
 argumentselect = InputBox("1 = MD5" &Chr(10) & _
                           "2 = SHA1" &Chr(10) & _
                           "3 = ED2K" &Chr(10) & _
-                          "4 = CHECK (Default)" &Chr(10) & _
+                          "4 = SFV (Default)" &Chr(10) & _
                           "Select Feature (Other Number = Exit)" , _
                           "Input A Number For Your Choice" , 4)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
-		argument(1) = "-M"
+		argument(1) = "--md5"
 	Case 2
-		argument(1) = "-H"
+		argument(1) = "--sha1"
 	Case 3
-		argument(1) = "-E"
+		argument(1) = "--ed2k"
 	Case 4
-		argument(1) = "-c"
+		argument(1) = "--check"
 	Case else
 		WScript.Quit
 End select
