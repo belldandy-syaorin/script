@@ -1,7 +1,7 @@
 #!/bin/bash
 declare -a argument
 	argument[2]="--check-certificate=false"
-	argument[3]="--dir=/opt/portable" #download path
+	argument[3]="--dir=$HOME/Downloads" #download path
 	argument[4]="--remote-time=true"
 
 function checksetting() {
@@ -15,7 +15,7 @@ function checksetting() {
 	fi
 	dlpath=$(echo "${argument[3]}"|sed 's/--dir=//g')
 	if [ ! -d "$dlpath" ] ; then
-		echo "[info] Can't Find download path & Exit"
+		echo "[info] Can't Find Download Path & Exit"
 		exit 0
 	fi
 }
