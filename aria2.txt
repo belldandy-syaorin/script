@@ -1,9 +1,10 @@
-//FlashGot(Windows)
+//aria2+FlashGot
+//Linux
+Download Manager -> Add -> aria2.sh
+Executable path: -> Browse... -> /usr/bin/xfce4-terminal
+Command line arguments template: -> -H -x /opt/script/aria2.sh [URL]
+
+//Windows
 Download Manager -> Add -> aria2.vbs
 Executable path: -> Browse... -> C:\Windows\System32\wscript.exe
 Command line arguments template: -> C:\portable\aria2.vbs [URL]
-
-//FlashGot(Linux)
-Download Manager -> Add -> aria2.sh
-Executable path: -> Browse... -> /usr/bin/xfce4-terminal
-Command line arguments template: -> -H -x /opt/portable/aria2.sh [URL]
