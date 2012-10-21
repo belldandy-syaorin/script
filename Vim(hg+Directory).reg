@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Vim(Directory)]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Vim(Directory)\command]
+@="\"C:\\portable\\vim\\vim73\\gvim.exe\" \"+set shellcmdflag=/u/c\" \"+set enc=ucs-2le\" \"+lcd %1\" \"+0read !dir/on/s\""
+
