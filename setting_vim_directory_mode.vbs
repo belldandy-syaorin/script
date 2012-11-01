@@ -5,7 +5,7 @@ Dim commanddata(3)
 	commanddata(1) = "+set enc=ucs-2le"
 	commanddata(2) = "+lcd %1"
 	commanddata(3) = "+0read !dir/on"
-commanddiff = "/s"
+commanddatadiff = "/s"
 Dim regpath(1)
 	regpath(0) = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Vim(dir)\command\"
 	regpath(1) = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Vim(dir+subdir)\command\"
@@ -18,7 +18,7 @@ regdatadiff = Chr(34) &vimpath &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(0) &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(1) &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(2) &Chr(34) &Chr(32) & _
-              Chr(34) &commanddata(3) &commanddiff &Chr(34)
+              Chr(34) &commanddata(3) &commanddatadiff &Chr(34)
 WshShell.RegWrite regpath(0) , regdata , "REG_SZ"
 WshShell.RegWrite regpath(1) , regdatadiff , "REG_SZ"
 Dim checkdata(3)
