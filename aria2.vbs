@@ -25,7 +25,7 @@ If Not (fso.FileExists(argument(0))) Then
 	WScript.Quit
 End If
 If Not (fso.FolderExists(Replace(argument(3) , "--dir=" , ""))) Then
-	MsgBox "[info] Can't Find Download Path & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find Download Directory & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub

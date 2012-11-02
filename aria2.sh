@@ -15,7 +15,7 @@ function checksetting() {
 	fi
 	dlpath=$(echo "${argument[3]}"|sed 's/--dir=//g')
 	if [ ! -d "$dlpath" ] ; then
-		echo "[info] Can't Find Download Path & Exit"
+		echo "[info] Can't Find Download Directory & Exit"
 		exit 0
 	fi
 }

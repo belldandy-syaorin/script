@@ -24,6 +24,6 @@ If (fso.FolderExists(targetpath)) Then
 	End If
 	MsgBox "[ ok ] Install & Update Success" , 0 , "Message"
 Else
-	MsgBox "[info] Can't Find Target Path & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find Target Directory & Exit" , 0 , "Message"
 	WScript.Quit
 End If
