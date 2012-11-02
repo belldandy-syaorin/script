@@ -15,7 +15,7 @@ Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
 Sub checksetting
 Set fso = CreateObject("Scripting.FileSystemObject")
 If Not (fso.FileExists(argument(0))) Then
-	MsgBox "Application Path Error & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find rhash.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub

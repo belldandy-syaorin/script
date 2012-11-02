@@ -21,11 +21,11 @@ Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
 Sub checksetting
 Set fso = CreateObject("Scripting.FileSystemObject")
 If Not (fso.FileExists(argument(0))) Then
-	MsgBox "Application Path Error & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find aria2c.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 If Not (fso.FolderExists(Replace(argument(3) , "--dir=" , ""))) Then
-	MsgBox "Download Path Error & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find Download Path & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub

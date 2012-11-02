@@ -7,7 +7,7 @@ If (fso.FolderExists(targetpath)) Then
 	if (fso.FolderExists(sourcepath&"\runtime")) Then
 		Return = fso.CopyFolder(sourcepath&"\runtime" , targetpath&"\runtime" , True)
 	Else
-		MsgBox "[info] Source Folder Error" , 0 , "Message"
+		MsgBox "[info] Can't Find Source Directory & Exit" , 0 , "Message"
 		WScript.Quit
 	End If
 	If (fso.FileExists(sourcepath&"\src\gvim.exe")) And _
@@ -19,11 +19,11 @@ If (fso.FolderExists(targetpath)) Then
 		Return = fso.CopyFile(sourcepath&"\src\vimrun.exe" , targetpath&"\" , True)
 		Return = fso.CopyFile(sourcepath&"\src\xxd\xxd.exe" , targetpath&"\" , True)
 	Else
-		MsgBox "[info] Source File Error" , 0 , "Message"
+		MsgBox "[info] Can't Find Source File & Exit" , 0 , "Message"
 		WScript.Quit
 	End If
-	MsgBox "[ ok ] Install & Update" , 0 , "Message"
+	MsgBox "[ ok ] Install & Update Success" , 0 , "Message"
 Else
-	MsgBox "[info] Target Folder Error" , 0 , "Message"
+	MsgBox "[info] Can't Find Target Path & Exit" , 0 , "Message"
 	WScript.Quit
 End If

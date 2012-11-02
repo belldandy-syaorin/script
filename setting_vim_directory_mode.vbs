@@ -1,5 +1,10 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
 vimpath = "C:\portable\vim\vim73\gvim.exe"
+If Not (fso.FileExists(vimpath)) Then
+	MsgBox "[info] Can't Find gvim.exe & Exit" , 0 , "Message"
+	WScript.Quit
+End If
 Dim commanddata(3)
 	commanddata(0) = "+set shellcmdflag=/u/c"
 	commanddata(1) = "+set enc=ucs-2le"
