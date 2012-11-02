@@ -1,4 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+vbspath = "C:\portable\RHash.vbs" 'vbs path
 Dim argument(2)
 	argument(0) = "C:\portable\RHash-1.2.9-win64\rhash.exe" 'application path
 Call checksetting
@@ -24,10 +25,23 @@ End Sub
 Sub manualinputargument
 argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _
                        "Notice :" &Chr(10) & _
-                       "Wrong Path&FileName Will Cause An Error" , _
+                       "Wrong Path&FileName Will Cause An Error" &Chr(10) & _
+                       "0000 = Add Context Menu" , _
                        "Manual Input (Path&FileName)")
 If argument(2) = "" Then
 	WScript.Quit
+End If
+If argument(2) = "0000" Then
+	regpath = "HKEY_CLASSES_ROOT\*\shell\RHash\command\"
+	regdata = "wscript.exe"&Chr(32)&vbspath&Chr(32)&Chr(34)&"%1"&Chr(34)
+	WshShell.RegWrite regpath , regdata , "REG_SZ"
+	If WshShell.RegRead (regpath) = regdata Then
+		MsgBox "[ ok ] Install Success" , 0 , "Message"
+		WScript.Quit
+	Else
+		MsgBox "[info] Install Error" , 0 , "Message"
+		WScript.Quit
+	End If
 End If
 Exit Sub
 End Sub

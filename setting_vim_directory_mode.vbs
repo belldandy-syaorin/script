@@ -26,12 +26,8 @@ regdatadiff = Chr(34) &vimpath &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(3) &commanddatadiff &Chr(34)
 WshShell.RegWrite regpath(0) , regdata , "REG_SZ"
 WshShell.RegWrite regpath(1) , regdatadiff , "REG_SZ"
-Dim checkdata(3)
-	checkdata(0) = WshShell.RegRead (regpath(0))
-	checkdata(1) = WshShell.RegRead (regpath(1))
-	checkdata(2) = regdata
-	checkdata(3) = regdatadiff
-If checkdata(0) = checkdata(2) And checkdata(1) = checkdata(3) Then
+If WshShell.RegRead (regpath(0)) = regdata And _
+   WshShell.RegRead (regpath(1)) = regdatadiff Then
 	MsgBox "[ ok ] Install Success" , 0 , "Message"
 Else
 	MsgBox "[info] Install Error" , 0 , "Message"
