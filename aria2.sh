@@ -31,8 +31,16 @@ function manualinputargument() {
 function speedselect() {
 while [ "${argument[5]}" = "" ]
 do
-read -p "1=Unrestricted , 2=512K , 3=256K , 4=128K , Select Feature (0 = Exit) : " as
-checkas=$(echo "$as"|grep '^[[:digit:]]')
+echo "Input A Number For Your Choice (After 10s Will Auto Select Default)"
+echo "1 = Unrestricted"
+echo "2 = 512K (Default , Press Enter)"
+echo "3 = 256K"
+echo "4 = 128K"
+read -t 10 -p "Select Feature (0 = Exit) : " as
+if [ "$as" = "" ] ; then
+	as="2"
+fi
+checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')
 case $checkas in
 	"0")
 		exit 0

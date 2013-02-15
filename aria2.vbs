@@ -51,7 +51,7 @@ Sub speedselect
 Dim argumentselect
 Do
 argumentselect = InputBox("1 = Unrestricted" &Chr(10) & _
-                          "2 = 512K (Default)" &Chr(10) & _
+                          "2 = 512K (Default , Press Enter)" &Chr(10) & _
                           "3 = 256K" &Chr(10) & _
                           "4 = 128K" &Chr(10) & _
                           "Select Feature (Other Number = Exit)" , _
