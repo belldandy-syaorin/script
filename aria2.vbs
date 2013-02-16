@@ -10,7 +10,19 @@ If WScript.Arguments.Count = 0 Then
 Else
 	Call withargument
 End If
-Call speedselect
+Dim autospeedselect
+autospeedselect = WshShell.Popup("Yes = Manual Speed" &Chr(10) & _
+                                 "No = Auto Speed(512K)" &Chr(10) & _
+                                 "(After 10s Will Auto Select No)" , _
+                                 10 , _
+                                 "Press For Your Choice" , _
+                                 &H4 + &H20)
+Select Case autospeedselect
+	Case 6
+		Call speedselect
+	Case Else
+		argument(5) = "--max-download-limit=512K"
+End select
 Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
                                         &Chr(32) &argument(2) _
                                         &Chr(32) &argument(3) _
