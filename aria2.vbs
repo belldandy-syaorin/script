@@ -11,9 +11,9 @@ Else
 	Call withargument
 End If
 Dim autospeedselect
-autospeedselect = WshShell.Popup("Yes = Auto Speed(512K)" &Chr(10) & _
+autospeedselect = WshShell.Popup("Yes = Default Speed(512K)" &Chr(10) & _
                                  "No = Manual Speed" &Chr(10) & _
-                                 "(After 5s Will Auto Select Yes)" , _
+                                 "(After 5s Will Auto Select Default)" , _
                                  5 , _
                                  "Press For Your Choice" , _
                                  &H4 + &H20)
