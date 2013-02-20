@@ -31,12 +31,12 @@ function manualinputargument() {
 function speedselect() {
 while [ "${argument[5]}" = "" ]
 do
-echo "Input A Number For Your Choice (After 10s Will Auto Select Default)"
+echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = Unrestricted"
 echo "2 = 512K (Default , Press Enter)"
 echo "3 = 256K"
 echo "4 = 128K"
-read -t 10 -p "Select Feature (0 = Exit) : " as
+read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ "$as" = "" ] ; then
 	as="2"
 fi

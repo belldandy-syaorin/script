@@ -11,14 +11,14 @@ Else
 	Call withargument
 End If
 Dim autospeedselect
-autospeedselect = WshShell.Popup("Yes = Manual Speed" &Chr(10) & _
-                                 "No = Auto Speed(512K)" &Chr(10) & _
-                                 "(After 10s Will Auto Select No)" , _
-                                 10 , _
+autospeedselect = WshShell.Popup("Yes = Auto Speed(512K)" &Chr(10) & _
+                                 "No = Manual Speed" &Chr(10) & _
+                                 "(After 5s Will Auto Select Yes)" , _
+                                 5 , _
                                  "Press For Your Choice" , _
                                  &H4 + &H20)
 Select Case autospeedselect
-	Case 6
+	Case 7
 		Call speedselect
 	Case Else
 		argument(5) = "--max-download-limit=512K"
