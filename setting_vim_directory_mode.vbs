@@ -6,8 +6,8 @@ If Not (fso.FileExists(vimpath)) Then
 	WScript.Quit
 End If
 Dim commanddata(3)
-	commanddata(0) = "+set shellcmdflag=/u/c"
-	commanddata(1) = "+set enc=ucs-2le"
+	commanddata(0) = "+set enc=ucs-2le"
+	commanddata(1) = "+set nofoldenable"
 	commanddata(2) = "+lcd %1"
 	commanddata(3) = "+0read !dir/on"
 commanddatadiff = "/s"
