@@ -1,8 +1,8 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
-	sourcepath = "C:\dev\hg\vim"
 	targetpath = "C:\portable\vim\vim73"
+Call versionselect
 If (fso.FolderExists(targetpath)) Then
 	if (fso.FolderExists(sourcepath&"\runtime")) Then
 		Return = fso.CopyFolder(sourcepath&"\runtime" , targetpath&"\runtime" , True)
@@ -27,3 +27,22 @@ Else
 	MsgBox "[info] Can't Find Target Directory & Exit" , 0 , "Message"
 	WScript.Quit
 End If
+
+Sub versionselect
+Dim sourcepathselect
+Do
+sourcepathselect = InputBox("1 = ming" &Chr(10) & _
+                            "2 = mvc" &Chr(10) & _
+                            "Select Feature (Other Number = Exit)" , _
+                            "Input A Number For Your Choice" , 1)
+Loop While IsNumeric(sourcepathselect) = Flase
+Select Case sourcepathselect
+	Case 1
+		sourcepath = "C:\dev\ming\vim"
+	Case 2
+		sourcepath = "C:\dev\mvc\vim"
+	Case else
+		WScript.Quit
+End select
+Exit Sub
+End Sub
