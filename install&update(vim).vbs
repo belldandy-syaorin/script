@@ -31,18 +31,24 @@ End If
 Sub versionselect
 Dim sourcepathselect
 Do
-sourcepathselect = InputBox("1 = ming" &Chr(10) & _
-                            "2 = mvc" &Chr(10) & _
+sourcepathselect = InputBox("1 = ming32" &Chr(10) & _
+                            "2 = mvc32" &Chr(10) & _
+                            "3 = ming64" &Chr(10) & _
+                            "4 = mvc64" &Chr(10) & _
                             "Select Feature (Other Number = Exit)" , _
                             "Input A Number For Your Choice" , 1)
 Loop While IsNumeric(sourcepathselect) = Flase
 Select Case sourcepathselect
 	Case 1
-		sourcepath = "C:\dev\ming\vim"
+		sourcepath = "C:\dev\ming32\vim"
 	Case 2
-		sourcepath = "C:\dev\mvc\vim"
+		sourcepath = "C:\dev\mvc32\vim"
+	Case 3
+		sourcepath = "C:\dev\ming64\vim"
+	Case 4
+		sourcepath = "C:\dev\mvc64\vim"
 	Case else
 		WScript.Quit
-End select
+End Select
 Exit Sub
 End Sub

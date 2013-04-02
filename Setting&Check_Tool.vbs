@@ -45,7 +45,7 @@ Select Case osselect
 		Call readme
 	Case else
 		WScript.Quit
-End select
+End Select
 
 Sub sharesetting
 	Return = WshShell.run("sc config WinDefend start= disabled" , 1 , True)
@@ -137,7 +137,7 @@ Select Case checkosselect
 		       "Windows Audio : " &AudioSrv.State &" , " &AudioSrv.StartMode , 0 , "Message"
 	Case else
 		WScript.Quit
-End select
+End Select
 Exit Sub
 End Sub
 

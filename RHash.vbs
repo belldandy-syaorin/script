@@ -72,6 +72,6 @@ Select Case argumentselect
 		argument(1) = "--check"
 	Case else
 		WScript.Quit
-End select
+End Select
 Exit Sub
 End Sub

@@ -22,7 +22,7 @@ Select Case autospeedselect
 		Call speedselect
 	Case Else
 		argument(5) = "--max-download-limit=512K"
-End select
+End Select
 Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
                                         &Chr(32) &argument(2) _
                                         &Chr(32) &argument(3) _
@@ -80,6 +80,6 @@ Select Case argumentselect
 		argument(5) = "--max-download-limit=128K"
 	Case else
 		WScript.Quit
-End select
+End Select
 Exit Sub
 End Sub
