@@ -1,3 +1,3 @@
 #!/bin/bash
-ls -al /usr/local/bin/ | grep "$(date|awk '{print $2 " " $3}')"
+ls -al /usr/local/bin/ | grep "$(date "+%b %e")"
 exit 0
