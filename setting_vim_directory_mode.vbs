@@ -5,11 +5,12 @@ If Not (fso.FileExists(vimpath)) Then
 	MsgBox "[info] Can't Find gvim.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
-Dim commanddata(3)
-	commanddata(0) = "+set enc=ucs-2le"
-	commanddata(1) = "+set nofoldenable"
-	commanddata(2) = "+lcd %1"
-	commanddata(3) = "+0read !dir/on"
+Dim commanddata(4)
+	commanddata(0) = "--noplugin"
+	commanddata(1) = "+set enc=ucs-2le"
+	commanddata(2) = "+set nofoldenable"
+	commanddata(3) = "+lcd %1"
+	commanddata(4) = "+0read !dir/on"
 commanddatadiff = "/s"
 Dim regpath(1)
 	regpath(0) = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Vim(dir)\command\"
@@ -18,12 +19,14 @@ regdata = Chr(34) &vimpath &Chr(34) &Chr(32) & _
           Chr(34) &commanddata(0) &Chr(34) &Chr(32) & _
           Chr(34) &commanddata(1) &Chr(34) &Chr(32) & _
           Chr(34) &commanddata(2) &Chr(34) &Chr(32) & _
-          Chr(34) &commanddata(3) &Chr(34)
+          Chr(34) &commanddata(3) &Chr(34) &Chr(32) & _
+          Chr(34) &commanddata(4) &Chr(34)
 regdatadiff = Chr(34) &vimpath &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(0) &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(1) &Chr(34) &Chr(32) & _
               Chr(34) &commanddata(2) &Chr(34) &Chr(32) & _
-              Chr(34) &commanddata(3) &commanddatadiff &Chr(34)
+              Chr(34) &commanddata(3) &Chr(34) &Chr(32) & _
+              Chr(34) &commanddata(4) &commanddatadiff &Chr(34)
 WshShell.RegWrite regpath(0) , regdata , "REG_SZ"
 WshShell.RegWrite regpath(1) , regdatadiff , "REG_SZ"
 If WshShell.RegRead (regpath(0)) = regdata And _
