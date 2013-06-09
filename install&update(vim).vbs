@@ -11,10 +11,12 @@ If (fso.FolderExists(targetpath)) Then
 		WScript.Quit
 	End If
 	If (fso.FileExists(sourcepath&"\src\gvim.exe")) And _
-           (fso.FileExists(sourcepath&"\src\GvimExt\gvimext.dll")) And _
-           (fso.FileExists(sourcepath&"\src\vimrun.exe")) And _
-           (fso.FileExists(sourcepath&"\src\xxd\xxd.exe")) Then
+	   (fso.FileExists(sourcepath&"\src\vim.exe")) And _
+	   (fso.FileExists(sourcepath&"\src\GvimExt\gvimext.dll")) And _
+	   (fso.FileExists(sourcepath&"\src\vimrun.exe")) And _
+	   (fso.FileExists(sourcepath&"\src\xxd\xxd.exe")) Then
 		Return = fso.CopyFile(sourcepath&"\src\gvim.exe" , targetpath&"\" , True)
+		Return = fso.CopyFile(sourcepath&"\src\vim.exe" , targetpath&"\" , True)
 		Return = fso.CopyFile(sourcepath&"\src\GvimExt\gvimext.dll" , targetpath&"\" , True)
 		Return = fso.CopyFile(sourcepath&"\src\vimrun.exe" , targetpath&"\" , True)
 		Return = fso.CopyFile(sourcepath&"\src\xxd\xxd.exe" , targetpath&"\" , True)
