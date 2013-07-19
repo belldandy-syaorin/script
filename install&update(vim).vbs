@@ -1,7 +1,7 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
-	targetpath = "C:\portable\vim\vim73"
+	targetpath = "C:\portable\vim\vim74"
 Call versionselect
 If (fso.FolderExists(targetpath)) Then
 	if (fso.FolderExists(sourcepath&"\runtime")) Then

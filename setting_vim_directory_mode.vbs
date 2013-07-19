@@ -1,6 +1,6 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
-vimpath = "C:\portable\vim\vim73\gvim.exe"
+vimpath = "C:\portable\vim\vim74\gvim.exe"
 If Not (fso.FileExists(vimpath)) Then
 	MsgBox "[info] Can't Find gvim.exe & Exit" , 0 , "Message"
 	WScript.Quit
