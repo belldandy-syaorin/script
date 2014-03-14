@@ -1,6 +1,6 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Dim argument(9)
-	argument(0) = "C:\portable\aria2-1.17.1-win-64bit-build1\aria2c.exe" 'application path
+	argument(0) = "C:\portable\aria2-1.18.3-win-64bit-build1\aria2c.exe" 'application path
 	argument(2) = "--check-certificate=false"
 	argument(3) = "--dir="&WshShell.ExpandEnvironmentStrings("%USERPROFILE%")&"\Downloads" 'download path
 	argument(4) = "--remote-time=true"
