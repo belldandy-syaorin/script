@@ -1,8 +1,8 @@
 //FlashGot
 	//Linux
 		Download Manager -> Add -> aria2.sh
-		Executable path: -> Browse... -> /usr/bin/xfce4-terminal
-		Command line arguments template: -> -H -x aria2.sh [URL]
+		Executable path: -> Browse... -> /usr/bin/roxterm
+		Command line arguments template: -> --execute aria2.sh [URL]
 	//Windows
 		Download Manager -> Add -> aria2.vbs
 		Executable path: -> Browse... -> C:\Windows\System32\wscript.exe
