@@ -70,5 +70,4 @@ else
 	speedselect
 	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1"
 fi
-read -p "Press Enter To Close Terminal"
 exit 0
