@@ -2,8 +2,8 @@
 	//Linux
 		Download Manager -> Add -> aria2.sh
 		Executable path: -> Browse... -> /usr/bin/konsole
-		Command line arguments template: -> --noclose --nofork -e aria2.sh [URL]
+		Command line arguments template: -> --noclose --nofork -e /opt/repository/git/script/aria2.sh [URL]
 	//Windows
 		Download Manager -> Add -> aria2.vbs
 		Executable path: -> Browse... -> C:\Windows\System32\wscript.exe
-		Command line arguments template: -> C:\portable\aria2.vbs [URL]
+		Command line arguments template: -> C:\repository\git\script\aria2.vbs [URL]

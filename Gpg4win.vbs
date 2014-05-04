@@ -1,5 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
-vbspath = "C:\portable\Gpg4win.vbs" 'vbs path
+vbspath = "C:\repository\git\script\Gpg4win.vbs" 'vbs path
 Dim argument(2)
 	argument(0) = "gpg2.exe" 'application path
 ' Call checksetting

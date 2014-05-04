@@ -1,5 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
-vbspath = "C:\portable\RHash.vbs" 'vbs path
+vbspath = "C:\repository\git\script\RHash.vbs" 'vbs path
 Dim argument(2)
 	argument(0) = "C:\portable\RHash-1.3.1-win64\rhash.exe" 'application path
 Call checksetting
