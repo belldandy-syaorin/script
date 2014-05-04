@@ -1,8 +1,8 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 vbspath = "C:\repository\git\script\Gpg4win.vbs" 'vbs path
 Dim argument(2)
-	argument(0) = "gpg2.exe" 'application path
-' Call checksetting
+	argument(0) = "C:\PROGRA~2\GNU\GnuPG\gpg2.exe" 'application path(DIR/X)
+Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
 Else
