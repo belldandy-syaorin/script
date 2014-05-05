@@ -9,9 +9,9 @@ Else
 	Call withargument
 End If
 Call featureselect
-Return = WshShell.run(argument(0) _
-                     &Chr(32) &argument(1) _
-                     &Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
+Return = WshShell.Run(Chr(34) &argument(0) &Chr(34) &Chr(32) _
+                     &Chr(34) &argument(1) &Chr(34) &Chr(32) _
+                     &Chr(34) &argument(2) &Chr(34) , 1, true)
 
 Sub checksetting
 Set fso = CreateObject("Scripting.FileSystemObject")
