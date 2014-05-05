@@ -10,8 +10,8 @@ Else
 End If
 Call featureselect
 Return = WshShell.Run(Chr(34) &argument(0) &Chr(34) &Chr(32) _
-                     &Chr(34) &argument(1) &Chr(34) &Chr(32) _
-                     &Chr(34) &argument(2) &Chr(34) , 1, true)
+                     &Chr(34) &argument(2) &Chr(34) &Chr(32) _
+                     &Chr(34) &argument(1) &Chr(34) , 1, true)
 
 Sub checksetting
 Set fso = CreateObject("Scripting.FileSystemObject")
