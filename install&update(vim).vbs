@@ -1,23 +1,19 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
-	targetpath = "C:\portable\vim\vim74"
 Call versionselect
 
 Sub versionselect
 Dim sourcepathselect
 Do
-sourcepathselect = InputBox("1 = ming" &Chr(10) & _
-                            "2 = mvc" &Chr(10) & _
+sourcepathselect = InputBox("1 = VIM(Default)" &Chr(10) & _
                             "Select Feature (Other Number = Exit)" , _
                             "Input A Number For Your Choice" , 1)
 Loop While IsNumeric(sourcepathselect) = Flase
 Select Case sourcepathselect
 	Case 1
-		sourcepath = "C:\repository\hg\vim_ming"
-		Call install
-	Case 2
-		sourcepath = "C:\repository\hg\vim_mvc"
+		sourcepath = "C:\repository\hg\vim"
+		targetpath = "C:\portable\vim\vim74"
 		Call install
 	Case else
 		WScript.Quit
