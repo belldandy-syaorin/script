@@ -1,4 +1,5 @@
 //FlashGot
+	Preferences -> General
 	//Linux
 		Download Manager -> Add -> aria2.sh
 		Executable path: -> Browse... -> /usr/bin/konsole
