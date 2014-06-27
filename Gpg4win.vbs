@@ -1,4 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\Gpg4win.vbs" 'vbs path
 Dim argument(2)
 	argument(0) = "C:\PROGRA~2\GNU\GnuPG\gpg2.exe" 'application path(DIR/X)
@@ -9,12 +10,13 @@ Else
 	Call withargument
 End If
 Call featureselect
-Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
-                                        &Chr(32) &argument(1) _
-                                        &Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
+Return = WshShell.run( _
+	"%COMSPEC% /u /k chcp 65001 &" _
+	&Chr(32) &argument(0) _
+	&Chr(32) &argument(1) _
+	&Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
 
 Sub checksetting
-Set fso = CreateObject("Scripting.FileSystemObject")
 If Not (fso.FileExists(argument(0))) Then
 	MsgBox "[info] Can't Find gpg2.exe & Exit" , 0 , "Message"
 	WScript.Quit
@@ -23,11 +25,11 @@ Exit Sub
 End Sub
 
 Sub manualinputargument
-argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _
-                       "Notice :" &Chr(10) & _
-                       "Wrong Path&FileName Will Cause An Error" &Chr(10) & _
-                       "0000 = Add Context Menu" , _
-                       "Manual Input (Path&FileName)")
+argument(2) = InputBox( _
+	"Null(Empty) = Exit" &Chr(10) & _
+	"Notice :" &Chr(10) & _
+	"0000 = Add Context Menu" , _
+	"Manual Input (Path&FileName)")
 If argument(2) = "" Then
 	WScript.Quit
 End If
@@ -43,6 +45,10 @@ If argument(2) = "0000" Then
 		WScript.Quit
 	End If
 End If
+If Not (fso.FileExists(argument(2))) Then
+	MsgBox "[info] Can't Find File & Exit" , 0 , "Message"
+	WScript.Quit
+End If
 Exit Sub
 End Sub
 
@@ -54,10 +60,11 @@ End Sub
 Sub featureselect
 Dim argumentselect
 Do
-argumentselect = InputBox("1 = import" &Chr(10) & _
-                          "2 = verify (Default)" &Chr(10) & _
-                          "Select Feature (Other Number = Exit)" , _
-                          "Input A Number For Your Choice" , 2)
+argumentselect = InputBox( _
+	"1 = import" &Chr(10) & _
+	"2 = verify (Default)" &Chr(10) & _
+	"Select Feature (Other Number = Exit)" , _
+	"Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
