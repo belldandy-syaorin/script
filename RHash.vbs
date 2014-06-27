@@ -1,6 +1,7 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\RHash.vbs" 'vbs path
-Dim argument(2)
+Dim argument(3)
 	argument(0) = "C:\portable\RHash-1.3.1-win64\rhash.exe" 'application path
 Call checksetting
 If WScript.Arguments.Count = 0 Then
@@ -9,12 +10,15 @@ Else
 	Call withargument
 End If
 Call featureselect
-Return = WshShell.run("%COMSPEC% /u /k" &Chr(32) &argument(0) _
-                                        &Chr(32) &argument(1) _
-                                        &Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
+Return = WshShell.run( _
+	"%COMSPEC% /u /k chcp 65001 & cd /d" _
+	&Chr(32) &argument(3) &Chr(32) &Chr(38) _
+	&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+	&Chr(32) &Chr(34) &argument(1) &Chr(34) _
+	&Chr(32) &Chr(34) &argument(2) &Chr(34) _
+	, 1 , True)
 
 Sub checksetting
-Set fso = CreateObject("Scripting.FileSystemObject")
 If Not (fso.FileExists(argument(0))) Then
 	MsgBox "[info] Can't Find rhash.exe & Exit" , 0 , "Message"
 	WScript.Quit
@@ -23,11 +27,11 @@ Exit Sub
 End Sub
 
 Sub manualinputargument
-argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _
-                       "Notice :" &Chr(10) & _
-                       "Wrong Path&FileName Will Cause An Error" &Chr(10) & _
-                       "0000 = Add Context Menu" , _
-                       "Manual Input (Path&FileName)")
+argument(2) = InputBox( _
+	"Null(Empty) = Exit" &Chr(10) & _
+	"Notice :" &Chr(10) & _
+	"0000 = Add Context Menu" , _
+	"Manual Input (Path&FileName)")
 If argument(2) = "" Then
 	WScript.Quit
 End If
@@ -43,6 +47,11 @@ If argument(2) = "0000" Then
 		WScript.Quit
 	End If
 End If
+If Not (fso.FileExists(argument(2))) Then
+	MsgBox "[info] Can't Find File & Exit" , 0 , "Message"
+	WScript.Quit
+End If
+argument(3) = fso.GetParentFolderName(argument(2))
 Exit Sub
 End Sub
 
@@ -54,12 +63,13 @@ End Sub
 Sub featureselect
 Dim argumentselect
 Do
-argumentselect = InputBox("1 = MD5" &Chr(10) & _
-                          "2 = SHA1" &Chr(10) & _
-                          "3 = ED2K" &Chr(10) & _
-                          "4 = SFV (Default)" &Chr(10) & _
-                          "Select Feature (Other Number = Exit)" , _
-                          "Input A Number For Your Choice" , 4)
+argumentselect = InputBox( _
+	"1 = MD5" &Chr(10) & _
+	"2 = SHA1" &Chr(10) & _
+	"3 = ED2K" &Chr(10) & _
+	"4 = SFV (Default)" &Chr(10) & _
+	"Select Feature (Other Number = Exit)" , _
+	"Input A Number For Your Choice" , 4)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
