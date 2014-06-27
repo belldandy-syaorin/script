@@ -6,17 +6,24 @@ Dim argument(3)
 Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
+	Call featureselect
+	Return = WshShell.run( _
+		"%COMSPEC% /u /k chcp 65001 & cd /d" _
+		&Chr(32) &argument(3) &Chr(32) &Chr(38) _
+		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
+		, 1 , True)
 Else
 	Call withargument
+	Call featureselect
+	Return = WshShell.run( _
+		"%COMSPEC% /u /k chcp 65001 &" _
+		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
+		, 1 , True)
 End If
-Call featureselect
-Return = WshShell.run( _
-	"%COMSPEC% /u /k chcp 65001 & cd /d" _
-	&Chr(32) &argument(3) &Chr(32) &Chr(38) _
-	&Chr(32) &Chr(34) &argument(0) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(1) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(2) &Chr(34) _
-	, 1 , True)
 
 Sub checksetting
 If Not (fso.FileExists(argument(0))) Then
