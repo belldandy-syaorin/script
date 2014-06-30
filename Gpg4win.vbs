@@ -2,8 +2,9 @@ Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\Gpg4win.vbs" 'vbs path
 Dim argument(2)
-	argument(0) = "C:\PROGRA~2\GNU\GnuPG\gpg2.exe" 'application path(DIR/X)
+	argument(0) = "C:\Program"&Chr(32)&"Files"&Chr(32)&"(x86)\GNU\GnuPG\pub\gpg.exe" 'application path
 Call checksetting
+' WScript.Echo argument(0)
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
 Else
@@ -12,13 +13,13 @@ End If
 Call featureselect
 Return = WshShell.run( _
 	"%COMSPEC% /u /k chcp 65001 &" _
-	&Chr(32) &argument(0) _
-	&Chr(32) &argument(1) _
+	&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+	&Chr(32) &Chr(34) &argument(1) &Chr(34) _
 	&Chr(32) &Chr(34) &argument(2) &Chr(34) , 1 , True)
 
 Sub checksetting
 If Not (fso.FileExists(argument(0))) Then
-	MsgBox "[info] Can't Find gpg2.exe & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find gpg.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub
