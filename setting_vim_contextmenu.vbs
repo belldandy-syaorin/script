@@ -6,7 +6,7 @@ If Not (fso.FileExists(vimpath)) Then
 	WScript.Quit
 End If
 Dim commanddata(4)
-	commanddata(0) = "+call Vim_Size(0)"
+	commanddata(0) = "--noplugin"
 	commanddata(1) = "+set nofoldenable"
 	commanddata(2) = "+0read !cd /d %1 & dir/on"
 	commanddata(3) = "+0read !cd /d %1 & dir/on/s"
