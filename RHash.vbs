@@ -2,7 +2,7 @@ Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\RHash.vbs" 'vbs path
 Dim argument(3)
-	argument(0) = "C:\portable\RHash-1.3.2-win64\rhash.exe" 'application path
+	argument(0) = "C:\portable\RHash-1.3.3-win64\rhash.exe" 'application path
 Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call manualinputargument
