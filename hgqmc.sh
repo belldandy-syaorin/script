@@ -1,12 +1,12 @@
 #!/bin/bash
 declare -a argument
 	argument[0]="$(hg status)"
-	argument[1]="'$(hg status|grep ^M|sed 's/^M/mod/g')'"
+	argument[1]="$(hg status|grep ^M|sed 's/^M/mod/g')"
 if [ "${argument[0]}" = "" ] ; then
 	echo "[info] Repository Status : n/a"
 	exit 0
 fi
-if [ "${argument[1]}" = "''" ] ; then
+if [ "${argument[1]}" = "" ] ; then
 	echo "[info] Modified : n/a"
 	exit 0
 fi
