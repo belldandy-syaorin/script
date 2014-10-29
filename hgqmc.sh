@@ -12,6 +12,7 @@ if [ "${argument[1]}" = "''" ] ; then
 fi
 echo "[info] Repository Status :" "${argument[0]}"
 echo "[info] Commit Message    :" "${argument[1]}"
+echo "[info] (After 5s Will Auto Exit)"
 read -t 5 -p "Commit = Y/y Or Exit = Other) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [ "$checkans" = "Y" -o "$checkans" = "y" ] ; then
