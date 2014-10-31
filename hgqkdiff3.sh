@@ -11,9 +11,9 @@ echo "[info] (After 5s Will Auto Exit)"
 read -t 5 -p "Log(KDiff3) = Y/y Or Exit = Other) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [ "$checkans" = "Y" -o "$checkans" = "y" ] ; then
+	echo "[info] Log(KDiff3)"
 	hg qlog
 	hg kdiff3 -r"${argument[0]}" -r"${argument[1]}"
-	echo "[info] Log(KDiff3)"
 else
 	echo "[info] Exit"
 fi

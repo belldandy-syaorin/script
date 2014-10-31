@@ -16,8 +16,8 @@ echo "[info] (After 5s Will Auto Exit)"
 read -t 5 -p "Commit = Y/y Or Exit = Other) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [ "$checkans" = "Y" -o "$checkans" = "y" ] ; then
-	hg commit -m "${argument[1]}"
 	echo "[info] Commit"
+	hg commit -m "${argument[1]}"
 else
 	echo "[info] Exit"
 fi
