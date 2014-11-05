@@ -20,12 +20,14 @@ elif [ "${argument[1]}" = "" ] ; then
 fi
 echo "[info] Repository Status :" "${argument[0]}"
 echo "[info] Commit Message    :" "${argument[3]}"
-read -t 5 -p "[info] Commit = Y/y Or Exit = Other(After 5s Will Auto Exit) : " ans
+echo "[info] Commit = Y/y Or"
+read -t 5 -p "[info] Exit = Other (After 5s Will Auto Exit ,Default) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [ "$checkans" = "Y" -o "$checkans" = "y" ] ; then
 	echo "[info] Commit"
 	hg commit -m "${argument[3]}"
 else
+	echo ""
 	echo "[info] Exit"
 fi
 exit 0
