@@ -54,20 +54,20 @@ End Sub
 Sub featureselect
 Dim argumentselect
 Do
-argumentselect = InputBox("1 = japan (Default)" &Chr(10) & _
-                          "2 = taiwan" &Chr(10) & _
-                          "3 = prc" &Chr(10) & _
+argumentselect = InputBox("1 = taiwan (Default)" &Chr(10) & _
+                          "2 = prc" &Chr(10) & _
+                          "3 = japan" &Chr(10) & _
                           "4 = korea" &Chr(10) & _
                           "Select Feature (Other Number = Exit)" , _
                           "Input A Number For Your Choice" , 1)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
-		argument(1) = "/L0411"
-	Case 2
 		argument(1) = "/L0404"
-	Case 3
+	Case 2
 		argument(1) = "/L0804"
+	Case 3
+		argument(1) = "/L0411"
 	Case 4
 		argument(1) = "/L0412"
 	Case else
