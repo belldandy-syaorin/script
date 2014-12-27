@@ -11,7 +11,7 @@ if [ "${argument[2]}" != "" ] ; then
 	echo "[info] Added Or Modified : Multiple"
 	exit 0
 elif [ "${argument[1]}" = "A" ] ; then
-	argument[3]="$(echo "${argument[0]}"|grep ^A|sed 's/^A/mod/g')"
+	argument[3]="$(echo "${argument[0]}"|grep ^A|sed 's/^A/add/g')"
 elif [ "${argument[1]}" = "M" ] ; then
 	argument[3]="$(echo "${argument[0]}"|grep ^M|sed 's/^M/mod/g')"
 elif [ "${argument[1]}" = "" ] ; then
