@@ -16,8 +16,6 @@ Dim regpath(15)
 	regpath(6) = "Hidden"
 	regpath(7) = "HideFileExt"
 	regpath(8) = "ShowSuperHidden"
-	regpath(9) = "SeparateProcess"
-	regpath(10) = "ShowCompColor"
 	regpath(11) = "SharingWizardOn"
 	regpath(12) = "IconsOnly"
 Dim osselect
@@ -59,8 +57,6 @@ Sub sharesetting
 	WshShell.RegWrite regpath(5) & regpath(6) , 1 , "REG_DWORD"
 	WshShell.RegWrite regpath(5) & regpath(7) , 0 , "REG_DWORD"
 	WshShell.RegWrite regpath(5) & regpath(8) , 1 , "REG_DWORD"
-	WshShell.RegWrite regpath(5) & regpath(9) , 1 , "REG_DWORD"
-	WshShell.RegWrite regpath(5) & regpath(10) , 0 , "REG_DWORD"
 	WshShell.RegWrite regpath(5) & regpath(11) , 0 , "REG_DWORD"
 	MsgBox "Setting Success" , 0 , "Message"
 Exit Sub
@@ -73,10 +69,8 @@ Dim co(15)
 	co(2) = WshShell.RegRead(regpath(5) & regpath(6))
 	co(3) = WshShell.RegRead(regpath(5) & regpath(7))
 	co(4) = WshShell.RegRead(regpath(5) & regpath(8))
-	co(5) = WshShell.RegRead(regpath(5) & regpath(9))
-	co(6) = WshShell.RegRead(regpath(5) & regpath(10))
 	co(7) = WshShell.RegRead(regpath(5) & regpath(11))
-If co(2) = 1 And co(3) = 0 And co(4) = 1 And co(5) = 1 And co(6) = 0 And co(7) = 0 Then
+If co(2) = 1 And co(3) = 0 And co(4) = 1 And co(7) = 0 Then
 	co(8) = "Default Setting"
 Else
 	co(8) = "Disable Default Setting"
@@ -178,9 +172,7 @@ MsgBox _
 	"Hidden files and folders -> Show hidden files, folders, and drives" &Chr(10) & _
 	"Hide extensions for known file types -> Unchecked" &Chr(10) & _
 	"Hide protected operating system files (Recommended) -> Unchecked" &Chr(10) & _
-	"Launch folder windows in a separate process -> Checked" &Chr(10) & _
-	"Show encrypted or compressed NTFS files in color -> Unchecked" &Chr(10) & _
-	"Use Sharing Wizard (Recommended) -> Unchecked" _
+	"Use Sharing Wizard (Recommended) -> Unchecked (Windows 7 Only)" _
 	, 0 , "Message"
 Exit Sub
 End Sub
