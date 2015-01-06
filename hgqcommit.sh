@@ -8,7 +8,7 @@ if [ "${argument[0]}" = "" ] ; then
 	exit 0
 fi
 if [ "${argument[2]}" != "" ] ; then
-	echo "[info] Added Or Modified : Multiple"
+	echo "[info] Added Or Modified Or Removed : Multiple"
 	exit 0
 elif [ "${argument[1]}" = "A" ] ; then
 	argument[3]="$(echo "${argument[0]}"|grep ^A|sed 's/^A/add/g')"
@@ -17,7 +17,7 @@ elif [ "${argument[1]}" = "M" ] ; then
 elif [ "${argument[1]}" = "R" ] ; then
 	argument[3]="$(echo "${argument[0]}"|grep ^R|sed 's/^R/remove/g')"
 elif [ "${argument[1]}" = "" ] ; then
-	echo "[info] Added Or Modified : n/a"
+	echo "[info] Added Or Modified Or Removed : n/a"
 	exit 0
 fi
 echo "[info] Repository Status :" "${argument[0]}"
