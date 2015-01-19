@@ -1,25 +1,20 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
-Call versionselect
-
-Sub versionselect
-Dim sourcepathselect
-Do
-sourcepathselect = InputBox("1 = VIM(Default)" &Chr(10) & _
-                            "Select Feature (Other Number = Exit)" , _
-                            "Input A Number For Your Choice" , 1)
-Loop While IsNumeric(sourcepathselect) = Flase
-Select Case sourcepathselect
-	Case 1
-		sourcepath = "C:\repository\hg\vim"
-		targetpath = "C:\portable\vim\vim74"
+	sourcepath = "C:\repository\hg\vim"
+	targetpath = "C:\portable\vim\vim74"
+Dim response
+response = MsgBox( _
+	"VIM Source Path : " &sourcepath &Chr(10) & _
+	"VIM Target Path : " &targetpath &Chr(10) & _
+	"Install(Yes) or Exit(No)" _
+	, 4 , "Message")
+Select Case response
+	Case 6
 		Call install
-	Case else
+	Case 7
 		WScript.Quit
 End Select
-Exit Sub
-End Sub
 
 Sub install
 	If (fso.FolderExists(targetpath)) Then
