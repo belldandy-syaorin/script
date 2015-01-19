@@ -16,8 +16,8 @@ Dim regpath(15)
 	regpath(6) = "Hidden"
 	regpath(7) = "HideFileExt"
 	regpath(8) = "ShowSuperHidden"
-	regpath(11) = "SharingWizardOn"
-	regpath(12) = "IconsOnly"
+	regpath(9) = "SharingWizardOn"
+	regpath(10) = "IconsOnly"
 Dim osselect
 Do
 osselect = InputBox( _
@@ -57,7 +57,7 @@ Sub sharesetting
 	WshShell.RegWrite regpath(5) & regpath(6) , 1 , "REG_DWORD"
 	WshShell.RegWrite regpath(5) & regpath(7) , 0 , "REG_DWORD"
 	WshShell.RegWrite regpath(5) & regpath(8) , 1 , "REG_DWORD"
-	WshShell.RegWrite regpath(5) & regpath(11) , 0 , "REG_DWORD"
+	WshShell.RegWrite regpath(5) & regpath(9) , 0 , "REG_DWORD"
 	MsgBox "Setting Success" , 0 , "Message"
 Exit Sub
 End Sub
@@ -69,7 +69,7 @@ Dim co(15)
 	co(2) = WshShell.RegRead(regpath(5) & regpath(6))
 	co(3) = WshShell.RegRead(regpath(5) & regpath(7))
 	co(4) = WshShell.RegRead(regpath(5) & regpath(8))
-	co(7) = WshShell.RegRead(regpath(5) & regpath(11))
+	co(7) = WshShell.RegRead(regpath(5) & regpath(9))
 If co(2) = 1 And co(3) = 0 And co(4) = 1 And co(7) = 0 Then
 	co(8) = "Default Setting"
 Else
@@ -144,11 +144,17 @@ End Sub
 
 Sub miscsetting
 Dim response
-response = MsgBox("IconsOnly Enable(Yes) or Disable(No)" , 4, "Message")
+response = MsgBox( _
+	"IconsOnly" &Chr(10) & _
+	"Enable(Yes) or Disable(No)" &Chr(10) & _
+	"Cancel(Exit)" _
+	, 3 , "Message")
 If response = 6 Then
-	WshShell.RegWrite regpath(5) & regpath(12) , 1 , "REG_DWORD"
+	WshShell.RegWrite regpath(5) & regpath(10) , 1 , "REG_DWORD"
+Elseif response = 7 Then
+	WshShell.RegWrite regpath(5) & regpath(10) , 0 , "REG_DWORD"
 Else
-	WshShell.RegWrite regpath(5) & regpath(12) , 0 , "REG_DWORD"
+	WScript.Quit
 End If
 Exit Sub
 End Sub
