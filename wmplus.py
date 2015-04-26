@@ -38,20 +38,8 @@ def getargument():
     size_big = [1024 , 768]
     size_large = [1280 , 960]
 
-def debuginfo():
-    print resolution_w , resolution_h
-    print hwnd
-    print win_rect
-    print win_rect_x , win_rect_y , win_rect_w , win_rect_h
-    print center_x , center_y
-    print smart_x , smart_y
-    print wincenter
-    print smartsize_big , smartsize_large
-    print size_default , size_big , size_large
-
 def win_pos(x,y,z):
     win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
-    print z
 
 def win_size(x,y):
     a = (resolution_w - x) / 2
@@ -103,7 +91,6 @@ def handle_smartposition ():
             wm.position6()
         elif wincenter[1] >= smart_y[1] and wincenter[1] <= smart_y[2]:
             wm.position3()
-    debuginfo()
 
 def handle_smartsize ():
     getargument()
@@ -113,7 +100,6 @@ def handle_smartsize ():
         win_size(smartsize_big[0] , smartsize_big[1])
     else:
         win_size(smartsize_big[0] , smartsize_big[1])
-    debuginfo()
 
 def handle_size ():
     getargument()
@@ -125,7 +111,6 @@ def handle_size ():
         win_size(size_default[0] , size_default[1])
     else:
         win_size(size_default[0] , size_default[1])
-    debuginfo()
 
 def handle_exit ():
     user32.PostQuitMessage (0)
