@@ -18,7 +18,7 @@ HOTKEYS = {
 }
 
 def getargument():
-    global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h , center_x , center_y , smart_x , smart_y , wincenter , smartsize_big , smartsize_large , size_default , size_big , size_large
+    global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h , center_x , center_y , smart_x , smart_y , wincenter , smartsize_big , smartsize_large , size_default , size_big , size_large , taskbar
     resolution_w = GetSystemMetrics(0)
     resolution_h = GetSystemMetrics(1)
     hwnd = win32gui.GetForegroundWindow()
@@ -37,9 +37,17 @@ def getargument():
     size_default = [800 , 600]
     size_big = [1024 , 768]
     size_large = [1280 , 960]
+    taskbar = 1
 
 def win_pos(x,y,z):
-    win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
+    if taskbar == 1:
+        if z == 1 or z == 2 or z ==3:
+            i = y - 30
+            win32gui.SetWindowPos(hwnd, 0, x, i, 0, 0, 0x0001 + 0x0004)
+        else:
+            win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
+    else:
+        win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
 
 def win_size(x,y):
     a = (resolution_w - x) / 2
