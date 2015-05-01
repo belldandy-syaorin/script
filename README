@@ -25,6 +25,8 @@ wmplus.py
 		the three size can manual setting , default is 800x600 , 1024x768 , 1280x960 .
 	exit :
 		if you want to close this program , press win + f12 will exit .
+	notice :
+		if you don't need debug console , rename wmplus.py to wmplus.pyw .
 wmplus.vbs
 	wmplus.vbs is a vb script for wmplus.py .
 	if you have many python version or portable version , recommend use it .
