@@ -1,5 +1,5 @@
 wmplus.py
-	wmplus.py is a window position & size manager .
+	wmplus.py is a window position & size manager . (windows only)
 	system requirements :
 		it need python2 & pywin32 , before use , you should download first .
 			https://www.python.org/
@@ -28,6 +28,6 @@ wmplus.py
 	notice :
 		if you don't need debug console , rename wmplus.py to wmplus.pyw .
 wmplus.vbs
-	wmplus.vbs is a vb script for wmplus.py .
+	wmplus.vbs is a vb script for wmplus.py . (windows only)
 	if you have many python version or portable version , recommend use it .
 	before use it , you should change the python & wmplus.py path in this file .
