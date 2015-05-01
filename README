@@ -1,0 +1,26 @@
+wmplus.py
+	wmplus.py is a window position & size manager .
+	feature 1 :
+		when you press win + ` , it will detect cursor position .
+		it split desktop to 9 area , like this .
+		7 | 8 | 9
+		4 | 5 | 6
+		1 | 2 | 3
+		if cursor position is in area 7 , it will move the foreground window to left-top .
+		if cursor position is in area 3 , it will move the foreground window to right-bottom .
+		if cursor position is in area 5 , it will move the foreground window to center .
+		other analogy .
+	feature 2 :
+		when you press win + f5 , it will detect your desktop resolution .
+		and it will change the foreground window to two size .
+		your desktop resolution's 2/3 or 4/5 .
+	feature 3 :
+		like feature 2 , but key is win + f6 .
+		it will change the foreground window to three size .
+		the three can manual setting , default is 800x600 , 1024x768 , 1280x960 .
+	exit :
+		if you want to close this program , press win + f12 will exit .
+wmplus.vbs
+	wmplus.vbs is a vb script for wmplus.py .
+	if you have many python version or portable version , recommend use it .
+	before use it , you should change the python & wmplus.py path in this file .
