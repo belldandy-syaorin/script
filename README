@@ -13,11 +13,11 @@ wmplus.py
 	feature 2 :
 		when you press win + f5 , it will detect your desktop resolution .
 		and it will change the foreground window to two size .
-		your desktop resolution's 2/3 or 4/5 .
+		the two size can manual setting , default is your desktop resolution's 2/3 or 4/5 .
 	feature 3 :
-		like feature 2 , but key is win + f6 .
+		like feature 2 , but hot key is win + f6 .
 		it will change the foreground window to three size .
-		the three can manual setting , default is 800x600 , 1024x768 , 1280x960 .
+		the three size can manual setting , default is 800x600 , 1024x768 , 1280x960 .
 	exit :
 		if you want to close this program , press win + f12 will exit .
 wmplus.vbs
