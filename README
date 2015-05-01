@@ -1,5 +1,10 @@
 wmplus.py
 	wmplus.py is a window position & size manager .
+	system requirements :
+		it need python2 & pywin32 , before use , you should download first .
+			https://www.python.org/
+			http://sourceforge.net/projects/pywin32/
+		test ok version : python 2.7.9 , pywin32 build 219
 	feature 1 :
 		when you press win + ` , it will detect cursor position .
 		it split desktop to 9 area , like this .
