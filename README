@@ -25,6 +25,8 @@ wmplus.py
 		the three size can manual setting , default is 800x600 , 1024x768 , 1280x960 .
 	exit :
 		if you want to close this program , press win + f12 will exit .
+	misc :
+		if your taskbar is hidden , please setting taskbar = 1 to 0 , default is 1 .
 	notice :
 		if you don't need debug console , rename wmplus.py to wmplus.pyw .
 wmplus.vbs
