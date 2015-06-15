@@ -8,7 +8,7 @@ if [ "${argument[0]}" = "" -o "${argument[1]}" = "" ] ; then
 	exit 0
 fi
 echo "[info] Repository Log(Last 2)"
-hg qlog
+hg log --graph --limit 2 --stat
 echo "[info] Repository Changeset(Last 2) :" "${argument[1]}" "${argument[2]}"
 echo "[info] Diff View(Last 2 & Use KDiff3 ,GUI) = K/k Or"
 echo "[info] Diff View(Last 2 & Use VIM ,CLI) = V/v Or"
