@@ -1,4 +1,5 @@
 #!/bin/bash
+sensors | grep ^Physical
 sensors | grep ^Core
 sensors | grep ^fan
 sudo smartctl -a /dev/sda | grep -i temp
