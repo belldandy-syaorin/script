@@ -1,7 +1,7 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
-	sourcepath = "C:\repository\hg\vim"
+	sourcepath = "C:\repository\git\vim"
 	targetpath = "C:\portable\vim\vim74"
 Dim response
 response = MsgBox( _
