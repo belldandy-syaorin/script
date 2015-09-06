@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=kwin-wmplus
+Comment=kwin-wmplus
+
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/main.js
+
+X-KDE-PluginInfo-Author=belldandy-syaorin
+X-KDE-PluginInfo-Email=n/a
+X-KDE-PluginInfo-Name=kwin-wmplus
+X-KDE-PluginInfo-Version=n/a
+X-KWin-Exclude-Listing=false
+
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+
+X-KDE-PluginInfo-Depends=
+X-KDE-ServiceTypes=KWin/Script
+Type=Service
