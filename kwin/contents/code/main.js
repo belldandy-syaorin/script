@@ -1,46 +1,74 @@
-function size(a,b) {
+var size_default = [800, 600];
+var size_big = [1024, 768];
+var size_large = [1280, 960];
+var smartsize_big = [3, 2];
+var smartsize_large = [5, 4];
+function size() {
 	var clients = workspace.clientList();
 	for (var i=0; i<clients.length; i++) {
 		if(clients[i].active) {
 			activeClient = clients[i];
 			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
 			var geo = activeClient.geometry;
-			geo.width = a;
-			geo.height = b;
-			if (wsgeo.width > geo.width && wsgeo.height > geo.height) {
-				geo.x = (wsgeo.width - geo.width) / 2;
-				geo.y = (wsgeo.height - geo.height) / 2;
-				activeClient.geometry = geo;
+			if (geo.width == size_default[0] && geo.height == size_default[1]) {
+				geo.width = size_big[0];
+				geo.height = size_big[1];
+			}
+			else if (geo.width == size_big[0] && geo.height == size_big[1]) {
+				geo.width = size_large[0];
+				geo.height = size_large[1];
+			}
+			else if (geo.width == size_large[0] && geo.height == size_large[1]) {
+				geo.width = size_default[0];
+				geo.height = size_default[1];
 			}
 			else {
-				clients[i].minimized = true;
+				geo.width = size_default[0];
+				geo.height = size_default[1];
 			}
-		}
-	}
-}
-function smartsize(a,b) {
-	var clients = workspace.clientList();
-	for (var i=0; i<clients.length; i++) {
-		if(clients[i].active) {
-			activeClient = clients[i];
-			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
-			var geo = activeClient.geometry;
-			geo.width = wsgeo.width / a * b;
-			geo.height = wsgeo.height / a * b;
 			geo.x = (wsgeo.width - geo.width) / 2;
 			geo.y = (wsgeo.height - geo.height) / 2;
 			activeClient.geometry = geo;
 		}
 	}
 }
-function position(a) {
+function smartsize() {
 	var clients = workspace.clientList();
 	for (var i=0; i<clients.length; i++) {
 		if(clients[i].active) {
 			activeClient = clients[i];
 			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
 			var geo = activeClient.geometry;
-			switch (a){
+			var bigw = wsgeo.width / smartsize_big[0] * smartsize_big[1];
+			var bigh = wsgeo.height / smartsize_big[0] * smartsize_big[1];
+			var largew = wsgeo.width / smartsize_large[0] * smartsize_large[1];
+			var largeh = wsgeo.height / smartsize_large[0] * smartsize_large[1];
+			if (geo.width == bigw && geo.height == bigh) {
+				geo.width = largew;
+				geo.height = largeh;
+			}
+			else if (geo.width == largew && geo.height == largeh) {
+				geo.width = bigw;
+				geo.height = bigh;
+			}
+			else {
+				geo.width = bigw;
+				geo.height = bigh;
+			}
+			geo.x = (wsgeo.width - geo.width) / 2;
+			geo.y = (wsgeo.height - geo.height) / 2;
+			activeClient.geometry = geo;
+		}
+	}
+}
+function position(posnum) {
+	var clients = workspace.clientList();
+	for (var i=0; i<clients.length; i++) {
+		if(clients[i].active) {
+			activeClient = clients[i];
+			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
+			var geo = activeClient.geometry;
+			switch (posnum){
 				case 1:
 					geo.x = 0;
 					geo.y = wsgeo.height - geo.height;
@@ -82,11 +110,8 @@ function position(a) {
 		}
 	}
 }
-registerShortcut("kwin-wmplus(size_default)", "kwin-wmplus(size_default)", "Meta+Ctrl+1", function() { size(800,600) });
-registerShortcut("kwin-wmplus(size_big)", "kwin-wmplus(size_big)", "Meta+Ctrl+2", function() { size(1024,768) });
-registerShortcut("kwin-wmplus(size_large)", "kwin-wmplus(size_large)", "Meta+Ctrl+3", function() { size(1280,960) });
-registerShortcut("kwin-wmplus(smartsize_big)", "kwin-wmplus(smartsize_big)", "Meta+Ctrl+4", function() { smartsize(3,2) });
-registerShortcut("kwin-wmplus(smartsize_large)", "kwin-wmplus(smartsize_large)", "Meta+Ctrl+5", function() { smartsize(5,4) });
+registerShortcut("kwin-wmplus(size)", "kwin-wmplus(size)", "Meta+Ctrl+1", function() { size() });
+registerShortcut("kwin-wmplus(smartsize)", "kwin-wmplus(smartsize)", "Meta+Ctrl+2", function() { smartsize() });
 registerShortcut("kwin-wmplus(position1)", "kwin-wmplus(position1)", "Meta+Alt+1", function() { position(1) });
 registerShortcut("kwin-wmplus(position4)", "kwin-wmplus(position4)", "Meta+Alt+4", function() { position(4) });
 registerShortcut("kwin-wmplus(position7)", "kwin-wmplus(position7)", "Meta+Alt+7", function() { position(7) });
