@@ -11,9 +11,9 @@ byref = ctypes.byref
 user32 = ctypes.windll.user32
 
 HOTKEYS = {
-    1 : (0xC0, win32con.MOD_WIN),
+    1 : (win32con.VK_F6, win32con.MOD_WIN),
     2 : (win32con.VK_F5, win32con.MOD_WIN),
-    3 : (win32con.VK_F6, win32con.MOD_WIN),
+    3 : (0xC0, win32con.MOD_WIN),
     4 : (win32con.VK_F12, win32con.MOD_WIN)
 }
 
@@ -32,11 +32,11 @@ def getargument():
     smart_x = [resolution_w / 3 , resolution_w / 3 * 2 , resolution_w , resolution_w - win_rect_w]
     smart_y = [resolution_h / 3 , resolution_h / 3 * 2 , resolution_h , resolution_h - win_rect_h]
     wincenter = GetCursorPos()
-    smartsize_big = [resolution_w / 3 * 2 , resolution_h / 3 * 2]
-    smartsize_large = [resolution_w / 5 * 4 , resolution_h / 5 * 4]
     size_default = [800 , 600]
     size_big = [1024 , 768]
     size_large = [1280 , 960]
+    smartsize_big = [resolution_w / 3 * 2 , resolution_h / 3 * 2]
+    smartsize_large = [resolution_w / 5 * 4 , resolution_h / 5 * 4]
     taskbar = 1
 
 def win_pos(x,y,z):
@@ -76,7 +76,27 @@ class win_move:
 
 wm = win_move()
 
-def handle_smartposition ():
+def size ():
+    getargument()
+    if win_rect_w == size_default[0] and win_rect_h == size_default[1]:
+        win_size(size_big[0] , size_big[1])
+    elif win_rect_w == size_big[0] and win_rect_h == size_big[1]:
+        win_size(size_large[0] , size_large[1])
+    elif win_rect_w == size_large[0] and win_rect_h == size_large[1]:
+        win_size(size_default[0] , size_default[1])
+    else:
+        win_size(size_default[0] , size_default[1])
+
+def smartsize ():
+    getargument()
+    if win_rect_w == smartsize_big[0] and win_rect_h == smartsize_big[1]:
+        win_size(smartsize_large[0] , smartsize_large[1])
+    elif win_rect_w == smartsize_large[0] and win_rect_h == smartsize_large[1]:
+        win_size(smartsize_big[0] , smartsize_big[1])
+    else:
+        win_size(smartsize_big[0] , smartsize_big[1])
+
+def smartposition ():
     getargument()
     if wincenter[0] >= 0 and wincenter[0] <= smart_x[0]:
         if wincenter[1] <= smart_y[0]:
@@ -100,34 +120,14 @@ def handle_smartposition ():
         elif wincenter[1] >= smart_y[1] and wincenter[1] <= smart_y[2]:
             wm.position3()
 
-def handle_smartsize ():
-    getargument()
-    if win_rect_w == smartsize_big[0] and win_rect_h == smartsize_big[1]:
-        win_size(smartsize_large[0] , smartsize_large[1])
-    elif win_rect_w == smartsize_large[0] and win_rect_h == smartsize_large[1]:
-        win_size(smartsize_big[0] , smartsize_big[1])
-    else:
-        win_size(smartsize_big[0] , smartsize_big[1])
-
-def handle_size ():
-    getargument()
-    if win_rect_w == size_default[0] and win_rect_h == size_default[1]:
-        win_size(size_big[0] , size_big[1])
-    elif win_rect_w == size_big[0] and win_rect_h == size_big[1]:
-        win_size(size_large[0] , size_large[1])
-    elif win_rect_w == size_large[0] and win_rect_h == size_large[1]:
-        win_size(size_default[0] , size_default[1])
-    else:
-        win_size(size_default[0] , size_default[1])
-
-def handle_exit ():
+def exit ():
     user32.PostQuitMessage (0)
 
 HOTKEY_ACTIONS = {
-    1 : handle_smartposition,
-    2 : handle_smartsize,
-    3 : handle_size,
-    4 : handle_exit
+    1 : size,
+    2 : smartsize,
+    3 : smartposition,
+    4 : exit
 }
 
 for id, (vk, modifiers) in HOTKEYS.items ():
