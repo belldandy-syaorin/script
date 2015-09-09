@@ -3,6 +3,10 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
 	sourcepath = "C:\repository\git\vim"
 	targetpath = "C:\portable\vim\vim74"
+If Not WScript.Arguments.Count = 0 Then
+	sourcepath = WScript.Arguments.Item(0)
+	targetpath = WScript.Arguments.Item(1)
+End If
 Dim response
 response = MsgBox( _
 	"VIM Source Path : " &sourcepath &Chr(10) & _
