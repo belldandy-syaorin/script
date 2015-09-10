@@ -118,8 +118,8 @@ function position(posnum) {
 		}
 	}
 }
-registerShortcut("kwin-wmplus(size)", "kwin-wmplus(size)", "Meta+Ctrl+1", function() { size() });
-registerShortcut("kwin-wmplus(smartsize)", "kwin-wmplus(smartsize)", "Meta+Ctrl+2", function() { smartsize() });
+registerShortcut("kwin-wmplus(size)", "kwin-wmplus(size)", "Meta+F3", function() { size() });
+registerShortcut("kwin-wmplus(smartsize)", "kwin-wmplus(smartsize)", "Meta+F4", function() { smartsize() });
 registerShortcut("kwin-wmplus(position1)", "kwin-wmplus(position1)", "Meta+1", function() { position(1) });
 registerShortcut("kwin-wmplus(position4)", "kwin-wmplus(position4)", "Meta+4", function() { position(4) });
 registerShortcut("kwin-wmplus(position7)", "kwin-wmplus(position7)", "Meta+7", function() { position(7) });
