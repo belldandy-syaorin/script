@@ -9,6 +9,14 @@ import win32gui
 
 byref = ctypes.byref
 user32 = ctypes.windll.user32
+size_default = [800 , 600]
+size_big = [1024 , 768]
+size_large = [1280 , 960]
+size_mode = 0
+smartsize_big = [3 , 2];
+smartsize_large = [5 , 4];
+smartsize_mode = 0
+taskbar = 1
 
 HOTKEYS = {
     1 : (win32con.VK_F6, win32con.MOD_WIN),
@@ -18,7 +26,10 @@ HOTKEYS = {
 }
 
 def getargument():
-    global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h , center_x , center_y , smart_x , smart_y , wincenter , smartsize_big , smartsize_large , size_default , size_big , size_large , taskbar
+    global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h
+    global center_x , center_y , smart_x , smart_y , wincenter
+    global smartsize_big , smartsize_large
+    global smartsize_bigw , smartsize_bigh , smartsize_largew , smartsize_largeh
     resolution_w = GetSystemMetrics(0)
     resolution_h = GetSystemMetrics(1)
     hwnd = win32gui.GetForegroundWindow()
@@ -32,14 +43,13 @@ def getargument():
     smart_x = [resolution_w / 3 , resolution_w / 3 * 2 , resolution_w , resolution_w - win_rect_w]
     smart_y = [resolution_h / 3 , resolution_h / 3 * 2 , resolution_h , resolution_h - win_rect_h]
     wincenter = GetCursorPos()
-    size_default = [800 , 600]
-    size_big = [1024 , 768]
-    size_large = [1280 , 960]
-    smartsize_big = [resolution_w / 3 * 2 , resolution_h / 3 * 2]
-    smartsize_large = [resolution_w / 5 * 4 , resolution_h / 5 * 4]
-    taskbar = 1
+    smartsize_bigw = resolution_w / smartsize_big[0] * smartsize_big[1]
+    smartsize_bigh = resolution_h / smartsize_big[0] * smartsize_big[1]
+    smartsize_largew = resolution_w / smartsize_large[0] * smartsize_large[1]
+    smartsize_largeh = resolution_h / smartsize_large[0] * smartsize_large[1]
 
 def win_pos(x,y,z):
+    global taskbar
     if taskbar == 1:
         if z == 1 or z == 2 or z ==3:
             i = y - 30
@@ -78,23 +88,26 @@ wm = win_move()
 
 def size ():
     getargument()
-    if win_rect_w == size_default[0] and win_rect_h == size_default[1]:
+    global size_default , size_big , size_large , size_mode
+    if size_mode == 0:
+        win_size(size_default[0] , size_default[1])
+        size_mode = 1
+    elif size_mode == 1:
         win_size(size_big[0] , size_big[1])
-    elif win_rect_w == size_big[0] and win_rect_h == size_big[1]:
+        size_mode = 2
+    elif size_mode == 2:
         win_size(size_large[0] , size_large[1])
-    elif win_rect_w == size_large[0] and win_rect_h == size_large[1]:
-        win_size(size_default[0] , size_default[1])
-    else:
-        win_size(size_default[0] , size_default[1])
+        size_mode = 0
 
 def smartsize ():
     getargument()
-    if win_rect_w == smartsize_big[0] and win_rect_h == smartsize_big[1]:
-        win_size(smartsize_large[0] , smartsize_large[1])
-    elif win_rect_w == smartsize_large[0] and win_rect_h == smartsize_large[1]:
-        win_size(smartsize_big[0] , smartsize_big[1])
-    else:
-        win_size(smartsize_big[0] , smartsize_big[1])
+    global smartsize_mode
+    if smartsize_mode == 0:
+        win_size(smartsize_bigw , smartsize_bigh)
+        smartsize_mode = 1
+    elif smartsize_mode == 1:
+        win_size(smartsize_largew , smartsize_largeh)
+        smartsize_mode = 0
 
 def smartposition ():
     getargument()
