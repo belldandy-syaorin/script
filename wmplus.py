@@ -19,8 +19,8 @@ smartsize_mode = 0
 taskbar = 1
 
 HOTKEYS = {
-    1 : (win32con.VK_F6, win32con.MOD_WIN),
-    2 : (win32con.VK_F5, win32con.MOD_WIN),
+    1 : (win32con.VK_F5, win32con.MOD_WIN),
+    2 : (win32con.VK_F6, win32con.MOD_WIN),
     3 : (0xC0, win32con.MOD_WIN),
     4 : (win32con.VK_F12, win32con.MOD_WIN)
 }
