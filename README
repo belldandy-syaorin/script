@@ -16,11 +16,11 @@ wmplus.py
 		if cursor position is in area 5 , it will move the foreground window to center .
 		other analogy .
 	feature 2 :
-		when you press win + f5 , it will detect your desktop resolution .
+		when you press win + f6 , it will detect your desktop resolution .
 		and it will change the foreground window to two size .
 		the two size can manual setting , default is your desktop resolution's 2/3 or 4/5 .
 	feature 3 :
-		like feature 2 , but hot key is win + f6 .
+		like feature 2 , but hot key is win + f5 .
 		it will change the foreground window to three size .
 		the three size can manual setting , default is 800x600 , 1024x768 , 1280x960 .
 	exit :
@@ -33,3 +33,9 @@ wmplus.vbs
 	wmplus.vbs is a vb script for wmplus.py . (windows only)
 	if you have many python version or portable version , recommend use it .
 	before use it , you should change the python & wmplus.py path in this file .
+kwin
+	wmplus for linux (kwin only)
+	feature like wmplus for windows , but only feature 2 & 3 .
+	and default hotkey change to win + f3 & win + f4 .
+	use make to install . (plasma 5 only)
+	use make kde4 to install . (plasma 4 only)
