@@ -1,5 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
-vbspath = "C:\repository\git\script\AppLocale.vbs" 'vbs path
+vbspath = "C:\repository\git\script\windows\AppLocale.vbs" 'vbs path
 Dim argument(2)
 	argument(0) = "C:\Windows\AppPatch\AppLoc.exe" 'application path
 Call checksetting
