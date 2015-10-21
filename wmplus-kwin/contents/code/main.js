@@ -118,14 +118,14 @@ function position(posnum) {
 		}
 	}
 }
-registerShortcut("kwin-wmplus(size)", "kwin-wmplus(size)", "Meta+F3", function() { size() });
-registerShortcut("kwin-wmplus(smartsize)", "kwin-wmplus(smartsize)", "Meta+F4", function() { smartsize() });
-registerShortcut("kwin-wmplus(position1)", "kwin-wmplus(position1)", "Meta+1", function() { position(1) });
-registerShortcut("kwin-wmplus(position4)", "kwin-wmplus(position4)", "Meta+4", function() { position(4) });
-registerShortcut("kwin-wmplus(position7)", "kwin-wmplus(position7)", "Meta+7", function() { position(7) });
-registerShortcut("kwin-wmplus(position2)", "kwin-wmplus(position2)", "Meta+2", function() { position(2) });
-registerShortcut("kwin-wmplus(position5)", "kwin-wmplus(position5)", "Meta+5", function() { position(5) });
-registerShortcut("kwin-wmplus(position8)", "kwin-wmplus(position8)", "Meta+8", function() { position(8) });
-registerShortcut("kwin-wmplus(position3)", "kwin-wmplus(position3)", "Meta+3", function() { position(3) });
-registerShortcut("kwin-wmplus(position6)", "kwin-wmplus(position6)", "Meta+6", function() { position(6) });
-registerShortcut("kwin-wmplus(position9)", "kwin-wmplus(position9)", "Meta+9", function() { position(9) });
+registerShortcut("wmplus-kwin(size)", "wmplus-kwin(size)", "Meta+F3", function() { size() });
+registerShortcut("wmplus-kwin(smartsize)", "wmplus-kwin(smartsize)", "Meta+F4", function() { smartsize() });
+registerShortcut("wmplus-kwin(position1)", "wmplus-kwin(position1)", "Meta+1", function() { position(1) });
+registerShortcut("wmplus-kwin(position4)", "wmplus-kwin(position4)", "Meta+4", function() { position(4) });
+registerShortcut("wmplus-kwin(position7)", "wmplus-kwin(position7)", "Meta+7", function() { position(7) });
+registerShortcut("wmplus-kwin(position2)", "wmplus-kwin(position2)", "Meta+2", function() { position(2) });
+registerShortcut("wmplus-kwin(position5)", "wmplus-kwin(position5)", "Meta+5", function() { position(5) });
+registerShortcut("wmplus-kwin(position8)", "wmplus-kwin(position8)", "Meta+8", function() { position(8) });
+registerShortcut("wmplus-kwin(position3)", "wmplus-kwin(position3)", "Meta+3", function() { position(3) });
+registerShortcut("wmplus-kwin(position6)", "wmplus-kwin(position6)", "Meta+6", function() { position(6) });
+registerShortcut("wmplus-kwin(position9)", "wmplus-kwin(position9)", "Meta+9", function() { position(9) });
