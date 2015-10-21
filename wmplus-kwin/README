@@ -4,3 +4,4 @@ wmplus-kwin
 	and default hotkey change to win + f3 & win + f4 .
 	use make to install . (plasma 5 only)
 	use make kde4 to install . (plasma 4 only)
+	install(path).txt for uninstall & remove setting .
