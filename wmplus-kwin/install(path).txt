@@ -1,0 +1,9 @@
+//Linux
+	//Plasma 4
+		~/.kde/share/apps/kwin/scripts/
+		~/.kde/share/config/kglobalshortcutsrc //[kwin]
+		~/.kde/share/kde4/services
+	//Plasma 5
+		~/.config/kglobalshortcutsrc //[kwin]
+		~/.local/share/kservices5/
+		~/.local/share/kwin/scripts/
