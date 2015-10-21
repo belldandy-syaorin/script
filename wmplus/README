@@ -33,9 +33,3 @@ wmplus.vbs
 	wmplus.vbs is a vb script for wmplus.py . (windows only)
 	if you have many python version or portable version , recommend use it .
 	before use it , you should change the python & wmplus.py path in this file .
-kwin
-	wmplus for linux (kwin only)
-	feature like wmplus for windows , but only feature 2 & 3 .
-	and default hotkey change to win + f3 & win + f4 .
-	use make to install . (plasma 5 only)
-	use make kde4 to install . (plasma 4 only)

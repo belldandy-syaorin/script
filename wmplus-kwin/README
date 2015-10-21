@@ -1,40 +1,5 @@
-wmplus.py
-	wmplus.py is a window position & size manager . (windows only)
-	system requirements :
-		it need python2 & pywin32 , before use , you should download first .
-			https://www.python.org/
-			http://sourceforge.net/projects/pywin32/
-		test ok version : python 2.7.9 , pywin32 build 219
-	feature 1 :
-		when you press win + ` , it will detect cursor position .
-		it split desktop to 9 area , like this .
-		7 | 8 | 9
-		4 | 5 | 6
-		1 | 2 | 3
-		if cursor position is in area 7 , it will move the foreground window to left-top .
-		if cursor position is in area 3 , it will move the foreground window to right-bottom .
-		if cursor position is in area 5 , it will move the foreground window to center .
-		other analogy .
-	feature 2 :
-		when you press win + f6 , it will detect your desktop resolution .
-		and it will change the foreground window to two size .
-		the two size can manual setting , default is your desktop resolution's 2/3 or 4/5 .
-	feature 3 :
-		like feature 2 , but hot key is win + f5 .
-		it will change the foreground window to three size .
-		the three size can manual setting , default is 800x600 , 1024x768 , 1280x960 .
-	exit :
-		if you want to close this program , press win + f12 will exit .
-	misc :
-		if your taskbar is hidden , please setting taskbar = 1 to 0 , default is 1 .
-	notice :
-		if you don't need debug console , rename wmplus.py to wmplus.pyw .
-wmplus.vbs
-	wmplus.vbs is a vb script for wmplus.py . (windows only)
-	if you have many python version or portable version , recommend use it .
-	before use it , you should change the python & wmplus.py path in this file .
-kwin
-	wmplus for linux (kwin only)
+wmplus-kwin
+	wmplus for kwin (linux only)
 	feature like wmplus for windows , but only feature 2 & 3 .
 	and default hotkey change to win + f3 & win + f4 .
 	use make to install . (plasma 5 only)
