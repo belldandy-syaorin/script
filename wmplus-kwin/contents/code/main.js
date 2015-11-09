@@ -2,6 +2,7 @@ var size_default = [800, 600];
 var size_big = [1024, 768];
 var size_large = [1280, 960];
 var sizemode = 0;
+var smartsize_default = [2 , 1];
 var smartsize_big = [3, 2];
 var smartsize_large = [5, 4];
 var smartsizemode = 0;
@@ -47,17 +48,24 @@ function smartsize() {
 			activeClient = clients[i];
 			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
 			var geo = activeClient.geometry;
+			var defaultw = wsgeo.width / smartsize_default[0] * smartsize_default[1];
+			var defaulth = wsgeo.height / smartsize_default[0] * smartsize_default[1];
 			var bigw = wsgeo.width / smartsize_big[0] * smartsize_big[1];
 			var bigh = wsgeo.height / smartsize_big[0] * smartsize_big[1];
 			var largew = wsgeo.width / smartsize_large[0] * smartsize_large[1];
 			var largeh = wsgeo.height / smartsize_large[0] * smartsize_large[1];
 			switch (smartsizemode) {
 				case 0:
-					geo.width = bigw;
-					geo.height = bigh;
+					geo.width = defaultw;
+					geo.height = defaulth;
 					smartsizemode = 1;
 					break;
 				case 1:
+					geo.width = bigw;
+					geo.height = bigh;
+					smartsizemode = 2;
+					break;
+				case 2:
 					geo.width = largew;
 					geo.height = largeh;
 					smartsizemode = 0;
