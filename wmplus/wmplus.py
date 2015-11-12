@@ -20,10 +20,10 @@ smartsize_mode = 0
 taskbar = 1
 
 HOTKEYS = {
-    1 : (win32con.VK_F5, win32con.MOD_WIN),
-    2 : (win32con.VK_F6, win32con.MOD_WIN),
-    3 : (win32con.VK_F7, win32con.MOD_WIN),
-    4 : (0xC0, win32con.MOD_WIN),
+    1 : (win32con.VK_F3, win32con.MOD_WIN),
+    2 : (win32con.VK_F4, win32con.MOD_WIN),
+    3 : (0xC0, win32con.MOD_WIN),
+    4 : (win32con.VK_F11, win32con.MOD_WIN),
     5 : (win32con.VK_F12, win32con.MOD_WIN)
 }
 
@@ -85,7 +85,7 @@ class win_move:
 
 wm = win_move()
 
-def size ():
+def size():
     getargument()
     global size_mode
     if size_mode == 0:
@@ -98,7 +98,7 @@ def size ():
         win_size(size_large[0] , size_large[1])
         size_mode = 0
 
-def smartsize ():
+def smartsize():
     getargument()
     global smartsize_mode
     if smartsize_mode == 0:
@@ -111,14 +111,7 @@ def smartsize ():
         win_size(smartsize_largew , smartsize_largeh)
         smartsize_mode = 0
 
-def taskbar_mode ():
-    global taskbar
-    if taskbar == 1:
-        taskbar = 0
-    elif taskbar == 0:
-        taskbar = 1
-
-def smartposition ():
+def smartposition():
     getargument()
     if wincenter[0] >= 0 and wincenter[0] <= smart_x[0]:
         if wincenter[1] <= smart_y[0]:
@@ -142,14 +135,21 @@ def smartposition ():
         elif wincenter[1] >= smart_y[1] and wincenter[1] <= smart_y[2]:
             wm.position3()
 
-def exit ():
+def taskbar_mode():
+    global taskbar
+    if taskbar == 1:
+        taskbar = 0
+    elif taskbar == 0:
+        taskbar = 1
+
+def exit():
     user32.PostQuitMessage (0)
 
 HOTKEY_ACTIONS = {
     1 : size,
     2 : smartsize,
-    3 : taskbar_mode,
-    4 : smartposition,
+    3 : smartposition,
+    4 : taskbar_mode,
     5 : exit
 }
 
