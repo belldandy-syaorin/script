@@ -1,16 +1,30 @@
-wmplus-kwin
-	wmplus for kwin (linux only)
-	feature like wmplus for windows ,
-	but only feature 2 & 3 .
-	feature 1 use win + 1~9 to setting foreground window position ,
-	not detect cursor position .
-	7 | 8 | 9
-	4 | 5 | 6
-	1 | 2 | 3
-	press 7 will move the foreground window to left-top .
-	press 3 will move the foreground window to right-bottom .
-	press 5 will move the foreground window to center .
-	other analogy .
-	use make to install . (plasma 5 only)
-	use make kde4 to install . (plasma 4 only)
-	install(path).txt for uninstall & remove setting .
+[wmplus-kwin]
+wmplus for kwin . (linux only)
+wmplus kwin 版本。 (只適用 linux)
+feature like wmplus for windows ,
+but only feature 2 & 3 .
+功能上類似 wmplus windows 版，
+但只有功能 2 和 3 類似。
+feature 1 use win + 1~9 to setting foreground window position ,
+not detect cursor position .
+功能 1 使用 win + 1~9 來設定目前視窗位置，
+而不是偵測滑鼠遊標位置。
+7 | 8 | 9
+4 | 5 | 6
+1 | 2 | 3
+press win + 5 will move the foreground window to center .
+按下 win + 5 它將會把目前視窗移動到中央。
+press win + 7 will move the foreground window to left-top .
+按下 win + 7 它將會把目前視窗移動到左上角。
+press win + 3 will move the foreground window to right-bottom .
+按下 win + 3 它將會把目前視窗移動到右下角。
+other analogy .
+其它類推。
+use "make" to install . (plasma 5 only)
+使用 "make" 安裝。 (只適用 plasma 5)
+use "make kde4" to install . (plasma 4 only)
+使用 "make kde4" 安裝。 (只適用 plasma 4)
+
+[install(path).txt]
+uninstall information , just remove directory & file .
+反安裝的相關訊息，只需要移除目錄和檔案。
