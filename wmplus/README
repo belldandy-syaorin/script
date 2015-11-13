@@ -1,49 +1,95 @@
-wmplus.py
-	wmplus.py is a window position & size manager . (windows only)
-	system requirements :
-		it need python2 & pywin32 ,
-		before use , you should download & install them first .
-			https://www.python.org/
-			http://sourceforge.net/projects/pywin32/
-		work fine version :
-			python 2.7.10 , pywin32 build 219
-	feature 1 :
-		when you press win + ` , it will detect cursor position .
-		it split desktop to 9 area , like this .
-		7 | 8 | 9
-		4 | 5 | 6
-		1 | 2 | 3
-		if cursor position is in area 7 ,
-		it will move the foreground window to left-top .
-		if cursor position is in area 3 ,
-		it will move the foreground window to right-bottom .
-		if cursor position is in area 5 ,
-		it will move the foreground window to center .
-		other analogy .
-	feature 2 :
-		when you press win + f3 ,
-		it will change the foreground window to toggle three size .
-		the three size can manual setting ,
-		default : 800x600 , 1024x768 , 1280x960 .
-	feature 3 :
-		when you press win + f4 ,
-		it will detect your desktop resolution .
-		and it will change the foreground window to toggle three size .
-		the three size can manual setting ,
-		default is your desktop resolution's 1/2 , 2/3 , 4/5 .
-	misc :
-		if your taskbar is hidden ,
-		please setting taskbar = 1 to 0 , default is 1 .
-		or press win + f11 to toggle it .
-	exit :
-		if you want to close this program ,
-		press win + f12 will exit .
-	notice :
-		if you don't need debug console ,
-		rename wmplus.py to wmplus.pyw .
-wmplus.vbs
-	wmplus.vbs is a vb script for wmplus.py . (windows only)
-	if you have many python version or portable version ,
-	recommend use it .
-	before use it ,
-	you should change the python & wmplus.py path in this file first.
+[wmplus.py]
+wmplus.py is a window position & size manager . (windows only)
+wmplus.py 是一個視窗位置和大小的管理程式。 (只適用 windows)
+system requirements :
+系統需求：
+	it need python2 & pywin32 ,
+	before use , you should download & install them first .
+	它需要 python2 & pywin32 ，
+	使用前，你先必須先下載和安裝它們。
+		https://www.python.org/
+		http://sourceforge.net/projects/pywin32/
+	work fine version :
+	正常工作版本：
+		python 2.7.10 , pywin32 build 219
+feature 1 :
+功能 1：
+	when you press win + ` , it will detect cursor position .
+	當你按下 win + ` ，它將會偵測滑鼠遊標位置。
+	it split desktop to 9 area , like this .
+	它會把桌面分割成九個區塊，像下面這樣。
+	7 | 8 | 9
+	4 | 5 | 6
+	1 | 2 | 3
+	if cursor position is in area 5 ,
+	it will move the foreground window to center .
+	當遊標位置在區塊 5 時，
+	它將會把目前視窗移動到中央。
+	if cursor position is in area 7 ,
+	it will move the foreground window to left-top .
+	當遊標位置在區塊 7 時，
+	它將會把目前視窗移動到左上角。
+	if cursor position is in area 3 ,
+	it will move the foreground window to right-bottom .
+	當遊標位置在區塊 3 時，
+	它將會把目前視窗移動到右下角。
+	other analogy .
+	其它類推。
+	except area 5 ,
+	it will align the edge of the desktop when move window .
+	除了區塊 5 外，
+	當它移動視窗時將會對齊桌面邊緣。
+feature 2 :
+功能 2：
+	when you press win + f3 ,
+	it will change the foreground window to toggle three size .
+	當你按下 win + ` f3 ，
+	它將會從三種大小切換來改變目前視窗大小。
+	the three size can manual setting ,
+	default : 800x600 , 1024x768 , 1280x960 .
+	這三種大小可以自行設定，
+	預設值為： 800x600 , 1024x768 , 1280x960 。
+feature 3 :
+功能 3：
+	when you press win + f4 ,
+	當你按下 win + ` f4 ，
+	it will detect desktop resolution .
+	它將會偵測桌面的解析度。
+	and it will change the foreground window to toggle three size .
+	然後它將會從三種大小切換來改變目前視窗大小。
+	the three size can manual setting ,
+	這三種大小可以自行設定，
+	default is desktop resolution's 1/2 , 2/3 , 4/5 .
+	預設值為桌面解析度的： 1/2 , 2/3 , 4/5 。
+misc :
+其它：
+	if your taskbar is hidden ,
+	please setting taskbar = 1 to 0 , default is 1 .
+	如果你的工作列設定為隱藏，
+	請將 taskbar 的值從 1 變更為 0 ，預設值為 1 。
+	or press win + f11 to toggle it .
+	或是使用 win + f11 去切換該值。
+exit :
+關閉：
+	if you want to close this program ,
+	press win + f12 will exit .
+	如果你想要關閉這個程式，
+	按 win + f12 將會關閉。
+notice :
+提醒：
+	if you don't need debug console ,
+	rename wmplus.py to wmplus.pyw .
+	如果你不需要除錯訊息，
+	把 wmplus.py 檔名變更成 wmplus.pyw 即可。
+
+[wmplus.vbs]
+wmplus.vbs is a vb script for wmplus.py . (windows only)
+wmplus.vbs 是一個給 wmplus.py 使用的 vb 腳本。 (只適用 windows)
+if you have many python version or portable version ,
+recommend use it .
+如果你有許多 python 版本或是可攜版本，
+建議使用它。
+before use it ,
+you should change the python & wmplus.py path in this file first.
+但在使用前，
+你必需先改變這個檔案裡的 python 和 wmplus.py 的路徑。
