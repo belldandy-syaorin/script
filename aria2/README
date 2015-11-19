@@ -7,4 +7,4 @@ Preferences -> General
 //Windows
 	Download Manager -> Add -> aria2.vbs
 	Executable path: -> Browse... -> C:\Windows\System32\wscript.exe
-	Command line arguments template: -> C:\repository\git\script\aria2\aria2.vbs [URL]
+	Command line arguments template: -> C:\repository\git\script\aria2\aria2.vbs [URL] [REFERER]

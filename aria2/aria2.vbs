@@ -24,15 +24,28 @@ Select Case autospeedselect
 	Case Else
 		argument(5) = "--max-download-limit=512K"
 End Select
-Return = WshShell.run( _
-	"%COMSPEC% /u /k chcp 65001 &" _
-	&Chr(32) &Chr(34) &argument(0) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(2) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(3) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(4) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(5) &Chr(34) _
-	&Chr(32) &Chr(34) &argument(1) &Chr(34) _
-	, 1 , True)
+If WScript.Arguments.Count = 0 Then
+	Return = WshShell.run( _
+		"%COMSPEC% /u /k chcp 65001 &" _
+		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(4) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(5) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
+		, 1 , True)
+Else
+	Return = WshShell.run( _
+		"%COMSPEC% /u /k chcp 65001 &" _
+		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(4) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(5) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(6) &Chr(34) _
+		, 1 , True)
+End If
 
 Sub checksetting
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -61,6 +74,7 @@ End Sub
 
 Sub withargument
 	argument(1) = WScript.Arguments.Item(0)
+	argument(6) = "--referer="&WScript.Arguments.Item(1)
 Exit Sub
 End Sub
 
