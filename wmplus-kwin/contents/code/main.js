@@ -30,8 +30,12 @@ function size() {
 					sizemode = 0;
 					break;
 			}
-			if (geo.width > wsgeo.width && geo.height > wsgeo.height) {
-				activeClient.minimized = true;
+			if (geo.width > wsgeo.width || geo.height > wsgeo.height) {
+				geo.width = wsgeo.width;
+				geo.height = wsgeo.height;
+				geo.x = 0;
+				geo.y = 0;
+				activeClient.geometry = geo;
 			}
 			else {
 				geo.x = (wsgeo.width - geo.width) / 2;
