@@ -3,6 +3,7 @@ declare -a argument
 	argument[2]="--check-certificate=false"
 	argument[3]="--dir=$HOME/Downloads" #download path
 	argument[4]="--remote-time=true"
+	argument[6]="--referer="
 
 function checksetting() {
 	if [ -f /usr/bin/aria2c ] ; then
@@ -68,6 +69,6 @@ if [ -z "$1" ] ; then
 	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "${argument[1]}"
 else
 	speedselect
-	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1"
+	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[6]}""$2"
 fi
 exit 0

@@ -3,7 +3,7 @@ Preferences -> General
 //Linux
 	Download Manager -> Add -> aria2.sh
 	Executable path: -> Browse... -> /usr/bin/konsole
-	Command line arguments template: -> --new-tab --noclose -e /opt/repository/git/script/aria2/aria2.sh [URL]
+	Command line arguments template: -> --new-tab --noclose -e /opt/repository/git/script/aria2/aria2.sh [URL] [REFERER]
 //Windows
 	Download Manager -> Add -> aria2.vbs
 	Executable path: -> Browse... -> C:\Windows\System32\wscript.exe
