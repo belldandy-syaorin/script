@@ -1,0 +1,3 @@
+#!/bin/bash
+pacman -Qtdq
+exit 0
