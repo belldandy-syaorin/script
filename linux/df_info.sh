@@ -5,6 +5,6 @@ if [ ! -d "$1" ] ; then
 fi
 echo "[info] Target Directory :" "$1"
 echo "[info] Directory & File :" $(ls -A1 $1 | wc -l)
-echo "[info] Directory :" $(ls -Al $1 | grep '^d' | wc -l)
-echo "[info] File :" $(ls -Al $1 | grep '^-' | wc -l)
+echo "[info] Directory        :" $(ls -Al $1 | grep '^d' | wc -l)
+echo "[info] File             :" $(ls -Al $1 | grep '^-' | wc -l)
 exit 0
