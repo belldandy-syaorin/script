@@ -34,9 +34,9 @@ while [ "${argument[5]}" = "" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = Unrestricted"
-echo "2 = 512K (Default , No Input & Press Enter)"
-echo "3 = 256K"
-echo "4 = 128K"
+echo "2 = 1024K (Default , No Input & Press Enter)"
+echo "3 = 512K"
+echo "4 = 256K"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ "$as" = "" ] ; then
 	as="2"
@@ -50,13 +50,13 @@ case $checkas in
 		argument[5]="--max-download-limit=0"
 	;;
 	"2")
-		argument[5]="--max-download-limit=512K"
+		argument[5]="--max-download-limit=1024K"
 	;;
 	"3")
-		argument[5]="--max-download-limit=256K"
+		argument[5]="--max-download-limit=512K"
 	;;
 	"4")
-		argument[5]="--max-download-limit=128K"
+		argument[5]="--max-download-limit=256K"
 	;;
 esac
 done

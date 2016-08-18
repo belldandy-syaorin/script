@@ -12,7 +12,7 @@ Else
 End If
 Dim autospeedselect
 autospeedselect = WshShell.Popup( _
-	"Yes = Default Speed(512K)" &Chr(10) & _
+	"Yes = Default Speed(1024K)" &Chr(10) & _
 	"No = Manual Speed" &Chr(10) & _
 	"(After 5s Will Auto Select Default)" , _
 	5 , _
@@ -22,7 +22,7 @@ Select Case autospeedselect
 	Case 7
 		Call speedselect
 	Case Else
-		argument(5) = "--max-download-limit=512K"
+		argument(5) = "--max-download-limit=1024K"
 End Select
 If WScript.Arguments.Count = 0 Then
 	Return = WshShell.run( _
@@ -83,9 +83,9 @@ Dim argumentselect
 Do
 argumentselect = InputBox( _
 	"1 = Unrestricted" &Chr(10) & _
-	"2 = 512K (Default , Press Enter)" &Chr(10) & _
-	"3 = 256K" &Chr(10) & _
-	"4 = 128K" &Chr(10) & _
+	"2 = 1024K (Default , Press Enter)" &Chr(10) & _
+	"3 = 512K" &Chr(10) & _
+	"4 = 256K" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase
@@ -93,11 +93,11 @@ Select Case argumentselect
 	Case 1
 		argument(5) = "--max-download-limit=0"
 	Case 2
-		argument(5) = "--max-download-limit=512K"
+		argument(5) = "--max-download-limit=1024K"
 	Case 3
-		argument(5) = "--max-download-limit=256K"
+		argument(5) = "--max-download-limit=512K"
 	Case 4
-		argument(5) = "--max-download-limit=128K"
+		argument(5) = "--max-download-limit=256K"
 	Case else
 		WScript.Quit
 End Select
