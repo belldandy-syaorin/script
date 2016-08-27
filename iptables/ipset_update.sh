@@ -9,10 +9,11 @@ if [ -f /opt/ipset/cn.zone ] ; then
 	ipset destroy blacklistcn_update
 	if [ -f /etc/sysconfig/ipset.conf ] ; then
 		ipset save > /etc/sysconfig/ipset.conf
+		echo "[info] ipset.conf :" $(wc -l /etc/sysconfig/ipset.conf | awk '{print $1}')
 	else
 		ipset save > /etc/ipset.conf
+		echo "[info] ipset.conf :" $(wc -l /etc/ipset.conf | awk '{print $1}')
 	fi
-	echo "[info] ipset.conf :" $(wc -l /etc/ipset.conf | awk '{print $1}')
 else
 	echo "[info] Can't Find cn.zone & Exit"
 	exit 0
@@ -27,10 +28,11 @@ if [ -f /opt/ipset/tw.zone ] ; then
 	ipset destroy blacklisttw_update
 	if [ -f /etc/sysconfig/ipset.conf ] ; then
 		ipset save > /etc/sysconfig/ipset.conf
+		echo "[info] ipset.conf :" $(wc -l /etc/sysconfig/ipset.conf | awk '{print $1}')
 	else
 		ipset save > /etc/ipset.conf
+		echo "[info] ipset.conf :" $(wc -l /etc/ipset.conf | awk '{print $1}')
 	fi
-	echo "[info] ipset.conf :" $(wc -l /etc/ipset.conf | awk '{print $1}')
 else
 	echo "[info] Can't Find tw.zone & Exit"
 	exit 0
