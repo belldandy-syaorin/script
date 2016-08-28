@@ -86,7 +86,7 @@ Select Case argumentselect
 	Case 3
 		argument(1) = "--ed2k"
 	Case 4
-		argument(1) = "--check"
+		argument(1) = "--check --percents"
 	Case else
 		WScript.Quit
 End Select
