@@ -25,6 +25,7 @@ osselect = InputBox( _
 	"2 = Setting Windows Server 2008 R2" &Chr(10) & _
 	"3 = Check Setting" &Chr(10) & _
 	"4 = Misc Setting" &Chr(10) & _
+	"5 = msc" &Chr(10) & _
 	"9 = Readme (Default)" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 9)
@@ -41,6 +42,8 @@ Select Case osselect
 		Call checksetting
 	Case 4
 		Call miscsetting
+	Case 5
+		Call msc
 	Case 9
 		Call readme
 	Case else
@@ -156,6 +159,44 @@ Elseif response = 7 Then
 Else
 	WScript.Quit
 End If
+Exit Sub
+End Sub
+
+Sub msc
+Dim mscselect
+Do
+mscselect = InputBox( _
+	"1 = compmgmt.msc" &Chr(10) & _
+	"2 = diskmgmt.msc" &Chr(10) & _
+	"3 = devmgmt.msc" &Chr(10) & _
+	"4 = eventvwr.msc" &Chr(10) & _
+	"5 = secpol.msc" &Chr(10) & _
+	"6 = services.msc" &Chr(10) & _
+	"7 = taskschd.msc" &Chr(10) & _
+	"8 = control userpasswords2" &Chr(10) & _
+	"Select Feature (Other Number = Exit)" , _
+	"Input A Number For Your Choice" , 0)
+Loop While IsNumeric(mscselect) = Flase
+Select Case mscselect
+	Case 1
+		Return = WshShell.run("compmgmt.msc" , 1 , True)
+	Case 2
+		Return = WshShell.run("diskmgmt.msc" , 1 , True)
+	Case 3
+		Return = WshShell.run("%COMSPEC% /c set devmgr_show_nonpresent_devices=1 & devmgmt.msc" , 1 , True)
+	Case 4
+		Return = WshShell.run("eventvwr.msc" , 1 , True)
+	Case 5
+		Return = WshShell.run("secpol.msc" , 1 , True)
+	Case 6
+		Return = WshShell.run("services.msc" , 1 , True)
+	Case 7
+		Return = WshShell.run("taskschd.msc" , 1 , True)
+	Case 8
+		Return = WshShell.run("control userpasswords2" , 1 , True)
+	Case else
+		WScript.Quit
+End Select
 Exit Sub
 End Sub
 
