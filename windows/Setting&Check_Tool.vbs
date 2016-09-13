@@ -1,11 +1,4 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
-MsgBox _
-	"Notice:" &Chr(10) & _
-	"" &Chr(10) & _
-	"1. Run With Administrator" &Chr(10) & _
-	"2. Need Desktop Experience(WS2008R2)" &Chr(10) & _
-	"3. Before Use , Please Read Readme" _
-	, 0 , "Setting & Check Tool"
 Dim regpath(15)
 	regpath(0) = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\"
 	regpath(1) = "RegisteredOwner"
@@ -25,8 +18,10 @@ osselect = InputBox( _
 	"2 = Setting Windows Server 2008 R2" &Chr(10) & _
 	"3 = Check Setting" &Chr(10) & _
 	"4 = Misc Setting" &Chr(10) & _
-	"5 = msc" &Chr(10) & _
+	"5 = cpl" &Chr(10) & _
+	"6 = msc" &Chr(10) & _
 	"9 = Readme (Default)" &Chr(10) & _
+	"Before Use , Please Read Readme" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 9)
 Loop While IsNumeric(osselect) = Flase
@@ -43,6 +38,8 @@ Select Case osselect
 	Case 4
 		Call miscsetting
 	Case 5
+		Call cpl
+	Case 6
 		Call msc
 	Case 9
 		Call readme
@@ -162,6 +159,50 @@ End If
 Exit Sub
 End Sub
 
+Sub cpl
+Dim cplselect
+Do
+cplselect = InputBox( _
+	"1 = AutoPlay" &Chr(10) & _
+	"2 = FolderOptions" &Chr(10) & _
+	"3 = IndexingOptions" &Chr(10) & _
+	"4 = InternetOptions" &Chr(10) & _
+	"5 = NetworkAndSharingCenter" &Chr(10) & _
+	"6 = NotificationAreaIcons" &Chr(10) & _
+	"7 = PowerOptions" &Chr(10) & _
+	"8 = SystemPropertiesAdvanced" &Chr(10) & _
+	"9 = TaskbarAndStartMenu" &Chr(10) & _
+	"10 = UserAccounts" &Chr(10) & _
+	"Select Feature (Other Number = Exit)" , _
+	"Input A Number For Your Choice" , 0)
+Loop While IsNumeric(cplselect) = Flase
+Select Case cplselect
+	Case 1
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.AutoPlay" , 1 , True)
+	Case 2
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.FolderOptions" , 1 , True)
+	Case 3
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.IndexingOptions" , 1 , True)
+	Case 4
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.InternetOptions" , 1 , True)
+	Case 5
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.NetworkAndSharingCenter" , 1 , True)
+	Case 6
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.NotificationAreaIcons" , 1 , True)
+	Case 7
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.PowerOptions" , 1 , True)
+	Case 8
+		Return = WshShell.run("%windir%\system32\SystemPropertiesAdvanced.exe" , 1 , True)
+	Case 9
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.TaskbarAndStartMenu" , 1 , True)
+	Case 10
+		Return = WshShell.run("%systemroot%\system32\control.exe /name Microsoft.UserAccounts" , 1 , True)
+	Case else
+		WScript.Quit
+End Select
+Exit Sub
+End Sub
+
 Sub msc
 Dim mscselect
 Do
@@ -202,6 +243,10 @@ End Sub
 
 Sub readme
 MsgBox _
+	"Notice :" &Chr(10) & _
+	"1. Run With Administrator" &Chr(10) & _
+	"2. Need Desktop Experience(WS2008R2)" &Chr(10) & _
+	"" &Chr(10) & _
 	"Setting Feature:" &Chr(10) & _
 	"RegisteredOwner -> Belldandy" &Chr(10) & _
 	"RegisteredOrganization -> Syaorin" &Chr(10) & _
@@ -220,6 +265,6 @@ MsgBox _
 	"Hide extensions for known file types -> Unchecked" &Chr(10) & _
 	"Hide protected operating system files (Recommended) -> Unchecked" &Chr(10) & _
 	"Use Sharing Wizard (Recommended) -> Unchecked (Windows 7 Only)" _
-	, 0 , "Message"
+	, 0 , "Setting & Check Tool"
 Exit Sub
 End Sub
