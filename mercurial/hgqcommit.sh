@@ -11,7 +11,7 @@ echo "[info] Commit Message    :" ${argument[1]}
 echo "[info] Commit = Y/y Or"
 read -t 5 -p "[info] Exit = Other (After 5s Will Auto Exit ,Default) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
-if [[ $checkans =~ [yY] ]] ; then
+if [[ "$checkans" =~ [yY] ]] ; then
 	echo "[info] Commit"
 	hg commit -m "${argument[1]}"
 else
