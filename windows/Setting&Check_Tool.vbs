@@ -147,7 +147,7 @@ Dim response
 response = MsgBox( _
 	"IconsOnly" &Chr(10) & _
 	"Enable(Yes) or Disable(No)" &Chr(10) & _
-	"Cancel(Exit)" _
+	"Exit(Cancel)" _
 	, 3 , "Message")
 If response = 6 Then
 	WshShell.RegWrite regpath(5) & regpath(10) , 1 , "REG_DWORD"
