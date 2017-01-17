@@ -2,7 +2,7 @@ Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\rhash\RHash.vbs" 'vbs path
 Dim argument(4)
-	argument(0) = "C:\portable\RHash-1.3.3-win64\rhash.exe" 'application path
+	argument(0) = "C:\portable\bin\rhash.exe" 'application path
 	argument(2) = "--percents"
 Call checksetting
 If WScript.Arguments.Count = 0 Then

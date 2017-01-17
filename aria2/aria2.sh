@@ -6,14 +6,6 @@ declare -a argument
 	argument[6]="--referer="
 
 function checksetting() {
-	if [ -f /usr/bin/aria2c ] ; then
-		argument[0]="/usr/bin/aria2c"
-	elif [ -f /usr/local/bin/aria2c ] ; then
-		argument[0]="/usr/local/bin/aria2c"
-	else
-		echo "[info] Can't Find aria2c & Exit"
-		exit 0
-	fi
 	dlpath=$(echo "${argument[3]}"|sed 's/--dir=//g')
 	if [ ! -d "$dlpath" ] ; then
 		echo "[info] Can't Find Download Directory & Exit"
@@ -67,10 +59,10 @@ if [ -z "$1" ] ; then
 	manualinputargument
 	speedselect
 	echo "[info] URI : ${argument[1]}"
-	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "${argument[1]}"
+	aria2c "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "${argument[1]}"
 else
 	speedselect
 	echo "[info] URI : $1"
-	"${argument[0]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[6]}""$2"
+	aria2c "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[6]}""$2"
 fi
 exit 0
