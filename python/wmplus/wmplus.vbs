@@ -2,7 +2,7 @@ Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim argument(1)
 	argument(0) = "C:\Python27\pythonw.exe" 'python path
-	argument(1) = "C:\repository\git\script\wmplus\wmplus.py" 'wmplus path
+	argument(1) = "C:\repository\git\script\python\wmplus\wmplus.py" 'wmplus path
 If Not (fso.FileExists(argument(0))) Then
 	MsgBox "[info] Can't Find python & Exit" , 0 , "Message"
 	WScript.Quit
