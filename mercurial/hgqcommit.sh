@@ -5,7 +5,7 @@ if [ "${argument[0]}" = "" ] ; then
 	echo "[info] Repository Status : n/a"
 	exit 0
 fi
-argument[1]="$(echo ${argument[0]}|sed 's/A\ /add\ /g'|sed 's/M\ /mod\ /g'|sed 's/R\ /remove\ /g')"
+argument[1]="$(echo ${argument[0]}|sed -e 's/A\ /add\ /g' -e 's/M\ /mod\ /g' -e 's/R\ /remove\ /g')"
 echo "[info] Repository Status :" ${argument[0]}
 echo "[info] Commit Message    :" ${argument[1]}
 echo "[info] Commit = Y/y Or"
