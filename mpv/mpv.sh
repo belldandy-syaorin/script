@@ -55,7 +55,12 @@ if [ -z "$1" ] ; then
 	exit 0
 else
 	argumentselect
-	echo "[info] argument : ${argument[0]} ${argument[1]}"
-	mpv "$1" "${argument[0]}" "${argument[1]}"
+	if [ -z "${argument[1]}" ] ; then
+		echo "[info] argument : ${argument[0]}"
+		mpv "$1" "${argument[0]}"
+	else
+		echo "[info] argument : ${argument[0]} ${argument[1]}"
+		mpv "$1" "${argument[0]}" "${argument[1]}"
+	fi
 fi
 exit 0
