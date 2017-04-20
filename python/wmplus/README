@@ -52,7 +52,7 @@ feature 2 :
 feature 3 :
 功能 3：
 	when you press win + f4 ,
-	當你按下 win + ` f4 ，
+	當你按下 win + f4 ，
 	it will detect desktop resolution .
 	它將會偵測桌面的解析度。
 	and it will change the foreground window to toggle three size .
