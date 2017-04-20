@@ -25,7 +25,7 @@ feature 2 :
 功能 2：
 	when you press win + f3 ,
 	it will change the foreground window to toggle three size .
-	當你按下 win + ` f3 ，
+	當你按下 win + f3 ，
 	它將會從三種大小切換來改變目前視窗大小。
 	the three size can manual setting ,
 	default : 800x600 , 1024x768 , 1280x960 .
