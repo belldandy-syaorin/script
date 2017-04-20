@@ -1,4 +1,4 @@
-default:
+install:
 	plasmapkg2 --type kwinscript -i .
-kde4:
+kde4install:
 	plasmapkg --type kwinscript -i .

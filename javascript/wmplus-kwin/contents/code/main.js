@@ -6,6 +6,14 @@ var smartsize_default = [2 , 1];
 var smartsize_big = [3, 2];
 var smartsize_large = [5, 4];
 var smartsizemode = 0;
+var hsmartsize_default = [3, 1];
+var hsmartsize_big = [2, 1];
+var hsmartsize_large = [3, 2];
+var hsmartsizemode = 0;
+var vsmartsize_default = [3, 1];
+var vsmartsize_big = [2, 1];
+var vsmartsize_large = [3, 2];
+var vsmartsizemode = 0;
 function size() {
 	var clients = workspace.clientList();
 	for (var i=0; i<clients.length; i++) {
@@ -81,6 +89,72 @@ function smartsize() {
 		}
 	}
 }
+function hsmartsize() {
+	var clients = workspace.clientList();
+	for (var i=0; i<clients.length; i++) {
+		if(clients[i].active) {
+			activeClient = clients[i];
+			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
+			var geo = activeClient.geometry;
+			var hdefaulth = wsgeo.height / hsmartsize_default[0] * hsmartsize_default[1];
+			var hbigh = wsgeo.height / hsmartsize_big[0] * hsmartsize_big[1];
+			var hlargeh = wsgeo.height / hsmartsize_large[0] * hsmartsize_large[1];
+			switch (hsmartsizemode) {
+				case 0:
+					geo.width = wsgeo.width;
+					geo.height = hdefaulth;
+					hsmartsizemode = 1;
+					break;
+				case 1:
+					geo.width = wsgeo.width;
+					geo.height = hbigh;
+					hsmartsizemode = 2;
+					break;
+				case 2:
+					geo.width = wsgeo.width;
+					geo.height = hlargeh;
+					hsmartsizemode = 0;
+					break;
+			}
+			geo.x = 0;
+			geo.y = (wsgeo.height - geo.height) / 2;
+			activeClient.geometry = geo;
+		}
+	}
+}
+function vsmartsize() {
+	var clients = workspace.clientList();
+	for (var i=0; i<clients.length; i++) {
+		if(clients[i].active) {
+			activeClient = clients[i];
+			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
+			var geo = activeClient.geometry;
+			var vdefaultw = wsgeo.width / vsmartsize_default[0] * vsmartsize_default[1];
+			var vbigw = wsgeo.width / vsmartsize_big[0] * vsmartsize_big[1];
+			var vlargew = wsgeo.width / vsmartsize_large[0] * vsmartsize_large[1];
+			switch (vsmartsizemode) {
+				case 0:
+					geo.width = vdefaultw;
+					geo.height = wsgeo.height;
+					vsmartsizemode = 1;
+					break;
+				case 1:
+					geo.width = vbigw;
+					geo.height = wsgeo.height;
+					vsmartsizemode = 2;
+					break;
+				case 2:
+					geo.width = vlargew;
+					geo.height = wsgeo.height;
+					vsmartsizemode = 0;
+					break;
+			}
+			geo.x = (wsgeo.width - geo.width) / 2;
+			geo.y = 0;
+			activeClient.geometry = geo;
+		}
+	}
+}
 function position(posnum) {
 	var clients = workspace.clientList();
 	for (var i=0; i<clients.length; i++) {
@@ -132,6 +206,8 @@ function position(posnum) {
 }
 registerShortcut("wmplus-kwin(size)", "wmplus-kwin(size)", "Meta+F3", function() { size() });
 registerShortcut("wmplus-kwin(smartsize)", "wmplus-kwin(smartsize)", "Meta+F4", function() { smartsize() });
+registerShortcut("wmplus-kwin(hsmartsize)", "wmplus-kwin(hsmartsize)", "Meta+F7", function() { hsmartsize() });
+registerShortcut("wmplus-kwin(vsmartsize)", "wmplus-kwin(vsmartsize)", "Meta+F8", function() { vsmartsize() });
 registerShortcut("wmplus-kwin(position1)", "wmplus-kwin(position1)", "Meta+1", function() { position(1) });
 registerShortcut("wmplus-kwin(position4)", "wmplus-kwin(position4)", "Meta+4", function() { position(4) });
 registerShortcut("wmplus-kwin(position7)", "wmplus-kwin(position7)", "Meta+7", function() { position(7) });
