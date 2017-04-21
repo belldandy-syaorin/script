@@ -9,10 +9,12 @@ var smartsizemode = 0;
 var hsmartsize_default = [3, 1];
 var hsmartsize_big = [2, 1];
 var hsmartsize_large = [3, 2];
+var hsmartsize_huge = [5, 4];
 var hsmartsizemode = 0;
 var vsmartsize_default = [3, 1];
 var vsmartsize_big = [2, 1];
 var vsmartsize_large = [3, 2];
+var vsmartsize_huge = [5, 4];
 var vsmartsizemode = 0;
 function size() {
 	var clients = workspace.clientList();
@@ -99,6 +101,7 @@ function hsmartsize() {
 			var hdefaulth = wsgeo.height / hsmartsize_default[0] * hsmartsize_default[1];
 			var hbigh = wsgeo.height / hsmartsize_big[0] * hsmartsize_big[1];
 			var hlargeh = wsgeo.height / hsmartsize_large[0] * hsmartsize_large[1];
+			var hhugeh = wsgeo.height / hsmartsize_huge[0] * hsmartsize_huge[1];
 			switch (hsmartsizemode) {
 				case 0:
 					geo.width = wsgeo.width;
@@ -113,6 +116,11 @@ function hsmartsize() {
 				case 2:
 					geo.width = wsgeo.width;
 					geo.height = hlargeh;
+					hsmartsizemode = 3;
+					break;
+				case 3:
+					geo.width = wsgeo.width;
+					geo.height = hhugeh;
 					hsmartsizemode = 0;
 					break;
 			}
@@ -132,6 +140,7 @@ function vsmartsize() {
 			var vdefaultw = wsgeo.width / vsmartsize_default[0] * vsmartsize_default[1];
 			var vbigw = wsgeo.width / vsmartsize_big[0] * vsmartsize_big[1];
 			var vlargew = wsgeo.width / vsmartsize_large[0] * vsmartsize_large[1];
+			var vhugew = wsgeo.width / vsmartsize_huge[0] * vsmartsize_huge[1];
 			switch (vsmartsizemode) {
 				case 0:
 					geo.width = vdefaultw;
@@ -145,6 +154,11 @@ function vsmartsize() {
 					break;
 				case 2:
 					geo.width = vlargew;
+					geo.height = wsgeo.height;
+					vsmartsizemode = 3;
+					break;
+				case 3:
+					geo.width = vhugew;
 					geo.height = wsgeo.height;
 					vsmartsizemode = 0;
 					break;

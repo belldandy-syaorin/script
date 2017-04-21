@@ -49,8 +49,8 @@ feature 4 & 5 :
 	but will use the maximum horizon (feature 4) and vertical resolution (feature 5).
 	功能上類似功能 3，
 	但會使用最大水平(feature 4)和垂直解析度(feature 5)。
-	default is desktop resolution's 1/3 , 1/2 , 2/3 .
-	預設值為桌面解析度的： 1/3 , 1/2 , 2/3 。
+	default is desktop resolution's 1/3 , 1/2 , 2/3 , 4/5 .
+	預設值為桌面解析度的： 1/3 , 1/2 , 2/3 , 4/5 。
 	default hotkey :
 	預設熱鍵：
 	feature 4 : use win + f7
