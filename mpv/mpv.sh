@@ -5,13 +5,14 @@ function argumentselect() {
 while [ "${argument[0]}" = "" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = --window-scale=0.5 (Default , No Input & Press Enter)"
-echo "2 = --fullscreen"
-echo "3 = --vid=no"
-echo "4 = --vid=no --aid=2"
-echo "5 = --vid=no --aid=3"
-echo "6 = --audio-display=no"
-echo "7 = --audio-display=no --shuffle"
+echo "1 = --fullscreen (Default , No Input & Press Enter)"
+echo "2 = --audio-display=no --shuffle"
+echo "3 = --vid=no --shuffle"
+echo "4 = --audio-display=no"
+echo "5 = --vid=no"
+echo "6 = --vid=no --aid=2"
+echo "7 = --vid=no --aid=3"
+echo "8 = --window-scale=0.5"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ "$as" = "" ] ; then
 	as="1"
@@ -22,28 +23,32 @@ case $checkas in
 		exit 0
 	;;
 	"1")
-		argument[0]="--window-scale=0.5"
+		argument[0]="--fullscreen"
 	;;
 	"2")
-		argument[0]="--fullscreen"
+		argument[0]="--audio-display=no"
+		argument[1]="--shuffle"
 	;;
 	"3")
 		argument[0]="--vid=no"
+		argument[1]="--shuffle"
 	;;
 	"4")
-		argument[0]="--vid=no"
-		argument[1]="--aid=2"
+		argument[0]="--audio-display=no"
 	;;
 	"5")
 		argument[0]="--vid=no"
-		argument[1]="--aid=3"
 	;;
 	"6")
-		argument[0]="--audio-display=no"
+		argument[0]="--vid=no"
+		argument[1]="--aid=2"
 	;;
 	"7")
-		argument[0]="--audio-display=no"
-		argument[1]="--shuffle"
+		argument[0]="--vid=no"
+		argument[1]="--aid=3"
+	;;
+	"8")
+		argument[0]="--window-scale=0.5"
 	;;
 esac
 done
