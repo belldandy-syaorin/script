@@ -13,6 +13,7 @@ echo "5 = --vid=no"
 echo "6 = --vid=no --aid=2"
 echo "7 = --vid=no --aid=3"
 echo "8 = --window-scale=0.5"
+echo "9 = --window-scale=1.5"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ "$as" = "" ] ; then
 	as="1"
@@ -49,6 +50,9 @@ case $checkas in
 	;;
 	"8")
 		argument[0]="--window-scale=0.5"
+	;;
+	"9")
+		argument[0]="--window-scale=1.5"
 	;;
 esac
 done
