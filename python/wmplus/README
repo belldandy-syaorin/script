@@ -61,6 +61,20 @@ feature 3 :
 	這三種大小可以自行設定，
 	default is desktop resolution's 1/2 , 2/3 , 4/5 .
 	預設值為桌面解析度的： 1/2 , 2/3 , 4/5 。
+feature 4 & 5 :
+功能 4 和 5：
+	feature like feature 3 ,
+	but will use the maximum horizon (feature 4) and vertical resolution (feature 5).
+	功能上類似功能 3，
+	但會使用最大水平(功能 4)和垂直解析度(功能 5)。
+	default is desktop resolution's 1/3 , 1/2 , 2/3 , 4/5 .
+	預設值為桌面解析度的： 1/3 , 1/2 , 2/3 , 4/5 。
+	default hotkey :
+	預設熱鍵：
+	feature 4 : use win + f7
+	功能 4 ： 使用 win + f7
+	feature 5 : use win + f8
+	功能 5 ： 使用 win + f8
 misc :
 其它：
 	if your taskbar is hidden ,

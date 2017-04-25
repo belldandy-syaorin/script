@@ -17,20 +17,34 @@ smartsize_default = [2 , 1];
 smartsize_big = [3 , 2];
 smartsize_large = [5 , 4];
 smartsize_mode = 0
+hsmartsize_default = [3 , 1];
+hsmartsize_big = [2 , 1];
+hsmartsize_large = [3 , 2];
+hsmartsize_huge = [5 , 4];
+hsmartsize_mode = 0;
+vsmartsize_default = [3 , 1];
+vsmartsize_big = [2 , 1];
+vsmartsize_large = [3 , 2];
+vsmartsize_huge = [5 , 4];
+vsmartsize_mode = 0;
 taskbar = 1
 
 HOTKEYS = {
     1 : (win32con.VK_F3, win32con.MOD_WIN),
     2 : (win32con.VK_F4, win32con.MOD_WIN),
-    3 : (0xC0, win32con.MOD_WIN),
-    4 : (win32con.VK_F11, win32con.MOD_WIN),
-    5 : (win32con.VK_F12, win32con.MOD_WIN)
+    3 : (win32con.VK_F7, win32con.MOD_WIN),
+    4 : (win32con.VK_F8, win32con.MOD_WIN),
+    5 : (win32con.VK_F11, win32con.MOD_WIN),
+    6 : (win32con.VK_F12, win32con.MOD_WIN),
+    7 : (0xC0, win32con.MOD_WIN)
 }
 
 def getargument():
     global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h
     global center_x , center_y , smart_x , smart_y , wincenter
     global smartsize_defaultw , smartsize_defaulth , smartsize_bigw , smartsize_bigh , smartsize_largew , smartsize_largeh
+    global hsmartsize_defaulth , hsmartsize_bigh , hsmartsize_largeh , hsmartsize_hugeh
+    global vsmartsize_defaultw , vsmartsize_bigw , vsmartsize_largew , vsmartsize_hugew
     global taskbar
     resolution_w = GetSystemMetrics(0)
     if taskbar == 1:
@@ -54,6 +68,14 @@ def getargument():
     smartsize_bigh = resolution_h / smartsize_big[0] * smartsize_big[1]
     smartsize_largew = resolution_w / smartsize_large[0] * smartsize_large[1]
     smartsize_largeh = resolution_h / smartsize_large[0] * smartsize_large[1]
+    hsmartsize_defaulth = resolution_h / hsmartsize_default[0] * hsmartsize_default[1]
+    hsmartsize_bigh = resolution_h / hsmartsize_big[0] * hsmartsize_big[1]
+    hsmartsize_largeh = resolution_h / hsmartsize_large[0] * hsmartsize_large[1]
+    hsmartsize_hugeh = resolution_h / hsmartsize_huge[0] * hsmartsize_huge[1]
+    vsmartsize_defaultw = resolution_w / vsmartsize_default[0] * vsmartsize_default[1]
+    vsmartsize_bigw = resolution_w / vsmartsize_big[0] * vsmartsize_big[1]
+    vsmartsize_largew = resolution_w / vsmartsize_large[0] * vsmartsize_large[1]
+    vsmartsize_hugew = resolution_w / vsmartsize_huge[0] * vsmartsize_huge[1]
 
 def win_pos(x,y):
         win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
@@ -111,6 +133,38 @@ def smartsize():
         win_size(smartsize_largew , smartsize_largeh)
         smartsize_mode = 0
 
+def hsmartsize():
+    getargument()
+    global hsmartsize_mode
+    if hsmartsize_mode == 0:
+        win_size(resolution_w , hsmartsize_defaulth)
+        hsmartsize_mode = 1
+    elif hsmartsize_mode == 1:
+        win_size(resolution_w , hsmartsize_bigh)
+        hsmartsize_mode = 2
+    elif hsmartsize_mode == 2:
+        win_size(resolution_w , hsmartsize_largeh)
+        hsmartsize_mode = 3
+    elif hsmartsize_mode == 3:
+        win_size(resolution_w , hsmartsize_hugeh)
+        hsmartsize_mode = 0
+
+def vsmartsize():
+    getargument()
+    global vsmartsize_mode
+    if vsmartsize_mode == 0:
+        win_size(vsmartsize_defaultw , resolution_h)
+        vsmartsize_mode = 1
+    elif vsmartsize_mode == 1:
+        win_size(vsmartsize_bigw , resolution_h)
+        vsmartsize_mode = 2
+    elif vsmartsize_mode == 2:
+        win_size(vsmartsize_largew , resolution_h)
+        vsmartsize_mode = 3
+    elif vsmartsize_mode == 3:
+        win_size(vsmartsize_hugew , resolution_h)
+        vsmartsize_mode = 0
+
 def smartposition():
     getargument()
     if wincenter[0] >= 0 and wincenter[0] <= smart_x[0]:
@@ -148,9 +202,11 @@ def exit():
 HOTKEY_ACTIONS = {
     1 : size,
     2 : smartsize,
-    3 : smartposition,
-    4 : taskbar_mode,
-    5 : exit
+    3 : hsmartsize,
+    4 : vsmartsize,
+    5 : taskbar_mode,
+    6 : exit,
+    7 : smartposition
 }
 
 for id, (vk, modifiers) in HOTKEYS.items ():
