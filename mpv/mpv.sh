@@ -8,8 +8,8 @@ echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = --fullscreen (Default , No Input & Press Enter)"
 echo "2 = --audio-display=no --shuffle"
 echo "3 = --vid=no --shuffle"
-echo "4 = --audio-display=no"
-echo "5 = --vid=no"
+echo "4 = --audio-display=no --loop-file=inf"
+echo "5 = --vid=no --loop-file=inf"
 echo "6 = --vid=no --aid=2"
 echo "7 = --vid=no --aid=3"
 echo "8 = --window-scale=0.5"
@@ -36,9 +36,11 @@ case $checkas in
 	;;
 	"4")
 		argument[0]="--audio-display=no"
+		argument[1]="--loop-file=inf"
 	;;
 	"5")
 		argument[0]="--vid=no"
+		argument[1]="--loop-file=inf"
 	;;
 	"6")
 		argument[0]="--vid=no"
