@@ -42,13 +42,13 @@ case $checkas in
 		argument[5]="--max-download-limit=0"
 	;;
 	"2")
-		argument[5]="--max-download-limit=1024K"
+		argument[5]="--max-download-limit=2048K"
 	;;
 	"3")
-		argument[5]="--max-download-limit=512K"
+		argument[5]="--max-download-limit=1024K"
 	;;
 	"4")
-		argument[5]="--max-download-limit=256K"
+		argument[5]="--max-download-limit=512K"
 	;;
 esac
 done
