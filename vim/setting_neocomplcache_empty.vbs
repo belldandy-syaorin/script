@@ -5,7 +5,7 @@ eespath = WshShell.ExpandEnvironmentStrings("%USERPROFILE%")& _
           "\.cache\neocomplcache"
 If (fso.FolderExists(eespath)) Then
 	fso.DeleteFolder(eespath)
-	MsgBox "[ ok ] Find .neocomplcache & Remove" , 0 , "Message"
+	MsgBox "[ ok ] Find neocomplcache & Remove" , 0 , "Message"
 Else
-	MsgBox "[info] Can't Find .neocomplcache & Exit" , 0 , "Message"
+	MsgBox "[info] Can't Find neocomplcache & Exit" , 0 , "Message"
 End If
