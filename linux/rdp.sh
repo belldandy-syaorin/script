@@ -6,14 +6,14 @@ if [[ ! "$1" =~ ^192\.168(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}$ ]] ; the
 fi
 
 function sizeselect() {
-while [ "${argument[0]}" = "" ]
+while [ -z "${argument[0]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = /size:1280x960 (Default , No Input & Press Enter)"
 echo "2 = /size:80%"
 echo "3 = /f"
 read -t 5 -p "Select Feature (0 = Exit) : " as
-if [ "$as" = "" ] ; then
+if [ -z "$as" ] ; then
 	as="1"
 fi
 checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')

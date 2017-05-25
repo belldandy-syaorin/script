@@ -2,7 +2,7 @@
 declare -a argument
 
 function argumentselect() {
-while [ "${argument[0]}" = "" ]
+while [ -z "${argument[0]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = --fullscreen (Default , No Input & Press Enter)"
@@ -15,7 +15,7 @@ echo "7 = --vid=no --aid=3"
 echo "8 = --window-scale=0.5"
 echo "9 = --window-scale=1.5"
 read -t 5 -p "Select Feature (0 = Exit) : " as
-if [ "$as" = "" ] ; then
+if [ -z "$as" ] ; then
 	as="1"
 fi
 checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')

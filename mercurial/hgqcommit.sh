@@ -1,7 +1,7 @@
 #!/bin/bash
 declare -a argument
 	argument[0]="$(hg status)"
-if [ "${argument[0]}" = "" ] ; then
+if [ -z "${argument[0]}" ] ; then
 	echo "[info] Repository Status : n/a"
 	exit 0
 fi
