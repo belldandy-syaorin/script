@@ -1,22 +1,28 @@
 #!/bin/bash
 declare -a argument
+fn=$(basename "$1")
+fne="${fn##*.}"
 
 function argumentselect() {
 while [ -z "${argument[0]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = --fullscreen (Default , No Input & Press Enter)"
-echo "2 = --audio-display=no --shuffle"
+echo "1 = --fullscreen (Default for mkv & mp4)"
+echo "2 = --audio-display=no --shuffle (Default for m3u8)"
 echo "3 = --vid=no --shuffle"
-echo "4 = --audio-display=no --loop-file=inf"
+echo "4 = --audio-display=no --loop-file=inf (Default for flac & mp3 & ogg)"
 echo "5 = --vid=no --loop-file=inf"
-echo "6 = --vid=no --aid=2"
-echo "7 = --vid=no --aid=3"
-echo "8 = --window-scale=0.5"
-echo "9 = --window-scale=1.5"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
-	as="1"
+	if [[ "$fne" =~ ^(mkv|mp4)$ ]] ; then
+		as="1"
+	elif [[ "$fne" =~ ^m3u8$ ]] ; then
+		as="2"
+	elif [[ "$fne" =~ ^(flac|mp3|ogg)$ ]] ; then
+		as="4"
+	else
+		as="0"
+	fi
 fi
 checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')
 case $checkas in
@@ -41,20 +47,6 @@ case $checkas in
 	"5")
 		argument[0]="--vid=no"
 		argument[1]="--loop-file=inf"
-	;;
-	"6")
-		argument[0]="--vid=no"
-		argument[1]="--aid=2"
-	;;
-	"7")
-		argument[0]="--vid=no"
-		argument[1]="--aid=3"
-	;;
-	"8")
-		argument[0]="--window-scale=0.5"
-	;;
-	"9")
-		argument[0]="--window-scale=1.5"
 	;;
 esac
 done
