@@ -22,7 +22,7 @@ Select Case autospeedselect
 	Case 7
 		Call speedselect
 	Case Else
-		argument(5) = "--max-download-limit=1024K"
+		argument(5) = "--max-download-limit=2048K"
 End Select
 If WScript.Arguments.Count = 0 Then
 	Return = WshShell.run( _
@@ -93,11 +93,11 @@ Select Case argumentselect
 	Case 1
 		argument(5) = "--max-download-limit=0"
 	Case 2
-		argument(5) = "--max-download-limit=1024K"
+		argument(5) = "--max-download-limit=2048K"
 	Case 3
-		argument(5) = "--max-download-limit=512K"
+		argument(5) = "--max-download-limit=1024K"
 	Case 4
-		argument(5) = "--max-download-limit=256K"
+		argument(5) = "--max-download-limit=512K"
 	Case else
 		WScript.Quit
 End Select

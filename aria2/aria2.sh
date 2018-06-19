@@ -33,24 +33,25 @@ read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="2"
 fi
-checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')
-case $checkas in
-	"0")
-		exit 0
-	;;
-	"1")
-		argument[5]="--max-download-limit=0"
-	;;
-	"2")
-		argument[5]="--max-download-limit=2048K"
-	;;
-	"3")
-		argument[5]="--max-download-limit=1024K"
-	;;
-	"4")
-		argument[5]="--max-download-limit=512K"
-	;;
-esac
+if [[ "$as" =~ [0-9] ]] ; then
+	case $as in
+		"0")
+			exit 0
+		;;
+		"1")
+			argument[5]="--max-download-limit=0"
+		;;
+		"2")
+			argument[5]="--max-download-limit=2048K"
+		;;
+		"3")
+			argument[5]="--max-download-limit=1024K"
+		;;
+		"4")
+			argument[5]="--max-download-limit=512K"
+		;;
+	esac
+fi
 done
 }
 

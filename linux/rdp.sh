@@ -9,28 +9,29 @@ function sizeselect() {
 while [ -z "${argument[0]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = /size:1280x960 (Default , No Input & Press Enter)"
-echo "2 = /size:80%"
-echo "3 = /f"
+echo "1 = /f (Default , No Input & Press Enter)"
+echo "2 = /size:1280x960"
+echo "3 = /size:80%"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="1"
 fi
-checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')
-case $checkas in
-	"0")
-		exit 0
-	;;
-	"1")
-		argument[0]="/size:1280x960"
-	;;
-	"2")
-		argument[0]="/size:80%"
-	;;
-	"3")
-		argument[0]="/f"
-	;;
-esac
+if [[ "$as" =~ [0-9] ]] ; then
+	case $as in
+		"0")
+			exit 0
+		;;
+		"1")
+			argument[0]="/f"
+		;;
+		"2")
+			argument[0]="/size:1280x960"
+		;;
+		"3")
+			argument[0]="/size:80%"
+		;;
+	esac
+fi
 done
 }
 

@@ -24,31 +24,32 @@ if [ -z "$as" ] ; then
 		as="0"
 	fi
 fi
-checkas=$(echo "${as:0:1}"|grep '^[[:digit:]]')
-case $checkas in
-	"0")
-		exit 0
-	;;
-	"1")
-		argument[0]="--fullscreen"
-	;;
-	"2")
-		argument[0]="--audio-display=no"
-		argument[1]="--shuffle"
-	;;
-	"3")
-		argument[0]="--vid=no"
-		argument[1]="--shuffle"
-	;;
-	"4")
-		argument[0]="--audio-display=no"
-		argument[1]="--loop-file=inf"
-	;;
-	"5")
-		argument[0]="--vid=no"
-		argument[1]="--loop-file=inf"
-	;;
-esac
+if [[ "$as" =~ [0-9] ]] ; then
+	case $as in
+		"0")
+			exit 0
+		;;
+		"1")
+			argument[0]="--fullscreen"
+		;;
+		"2")
+			argument[0]="--audio-display=no"
+			argument[1]="--shuffle"
+		;;
+		"3")
+			argument[0]="--vid=no"
+			argument[1]="--shuffle"
+		;;
+		"4")
+			argument[0]="--audio-display=no"
+			argument[1]="--loop-file=inf"
+		;;
+		"5")
+			argument[0]="--vid=no"
+			argument[1]="--loop-file=inf"
+		;;
+	esac
+fi
 done
 }
 
