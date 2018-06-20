@@ -83,9 +83,9 @@ Dim argumentselect
 Do
 argumentselect = InputBox( _
 	"1 = Unrestricted" &Chr(10) & _
-	"2 = 1024K (Default , Press Enter)" &Chr(10) & _
-	"3 = 512K" &Chr(10) & _
-	"4 = 256K" &Chr(10) & _
+	"2 = 2048K (Default , Press Enter)" &Chr(10) & _
+	"3 = 1024K" &Chr(10) & _
+	"4 = 512K" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase

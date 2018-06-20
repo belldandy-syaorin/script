@@ -26,9 +26,9 @@ while [ -z "${argument[5]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = Unrestricted"
-echo "2 = 1024K (Default , No Input & Press Enter)"
-echo "3 = 512K"
-echo "4 = 256K"
+echo "2 = 2048K (Default , No Input & Press Enter)"
+echo "3 = 1024K"
+echo "4 = 512K"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="2"
