@@ -10,7 +10,7 @@ echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = --fullscreen (Default for mkv & mp4)"
 echo "2 = --audio-display=no --shuffle (Default for m3u8)"
 echo "3 = --vid=no --shuffle (Default for m3u)"
-echo "4 = --audio-display=no --loop-file=inf (Default for flac & mp3 & ogg)"
+echo "4 = --audio-display=no --loop-file=inf (Default for flac & mp3)"
 echo "5 = --vid=no --loop-file=inf"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
@@ -20,7 +20,7 @@ if [ -z "$as" ] ; then
 		as="2"
 	elif [[ "$fne" =~ ^m3u$ ]] ; then
 		as="3"
-	elif [[ "$fne" =~ ^(flac|mp3|ogg)$ ]] ; then
+	elif [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
 		as="4"
 	else
 		as="0"
