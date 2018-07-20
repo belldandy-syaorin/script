@@ -12,6 +12,7 @@ echo "2 = --audio-display=no --shuffle (Default for m3u8)"
 echo "3 = --vid=no --shuffle (Default for m3u)"
 echo "4 = --audio-display=no --loop-file=inf (Default for flac & mp3)"
 echo "5 = --vid=no --loop-file=inf"
+echo "6 = --window-scale=0.5"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	if [[ "$fne" =~ ^(mkv|mp4)$ ]] ; then
@@ -49,6 +50,9 @@ if [[ "$as" =~ [0-9] ]] ; then
 		"5")
 			argument[0]="--vid=no"
 			argument[1]="--loop-file=inf"
+		;;
+		"6")
+			argument[0]="--window-scale=0.5"
 		;;
 	esac
 fi
