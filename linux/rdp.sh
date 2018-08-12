@@ -10,7 +10,7 @@ while [ -z "${argument[0]}" ]
 do
 echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = /f (Default , No Input & Press Enter)"
-echo "2 = /size:1280x960"
+echo "2 = /size:50%"
 echo "3 = /size:80%"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
@@ -25,7 +25,7 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[0]="/f"
 		;;
 		"2")
-			argument[0]="/size:1280x960"
+			argument[0]="/size:50%"
 		;;
 		"3")
 			argument[0]="/size:80%"

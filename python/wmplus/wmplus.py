@@ -9,25 +9,27 @@ import win32gui
 
 byref = ctypes.byref
 user32 = ctypes.windll.user32
-size_default = [800 , 600]
-size_big = [1024 , 768]
-size_large = [1280 , 960]
+size_default0 = [800 , 600];
+size_big0 = [1024 , 768];
+size_large0 = [1280 , 960];
+size_default1 = [800 , 450];
+size_big1 = [1024 , 576];
+size_large1 = [1280 , 720];
 size_mode = 0
 smartsize_default = [2 , 1];
 smartsize_big = [3 , 2];
 smartsize_large = [5 , 4];
 smartsize_mode = 0
-hsmartsize_default = [3 , 1];
-hsmartsize_big = [2 , 1];
-hsmartsize_large = [3 , 2];
-hsmartsize_huge = [5 , 4];
+hsmartsize_default = [2 , 1];
+hsmartsize_big = [3 , 2];
+hsmartsize_large = [5 , 4];
 hsmartsize_mode = 0;
-vsmartsize_default = [3 , 1];
-vsmartsize_big = [2 , 1];
-vsmartsize_large = [3 , 2];
-vsmartsize_huge = [5 , 4];
+vsmartsize_default = [2 , 1];
+vsmartsize_big = [3 , 2];
+vsmartsize_large = [5 , 4];
 vsmartsize_mode = 0;
 taskbar = 1
+taskbarsize = 30
 
 HOTKEYS = {
     1 : (win32con.VK_F3, win32con.MOD_WIN),
@@ -43,12 +45,12 @@ def getargument():
     global resolution_w , resolution_h , hwnd , win_rect , win_rect_x , win_rect_y , win_rect_w , win_rect_h
     global center_x , center_y , smart_x , smart_y , wincenter
     global smartsize_defaultw , smartsize_defaulth , smartsize_bigw , smartsize_bigh , smartsize_largew , smartsize_largeh
-    global hsmartsize_defaulth , hsmartsize_bigh , hsmartsize_largeh , hsmartsize_hugeh
-    global vsmartsize_defaultw , vsmartsize_bigw , vsmartsize_largew , vsmartsize_hugew
+    global hsmartsize_defaulth , hsmartsize_bigh , hsmartsize_largeh
+    global vsmartsize_defaultw , vsmartsize_bigw , vsmartsize_largew
     global taskbar
     resolution_w = GetSystemMetrics(0)
     if taskbar == 1:
-        resolution_h = GetSystemMetrics(1) - 30
+        resolution_h = GetSystemMetrics(1) - taskbarsize
     else:
         resolution_h = GetSystemMetrics(1)
     hwnd = win32gui.GetForegroundWindow()
@@ -71,11 +73,9 @@ def getargument():
     hsmartsize_defaulth = resolution_h / hsmartsize_default[0] * hsmartsize_default[1]
     hsmartsize_bigh = resolution_h / hsmartsize_big[0] * hsmartsize_big[1]
     hsmartsize_largeh = resolution_h / hsmartsize_large[0] * hsmartsize_large[1]
-    hsmartsize_hugeh = resolution_h / hsmartsize_huge[0] * hsmartsize_huge[1]
     vsmartsize_defaultw = resolution_w / vsmartsize_default[0] * vsmartsize_default[1]
     vsmartsize_bigw = resolution_w / vsmartsize_big[0] * vsmartsize_big[1]
     vsmartsize_largew = resolution_w / vsmartsize_large[0] * vsmartsize_large[1]
-    vsmartsize_hugew = resolution_w / vsmartsize_huge[0] * vsmartsize_huge[1]
 
 def win_pos(x,y):
         win32gui.SetWindowPos(hwnd, 0, x, y, 0, 0, 0x0001 + 0x0004)
@@ -111,13 +111,22 @@ def size():
     getargument()
     global size_mode
     if size_mode == 0:
-        win_size(size_default[0] , size_default[1])
+        win_size(size_default0[0] , size_default0[1])
         size_mode = 1
     elif size_mode == 1:
-        win_size(size_big[0] , size_big[1])
+        win_size(size_big0[0] , size_big0[1])
         size_mode = 2
     elif size_mode == 2:
-        win_size(size_large[0] , size_large[1])
+        win_size(size_large0[0] , size_large0[1])
+        size_mode = 3
+    elif size_mode == 3:
+        win_size(size_default1[0] , size_default1[1])
+        size_mode = 4
+    elif size_mode == 4:
+        win_size(size_big1[0] , size_big1[1])
+        size_mode = 5
+    elif size_mode == 5:
+        win_size(size_large1[0] , size_large1[1])
         size_mode = 0
 
 def smartsize():
@@ -144,9 +153,6 @@ def hsmartsize():
         hsmartsize_mode = 2
     elif hsmartsize_mode == 2:
         win_size(resolution_w , hsmartsize_largeh)
-        hsmartsize_mode = 3
-    elif hsmartsize_mode == 3:
-        win_size(resolution_w , hsmartsize_hugeh)
         hsmartsize_mode = 0
 
 def vsmartsize():
@@ -160,9 +166,6 @@ def vsmartsize():
         vsmartsize_mode = 2
     elif vsmartsize_mode == 2:
         win_size(vsmartsize_largew , resolution_h)
-        vsmartsize_mode = 3
-    elif vsmartsize_mode == 3:
-        win_size(vsmartsize_hugew , resolution_h)
         vsmartsize_mode = 0
 
 def smartposition():
