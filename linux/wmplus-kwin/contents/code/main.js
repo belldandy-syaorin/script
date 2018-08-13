@@ -57,18 +57,9 @@ function size() {
 					size_mode = 0;
 					break;
 			}
-			if (geo.width > wsgeo.width || geo.height > wsgeo.height) {
-				geo.width = wsgeo.width;
-				geo.height = wsgeo.height;
-				geo.x = 0;
-				geo.y = 0;
-				activeClient.geometry = geo;
-			}
-			else {
-				geo.x = (wsgeo.width - geo.width) / 2;
-				geo.y = (wsgeo.height - geo.height) / 2;
-				activeClient.geometry = geo;
-			}
+			geo.x = (wsgeo.width - geo.width) / 2;
+			geo.y = (wsgeo.height - geo.height) / 2;
+			activeClient.geometry = geo;
 		}
 	}
 }

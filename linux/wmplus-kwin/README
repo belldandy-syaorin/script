@@ -26,11 +26,11 @@ feature 2 :
 	when you press win + f3 ,
 	it will change the foreground window to toggle three size .
 	當你按下 win + f3 ，
-	它將會從三種大小切換來改變目前視窗大小。
-	the three size can manual setting ,
-	default : 800x600 , 1024x768 , 1280x960 .
-	這三種大小可以自行設定，
-	預設值為： 800x600 , 1024x768 , 1280x960 。
+	它將會從六種大小切換來改變目前視窗大小。
+	the three six can manual setting ,
+	default : 800x600 , 1024x768 , 1280x960 , 800x450 , 1024x576 , 1280x720 .
+	這六種大小可以自行設定，
+	預設值為： 800x600 , 1024x768 , 1280x960 , 800x450 , 1024x576 , 1280x720 。
 feature 3 :
 功能 3：
 	when you press win + f4 ,
@@ -49,8 +49,8 @@ feature 4 & 5 :
 	but will use the maximum horizon (feature 4) and vertical resolution (feature 5).
 	功能上類似功能 3，
 	但會使用最大水平(功能 4)和垂直解析度(功能 5)。
-	default is desktop resolution's 1/3 , 1/2 , 2/3 , 4/5 .
-	預設值為桌面解析度的： 1/3 , 1/2 , 2/3 , 4/5 。
+	default is desktop resolution's 1/2 , 2/3 , 4/5 .
+	預設值為桌面解析度的： 1/2 , 2/3 , 4/5 。
 	default hotkey :
 	預設熱鍵：
 	feature 4 : use win + f7
@@ -61,8 +61,6 @@ install :
 安裝 :
 	use "make install" to install . (plasma 5 only)
 	使用 "make install" 安裝。 (只適用 plasma 5)
-	use "make kde4install" to install . (plasma 4 only)
-	使用 "make kde4install" 安裝。 (只適用 plasma 4)
 
 [install(path).txt]
 uninstall information , just remove directory & file .
