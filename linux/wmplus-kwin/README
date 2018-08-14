@@ -27,7 +27,7 @@ feature 2 :
 	it will change the foreground window to toggle three size .
 	當你按下 win + f3 ，
 	它將會從六種大小切換來改變目前視窗大小。
-	the three six can manual setting ,
+	the six size can manual setting ,
 	default : 800x600 , 1024x768 , 1280x960 , 800x450 , 1024x576 , 1280x720 .
 	這六種大小可以自行設定，
 	預設值為： 800x600 , 1024x768 , 1280x960 , 800x450 , 1024x576 , 1280x720 。
