@@ -15,6 +15,7 @@ echo "3 = /size:80%"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="1"
+	echo ""
 fi
 if [[ "$as" =~ [0-9] ]] ; then
 	case $as in

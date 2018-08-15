@@ -32,6 +32,7 @@ echo "4 = 512K"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="2"
+	echo ""
 fi
 if [[ "$as" =~ [0-9] ]] ; then
 	case $as in

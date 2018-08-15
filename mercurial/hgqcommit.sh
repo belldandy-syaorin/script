@@ -15,6 +15,7 @@ if [[ "$checkans" =~ [yY] ]] ; then
 	echo "[info] Commit"
 	hg commit -m "${argument[1]}"
 else
+	echo ""
 	echo "[info] Exit"
 fi
 exit 0

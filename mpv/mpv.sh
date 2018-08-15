@@ -2,6 +2,7 @@
 declare -a argument
 fn=$(basename "$1")
 fne="${fn##*.}"
+fnl=("$@")
 
 function argumentselect() {
 while [ -z "${argument[0]}" ]
@@ -27,6 +28,7 @@ if [ -z "$as" ] ; then
 	else
 		as="0"
 	fi
+	echo ""
 fi
 if [[ "$as" =~ [0-9] ]] ; then
 	case $as in
@@ -71,10 +73,14 @@ else
 	argumentselect
 	if [ -z "${argument[1]}" ] ; then
 		echo "[info] argument : ${argument[0]}"
-		mpv "$1" "${argument[0]}"
+		echo "[info] playlist :"
+		printf '\t%s\n' "${fnl[@]}"
+		mpv "${fnl[@]}" "${argument[0]}"
 	else
 		echo "[info] argument : ${argument[0]} ${argument[1]}"
-		mpv "$1" "${argument[0]}" "${argument[1]}"
+		echo "[info] playlist :"
+		printf '\t%s\n' "${fnl[@]}"
+		mpv "${fnl[@]}" "${argument[0]}" "${argument[1]}"
 	fi
 fi
 exit 0
