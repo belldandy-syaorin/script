@@ -12,8 +12,8 @@ Else
 End If
 Dim autospeedselect
 autospeedselect = WshShell.Popup( _
-	"Yes = Default Speed(1024K)" &Chr(10) & _
-	"No = Manual Speed" &Chr(10) & _
+	"Yes = 2048K (Default)" &Chr(10) & _
+	"No = Select Feature" &Chr(10) & _
 	"(After 5s Will Auto Select Default)" , _
 	5 , _
 	"Press For Your Choice" , _
@@ -83,7 +83,7 @@ Dim argumentselect
 Do
 argumentselect = InputBox( _
 	"1 = Unrestricted" &Chr(10) & _
-	"2 = 2048K (Default , Press Enter)" &Chr(10) & _
+	"2 = 2048K (Default)" &Chr(10) & _
 	"3 = 1024K" &Chr(10) & _
 	"4 = 512K" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _

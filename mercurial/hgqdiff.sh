@@ -12,7 +12,7 @@ hg log --graph --limit 2 --stat
 echo "[info] Repository Changeset(Last 2) :" "${argument[1]}" "${argument[2]}"
 echo "[info] Diff View(Last 2 & Use KDiff3 ,GUI) = K/k Or"
 echo "[info] Diff View(Last 2 & Use VIM ,CLI) = V/v Or"
-read -t 5 -p "[info] Exit = Other (After 5s Will Auto Exit ,Default) : " ans
+read -t 5 -p "[info] No Input = Exit (After 5s Will Auto Exit) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [[ "$checkans" =~ [kK] ]] ; then
 	echo "[info] Select : Diff View(Last 2 & Use KDiff3 ,GUI)"
@@ -21,7 +21,7 @@ elif [[ "$checkans" =~ [vV] ]] ; then
 	echo "[info] Select : Diff View(Last 2 & Use VIM ,CLI)"
 	hg vimdiff -r"${argument[1]}" -r"${argument[2]}"
 else
-	echo ""
+	echo "Exit (Auto)"
 	echo "[info] Exit"
 fi
 exit 0

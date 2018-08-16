@@ -28,7 +28,7 @@ if [ -z "$as" ] ; then
 	else
 		as="0"
 	fi
-	echo ""
+	echo "$as (Auto)"
 fi
 if [[ "$as" =~ [0-9] ]] ; then
 	case $as in

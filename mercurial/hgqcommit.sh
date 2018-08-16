@@ -9,13 +9,13 @@ argument[1]="$(echo ${argument[0]}|sed -e 's/A\ /add\ /g;s/M\ /mod\ /g;s/R\ /rem
 echo "[info] Repository Status :" ${argument[0]}
 echo "[info] Commit Message    :" ${argument[1]}
 echo "[info] Commit = Y/y Or"
-read -t 5 -p "[info] Exit = Other (After 5s Will Auto Exit ,Default) : " ans
+read -t 5 -p "[info] No Input = Exit (After 5s Will Auto Exit) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [[ "$checkans" =~ [yY] ]] ; then
 	echo "[info] Commit"
 	hg commit -m "${argument[1]}"
 else
-	echo ""
+	echo "Exit (Auto)"
 	echo "[info] Exit"
 fi
 exit 0
