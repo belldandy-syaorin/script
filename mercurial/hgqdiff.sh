@@ -10,9 +10,9 @@ fi
 echo "[info] Repository Log(Last 2)"
 hg log --graph --limit 2 --stat
 echo "[info] Diff Repository Changeset(Last 2) :" "${argument[1]}" "${argument[2]}"
-echo "[info] K/k = KDiff3"
-echo "[info] V/v = VIM"
-read -t 5 -p "[info] No Input = Exit (After 5s Will Auto Exit) : " ans
+echo "k/K = KDiff3"
+echo "v/V = VIM"
+read -t 5 -p "Not k/K/v/V or No Input = Exit (After 5s Will Auto Exit) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [[ "$checkans" =~ [kK] ]] ; then
 	echo "[info] KDiff3"

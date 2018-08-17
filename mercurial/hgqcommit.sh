@@ -8,8 +8,8 @@ fi
 argument[1]="$(echo ${argument[0]}|sed -e 's/A\ /add\ /g;s/M\ /mod\ /g;s/R\ /remove\ /g')"
 echo "[info] Repository Status :" ${argument[0]}
 echo "[info] Commit Message    :" ${argument[1]}
-echo "[info] Y/y = Commit"
-read -t 5 -p "[info] No Input = Exit (After 5s Will Auto Exit) : " ans
+echo "y/Y = Commit"
+read -t 5 -p "Not y/Y or No Input = Exit (After 5s Will Auto Exit) : " ans
 checkans=$(echo "${ans:0:1}"|grep '^[[:alpha:]]')
 if [[ "$checkans" =~ [yY] ]] ; then
 	echo "[info] Commit"
