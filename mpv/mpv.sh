@@ -80,14 +80,14 @@ if [ -z "$1" ] ; then
 else
 	argumentselect
 	if [ -z "${argument[1]}" ] ; then
-		echo "[info] argument : ${argument[0]}"
 		echo "[info] playlist :"
 		printf '\t%s\n' "${fnl[@]}"
+		echo "[info] argument : ${argument[0]}"
 		mpv "${fnl[@]}" "${argument[0]}"
 	else
-		echo "[info] argument : ${argument[0]} ${argument[1]}"
 		echo "[info] playlist :"
 		printf '\t%s\n' "${fnl[@]}"
+		echo "[info] argument : ${argument[0]} ${argument[1]}"
 		mpv "${fnl[@]}" "${argument[0]}" "${argument[1]}"
 	fi
 fi

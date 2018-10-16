@@ -37,6 +37,7 @@ done
 }
 
 sizeselect
-echo "[info] xfreerdp +clipboard +fonts -themes -wallpaper ${argument[0]} /v:$1"
+echo "[info] server : $1"
+echo "[info] argument : ${argument[0]}"
 xfreerdp +clipboard +fonts -themes -wallpaper "${argument[0]}" /v:$1
 exit 0

@@ -61,10 +61,12 @@ if [ -z "$1" ] ; then
 	manualinputargument
 	speedselect
 	echo "[info] URI : ${argument[1]}"
+	echo "[info] argument : ${argument[5]}"
 	aria2c "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "${argument[1]}"
 else
 	speedselect
 	echo "[info] URI : $1"
+	echo "[info] argument : ${argument[5]}"
 	aria2c "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[6]}""$2"
 fi
 exit 0
