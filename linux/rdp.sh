@@ -8,7 +8,7 @@ fi
 function sizeselect() {
 while [ -z "${argument[0]}" ]
 do
-echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
+echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = /f (Default)"
 echo "2 = /size:50%"
 echo "3 = /size:80%"

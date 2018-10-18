@@ -6,7 +6,7 @@ Dim argument(9)
 	argument(4) = "--remote-time=true"
 Call checksetting
 If WScript.Arguments.Count = 0 Then
-	Call manualinputargument
+	Call uriinput
 Else
 	Call withargument
 End If
@@ -60,12 +60,10 @@ End If
 Exit Sub
 End Sub
 
-Sub manualinputargument
+Sub uriinput
 argument(1) = InputBox( _
-	"Null(Empty) = Exit" &Chr(10) & _
-	"Notice :" &Chr(10) & _
-	"Wrong Link Will Cause An Error" , _
-	"Manual Input (Link)")
+	"(No Input = Exit)" &Chr(10) , _
+	"URI Input")
 If argument(1) = "" Then
 	WScript.Quit
 End If

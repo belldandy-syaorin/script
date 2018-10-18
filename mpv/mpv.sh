@@ -7,7 +7,7 @@ fnl=("$@")
 function argumentselect() {
 while [ -z "${argument[0]}" ]
 do
-echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
+echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = --audio-display=no --shuffle (Default for m3u8)"
 echo "2 = --vid=no --shuffle (Default for m3u)"
 echo "3 = --audio-display=no --loop-file=inf (Default for flac & mp3)"

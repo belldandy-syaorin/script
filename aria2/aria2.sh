@@ -13,10 +13,11 @@ function checksetting() {
 	fi
 }
 
-function manualinputargument() {
-	read -p "Null(Empty) = Exit , Manual Input (Link) : " mia
-	argument[1]="$mia"
+function uriinput() {
+	read -p "[info] URI Input (No Input = Exit) : " ui
+	argument[1]="$ui"
 	if [ -z "${argument[1]}" ] ; then
+		echo "[info] Exit"
 		exit 0
 	fi
 }
@@ -24,7 +25,7 @@ function manualinputargument() {
 function speedselect() {
 while [ -z "${argument[5]}" ]
 do
-echo "Input A Number For Your Choice (After 5s Will Auto Select Default)"
+echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = Unrestricted"
 echo "2 = 2048K (Default)"
 echo "3 = 1024K"
@@ -58,7 +59,7 @@ done
 
 checksetting
 if [ -z "$1" ] ; then
-	manualinputargument
+	uriinput
 	speedselect
 	echo "[info] URI : ${argument[1]}"
 	echo "[info] argument : ${argument[5]}"
