@@ -1,37 +1,39 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\windows\AppLocale.vbs" 'vbs path
-Dim argument(2)
-	argument(0) = "C:\Windows\AppPatch\AppLoc.exe" 'application path
+Dim bin , fi
+	bin = "C:\Windows\AppPatch\AppLoc.exe" 'bin path
+Dim argument(9)
 Call checksetting
 If WScript.Arguments.Count = 0 Then
-	Call manualinputargument
+	Call fileinput
 Else
 	Call withargument
 End If
 Call featureselect
-Return = WshShell.Run(Chr(34) &argument(0) &Chr(34) &Chr(32) _
-                     &Chr(34) &argument(2) &Chr(34) &Chr(32) _
-                     &Chr(34) &argument(1) &Chr(34) , 1, true)
+Return = WshShell.Run( _
+	Chr(34) &bin &Chr(34) &Chr(32) _
+	&Chr(34) &fi &Chr(34) &Chr(32) _
+	&Chr(34) &argument(0) &Chr(34) _
+	, 1, true)
 
 Sub checksetting
-Set fso = CreateObject("Scripting.FileSystemObject")
-If Not (fso.FileExists(argument(0))) Then
+If Not (fso.FileExists(bin)) Then
 	MsgBox "[info] Can't Find AppLoc.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub
 End Sub
 
-Sub manualinputargument
-argument(2) = InputBox("Null(Empty) = Exit" &Chr(10) & _
-                       "Notice :" &Chr(10) & _
-                       "Wrong Path&FileName Will Cause An Error" &Chr(10) & _
-                       "0000 = Add Context Menu" , _
-                       "Manual Input (Path&FileName)")
-If argument(2) = "" Then
+Sub fileinput
+fi = InputBox( _
+	"(No Input = Exit)" &Chr(10) & _
+	"0000 = Add Context Menu" , _
+	"File Input (Absolute Path)")
+If fi = "" Then
 	WScript.Quit
 End If
-If argument(2) = "0000" Then
+If fi = "0000" Then
 	regpath = "HKEY_CLASSES_ROOT\*\shell\AppLocale\command\"
 	regdata = "wscript.exe"&Chr(32)&vbspath&Chr(32)&Chr(34)&"%1"&Chr(34)
 	WshShell.RegWrite regpath , regdata , "REG_SZ"
@@ -39,37 +41,42 @@ If argument(2) = "0000" Then
 		MsgBox "[ ok ] Install Success" , 0 , "Message"
 		WScript.Quit
 	Else
-		MsgBox "[info] Install Error" , 0 , "Message"
+		MsgBox "[info] Install Fail" , 0 , "Message"
 		WScript.Quit
 	End If
+End If
+If Not (fso.FileExists(fi)) Then
+	MsgBox "[info] Can't Find File & Exit" , 0 , "Message"
+	WScript.Quit
 End If
 Exit Sub
 End Sub
 
 Sub withargument
-	argument(2) = WScript.Arguments.Item(0)
+	fi = WScript.Arguments.Item(0)
 Exit Sub
 End Sub
 
 Sub featureselect
 Dim argumentselect
 Do
-argumentselect = InputBox("1 = taiwan (Default)" &Chr(10) & _
-                          "2 = prc" &Chr(10) & _
-                          "3 = japan" &Chr(10) & _
-                          "4 = korea" &Chr(10) & _
-                          "Select Feature (Other Number = Exit)" , _
-                          "Input A Number For Your Choice" , 1)
+argumentselect = InputBox( _
+	"1 = taiwan (Default)" &Chr(10) & _
+	"2 = prc" &Chr(10) & _
+	"3 = japan" &Chr(10) & _
+	"4 = korea" &Chr(10) & _
+	"Select Feature (Other Number = Exit)" , _
+	"Input A Number For Your Choice" , 1)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
-		argument(1) = "/L0404"
+		argument(0) = "/L0404"
 	Case 2
-		argument(1) = "/L0804"
+		argument(0) = "/L0804"
 	Case 3
-		argument(1) = "/L0411"
+		argument(0) = "/L0411"
 	Case 4
-		argument(1) = "/L0412"
+		argument(0) = "/L0412"
 	Case else
 		WScript.Quit
 End Select

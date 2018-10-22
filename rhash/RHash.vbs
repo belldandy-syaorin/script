@@ -1,51 +1,51 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 vbspath = "C:\repository\git\script\rhash\RHash.vbs" 'vbs path
-Dim argument(4)
-	argument(0) = "C:\portable\bin\rhash.exe" 'application path
+Dim bin , fi , fl
+	bin = "C:\portable\bin\rhash.exe" 'bin path
+Dim argument(9)
 	argument(2) = "--percents"
 Call checksetting
 If WScript.Arguments.Count = 0 Then
-	Call manualinputargument
+	Call fileinput
 	Call featureselect
 	Return = WshShell.run( _
 		"%COMSPEC% /u /k chcp 65001 & cd /d" _
-		&Chr(32) &argument(4) &Chr(32) &Chr(38) _
-		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &fl &Chr(32) &Chr(38) _
+		&Chr(32) &Chr(34) &bin &Chr(34) _
 		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
-		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
+		&Chr(32) &Chr(34) &fi &Chr(34) _
 		, 1 , True)
 Else
 	Call withargument
 	Call featureselect
 	Return = WshShell.run( _
 		"%COMSPEC% /u /k chcp 65001 &" _
-		&Chr(32) &Chr(34) &argument(0) &Chr(34) _
+		&Chr(32) &Chr(34) &bin &Chr(34) _
 		&Chr(32) &Chr(34) &argument(1) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
-		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
+		&Chr(32) &Chr(34) &fi &Chr(34) _
 		, 1 , True)
 End If
 
 Sub checksetting
-If Not (fso.FileExists(argument(0))) Then
+If Not (fso.FileExists(bin)) Then
 	MsgBox "[info] Can't Find rhash.exe & Exit" , 0 , "Message"
 	WScript.Quit
 End If
 Exit Sub
 End Sub
 
-Sub manualinputargument
-argument(3) = InputBox( _
-	"Null(Empty) = Exit" &Chr(10) & _
-	"Notice :" &Chr(10) & _
+Sub fileinput
+fi = InputBox( _
+	"(No Input = Exit)" &Chr(10) & _
 	"0000 = Add Context Menu" , _
-	"Manual Input (Path&FileName)")
-If argument(3) = "" Then
+	"File Input (Absolute Path)")
+If fi = "" Then
 	WScript.Quit
 End If
-If argument(3) = "0000" Then
+If fi = "0000" Then
 	regpath = "HKEY_CLASSES_ROOT\*\shell\RHash\command\"
 	regdata = "wscript.exe"&Chr(32)&vbspath&Chr(32)&Chr(34)&"%1"&Chr(34)
 	WshShell.RegWrite regpath , regdata , "REG_SZ"
@@ -53,20 +53,20 @@ If argument(3) = "0000" Then
 		MsgBox "[ ok ] Install Success" , 0 , "Message"
 		WScript.Quit
 	Else
-		MsgBox "[info] Install Error" , 0 , "Message"
+		MsgBox "[info] Install Fail" , 0 , "Message"
 		WScript.Quit
 	End If
 End If
-If Not (fso.FileExists(argument(3))) Then
+If Not (fso.FileExists(fi)) Then
 	MsgBox "[info] Can't Find File & Exit" , 0 , "Message"
 	WScript.Quit
 End If
-argument(4) = fso.GetParentFolderName(argument(3))
+fl = fso.GetParentFolderName(fi)
 Exit Sub
 End Sub
 
 Sub withargument
-	argument(3) = WScript.Arguments.Item(0)
+	fi = WScript.Arguments.Item(0)
 Exit Sub
 End Sub
 
