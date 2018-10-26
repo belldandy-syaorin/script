@@ -29,10 +29,10 @@ function speedselect() {
 while [ -z "${argument[4]}" ]
 do
 echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = Unrestricted"
-echo "2 = 2048K (Default)"
-echo "3 = 1024K"
-echo "4 = 512K"
+echo "1 = --max-download-limit=0 --max-upload-limit=0"
+echo "2 = --max-download-limit=2048K --max-upload-limit=512K (Default)"
+echo "3 = --max-download-limit=1024K --max-upload-limit=256K"
+echo "4 = --max-download-limit=512K --max-upload-limit=128K"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="2"
@@ -45,15 +45,19 @@ if [[ "$as" =~ [0-9] ]] ; then
 		;;
 		"1")
 			argument[4]="--max-download-limit=0"
+			argument[5]="--max-upload-limit=0"
 		;;
 		"2")
 			argument[4]="--max-download-limit=2048K"
+			argument[5]="--max-upload-limit=512K"
 		;;
 		"3")
 			argument[4]="--max-download-limit=1024K"
+			argument[5]="--max-upload-limit=256K"
 		;;
 		"4")
 			argument[4]="--max-download-limit=512K"
+			argument[5]="--max-upload-limit=128K"
 		;;
 	esac
 fi
@@ -67,19 +71,19 @@ if [ -z "$1" ] ; then
 	speedselect
 	if [ -z "$ri" ] ; then
 		echo "[info] URI : $ui"
-		echo "[info] argument : ${argument[4]}"
-		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "$ui"
+		echo "[info] argument : ${argument[4]} ${argument[5]}"
+		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$ui"
 	else
 		echo "[info] URI : $ui"
 		echo "[info] REFERER : $ri"
-		echo "[info] argument : ${argument[4]}"
-		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "$ui" "${argument[0]}""$ri"
+		echo "[info] argument : ${argument[4]} ${argument[5]}"
+		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$ui" "${argument[0]}""$ri"
 	fi
 else
 	speedselect
 	echo "[info] URI : $1"
 	echo "[info] REFERER : $2"
-	echo "[info] argument : ${argument[4]}"
-	aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "$1" "${argument[0]}""$2"
+	echo "[info] argument : ${argument[4]} ${argument[5]}"
+	aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[0]}""$2"
 fi
 exit 0

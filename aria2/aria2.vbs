@@ -15,7 +15,7 @@ Else
 End If
 Dim autospeedselect
 autospeedselect = WshShell.Popup( _
-	"Yes = 2048K (Default)" &Chr(10) & _
+	"Yes = --max-download-limit=2048K --max-upload-limit=512K (Default)" &Chr(10) & _
 	"No = Select Feature" &Chr(10) & _
 	"(After 5s Will Auto Select Default)" , _
 	5 , _
@@ -26,6 +26,7 @@ Select Case autospeedselect
 		Call speedselect
 	Case Else
 		argument(4) = "--max-download-limit=2048K"
+		argument(5) = "--max-upload-limit=512K"
 End Select
 If ri = "" Then
 	Return = WshShell.run( _
@@ -35,6 +36,7 @@ If ri = "" Then
 		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(4) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(5) &Chr(34) _
 		&Chr(32) &Chr(34) &ui &Chr(34) _
 		, 1 , True)
 Else
@@ -45,6 +47,7 @@ Else
 		&Chr(32) &Chr(34) &argument(2) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(3) &Chr(34) _
 		&Chr(32) &Chr(34) &argument(4) &Chr(34) _
+		&Chr(32) &Chr(34) &argument(5) &Chr(34) _
 		&Chr(32) &Chr(34) &ui &Chr(34) _
 		&Chr(32) &Chr(34) &argument(0) &ri &Chr(34) _
 		, 1 , True)
@@ -90,22 +93,26 @@ Sub speedselect
 Dim argumentselect
 Do
 argumentselect = InputBox( _
-	"1 = Unrestricted" &Chr(10) & _
-	"2 = 2048K (Default)" &Chr(10) & _
-	"3 = 1024K" &Chr(10) & _
-	"4 = 512K" &Chr(10) & _
+	"1 = --max-download-limit=0 --max-upload-limit=0" &Chr(10) & _
+	"2 = --max-download-limit=2048K --max-upload-limit=512K (Default)" &Chr(10) & _
+	"3 = --max-download-limit=1024K --max-upload-limit=256K" &Chr(10) & _
+	"4 = --max-download-limit=512K --max-upload-limit=128K" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
 		argument(4) = "--max-download-limit=0"
+		argument(5) = "--max-upload-limit=0"
 	Case 2
 		argument(4) = "--max-download-limit=2048K"
+		argument(5) = "--max-upload-limit=512K"
 	Case 3
 		argument(4) = "--max-download-limit=1024K"
+		argument(5) = "--max-upload-limit=256K"
 	Case 4
 		argument(4) = "--max-download-limit=512K"
+		argument(5) = "--max-upload-limit=128K"
 	Case else
 		WScript.Quit
 End Select
