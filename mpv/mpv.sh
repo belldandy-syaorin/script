@@ -24,8 +24,8 @@ echo "4 = --vid=no --loop-file=inf"
 echo "5 = --audio-display=no --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
 echo "6 = --vid=no --loop-playlist=inf (Default for multiple file (mkv & mp4))"
 echo "7 = --fullscreen"
-echo "8 = --window-scale=0.5 (Default for mkv & mp4 (1920x1080))"
-echo "9 = --window-scale=0.8 (Default for mkv & mp4 (1280x720))"
+echo "8 = --window-scale=0.5"
+echo "9 = --window-scale=0.75"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	if [ -z "$fn" ] ; then
@@ -37,10 +37,6 @@ if [ -z "$as" ] ; then
 			as="2"
 		elif [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
 			as="3"
-		elif [[ "$fn" =~ ^.*1920x1080.*$ ]] && [[ "$fne" =~ ^(mkv|mp4)$ ]] ; then
-			as="8"
-		elif [[ "$fn" =~ ^.*1280x720.*$ ]] && [[ "$fne" =~ ^(mkv|mp4)$ ]] ; then
-			as="9"
 		fi
 	elif [ "${#fnl[@]}" -ge 2 ] ; then
 		if [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
@@ -92,7 +88,7 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[0]="--window-scale=0.5"
 		;;
 		"9")
-			argument[0]="--window-scale=0.8"
+			argument[0]="--window-scale=0.75"
 		;;
 	esac
 fi
