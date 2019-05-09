@@ -24,8 +24,8 @@ echo "4 = --vid=no --loop-file=inf"
 echo "5 = --audio-display=no --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
 echo "6 = --vid=no --loop-playlist=inf (Default for multiple file (mkv & mp4))"
 echo "7 = --fullscreen"
-echo "8 = --window-scale=0.5"
-echo "9 = --window-scale=0.75"
+echo "8 = --window-scale=0.5 --volume=25"
+echo "9 = --window-scale=0.75 --volume=25"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	if [ -z "$fn" ] ; then
@@ -86,9 +86,11 @@ if [[ "$as" =~ [0-9] ]] ; then
 		;;
 		"8")
 			argument[0]="--window-scale=0.5"
+			argument[1]="--volume=25"
 		;;
 		"9")
 			argument[0]="--window-scale=0.75"
+			argument[1]="--volume=25"
 		;;
 	esac
 fi
