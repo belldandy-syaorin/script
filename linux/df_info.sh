@@ -6,7 +6,6 @@ else
 	fl=$(ls -Al "$1")
 fi
 echo "[info] Target Directory :" "$1"
-echo "[info] Total            :" $(echo "${fl[@]}" | grep -v '^total' | wc -l)
 echo "[info] Directory        :" $(echo "${fl[@]}" | grep '^d' | wc -l)
 echo "[info] File             :" $(echo "${fl[@]}" | grep '^-' | wc -l)
 echo "[info] Link             :" $(echo "${fl[@]}" | grep '^l' | wc -l)
