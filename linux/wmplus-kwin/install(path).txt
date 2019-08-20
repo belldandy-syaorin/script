@@ -1,7 +1,3 @@
 //Linux
-	//Plasma 4
-		~/.kde/share/apps/kwin/scripts/
-		~/.kde/share/config/kglobalshortcutsrc //[kwin]
-	//Plasma 5
-		~/.config/kglobalshortcutsrc //[kwin]
-		~/.local/share/kwin/scripts/
+	~/.config/kglobalshortcutsrc //[kwin]
+	~/.local/share/kwin/scripts/

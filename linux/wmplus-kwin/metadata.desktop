@@ -1,20 +1,18 @@
 [Desktop Entry]
+Encoding=UTF-8
 Name=wmplus-kwin
 Comment=wmplus-kwin
-Icon=
 Type=
 
-X-Plasma-API=javascript
-X-Plasma-MainScript=code/main.js
-X-Plasma-DefaultSize=
-
-X-KDE-ServiceTypes=
+X-KDE-Library=
+X-KDE-ParentApp=
 X-KDE-PluginInfo-Author=belldandy-syaorin
 X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-License=
 X-KDE-PluginInfo-Name=wmplus-kwin
 X-KDE-PluginInfo-Version=
 X-KDE-PluginInfo-Website=
+X-KDE-ServiceTypes=
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/main.js
 X-KDE-PluginInfo-Category=
-X-KDE-PluginInfo-Depends=
-X-KDE-PluginInfo-License=GPL
-X-KDE-PluginInfo-EnabledByDefault=true
