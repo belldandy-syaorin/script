@@ -18,7 +18,7 @@ while [ -z "${argument[0]}" ]
 do
 echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = --audio-display=no --shuffle --volume=50 (Default for m3u8)"
-echo "2 = --vid=no --shuffle (Default for m3u)"
+echo "2 = --vid=no --shuffle"
 echo "3 = --audio-display=no --loop-file=inf --volume=50 (Default for flac & mp3 & privatepl)"
 echo "4 = --vid=no --loop-file=inf"
 echo "5 = --audio-display=no --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
@@ -33,8 +33,6 @@ if [ -z "$as" ] ; then
 	elif [ "${#fnl[@]}" -eq 1 ] ; then
 		if [[ "$fne" =~ ^m3u8$ ]] ; then
 			as="1"
-		elif [[ "$fne" =~ ^m3u$ ]] ; then
-			as="2"
 		elif [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
 			as="3"
 		fi
