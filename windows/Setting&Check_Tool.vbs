@@ -214,7 +214,8 @@ mscselect = InputBox( _
 	"5 = secpol.msc" &Chr(10) & _
 	"6 = services.msc" &Chr(10) & _
 	"7 = taskschd.msc" &Chr(10) & _
-	"8 = control userpasswords2" &Chr(10) & _
+	"8 = appwiz.cpl" &Chr(10) & _
+	"9 = control userpasswords2" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 0)
 Loop While IsNumeric(mscselect) = Flase
@@ -234,6 +235,8 @@ Select Case mscselect
 	Case 7
 		Return = WshShell.run("taskschd.msc" , 1 , True)
 	Case 8
+		Return = WshShell.run("%COMSPEC% /c appwiz.cpl" , 1 , True)
+	Case 9
 		Return = WshShell.run("control userpasswords2" , 1 , True)
 	Case else
 		WScript.Quit
