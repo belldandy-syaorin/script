@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -z "$1" ] ; then
+	echo "[info] Exit"
+	exit 0
+fi
 DATE=$(date +"%Y.%m.%d")
 DATETIME=$(date +"%Y.%m.%d-%H%M")
 fn=$(basename "$1")
