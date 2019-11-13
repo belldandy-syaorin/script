@@ -17,30 +17,30 @@ function argumentselect() {
 while [ -z "${argument[0]}" ]
 do
 echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = --audio-display=no --shuffle --volume=50 (Default for m3u8)"
-echo "2 = --vid=no --shuffle"
-echo "3 = --audio-display=no --loop-file=inf --volume=50 (Default for flac & mp3 & privatepl)"
-echo "4 = --vid=no --loop-file=inf"
-echo "5 = --audio-display=no --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
-echo "6 = --vid=no --loop-playlist=inf (Default for multiple file (mkv & mp4))"
+echo "1 = --audio-display=no --geometry=1280x720 --loop-file=inf --volume=50 (Default for flac & mp3 & privatepl)"
+echo "2 = --loop-file=inf" --vid=no
+echo "3 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
+echo "4 = --loop-playlist=inf --vid=no (Default for multiple file (mkv & mp4))"
+echo "5 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --shuffle --volume=50 (Default for m3u8)"
+echo "6 = --loop-playlist=inf --shuffle --vid=no"
 echo "7 = --fullscreen"
-echo "8 = --window-scale=0.5 --volume=25"
-echo "9 = --window-scale=0.75 --volume=25"
+echo "8 = --autofit-larger=1280x720 --volume=25"
+echo "9 = --geometry=1280x720 --volume=25"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	if [ -z "$fn" ] ; then
-		as="3"
+		as="1"
 	elif [ "${#fnl[@]}" -eq 1 ] ; then
-		if [[ "$fne" =~ ^m3u8$ ]] ; then
+		if [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
 			as="1"
-		elif [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
-			as="3"
+		elif [[ "$fne" =~ ^m3u8$ ]] ; then
+			as="5"
 		fi
 	elif [ "${#fnl[@]}" -ge 2 ] ; then
 		if [[ "$fne" =~ ^(flac|mp3)$ ]] ; then
-			as="5"
+			as="3"
 		elif [[ "$fne" =~ ^(mkv|mp4)$ ]] ; then
-			as="6"
+			as="4"
 		fi
 	else
 		as="0"
@@ -54,40 +54,45 @@ if [[ "$as" =~ [0-9] ]] ; then
 		;;
 		"1")
 			argument[0]="--audio-display=no"
-			argument[1]="--shuffle"
-			argument[2]="--volume=50"
+			argument[1]="--geometry=1280x720"
+			argument[2]="--loop-file=inf"
+			argument[3]="--volume=50"
 		;;
 		"2")
-			argument[0]="--vid=no"
-			argument[1]="--shuffle"
+			argument[0]="--loop-file=inf"
+			argument[1]="--vid=no"
 		;;
 		"3")
 			argument[0]="--audio-display=no"
-			argument[1]="--loop-file=inf"
-			argument[2]="--volume=50"
+			argument[1]="--geometry=1280x720"
+			argument[2]="--loop-playlist=inf"
+			argument[3]="--volume=50"
 		;;
 		"4")
-			argument[0]="--vid=no"
-			argument[1]="--loop-file=inf"
+			argument[0]="--loop-playlist=inf"
+			argument[1]="--vid=no"
 		;;
 		"5")
 			argument[0]="--audio-display=no"
-			argument[1]="--loop-playlist=inf"
-			argument[2]="--volume=50"
+			argument[1]="--geometry=1280x720"
+			argument[2]="--loop-playlist=inf"
+			argument[3]="--shuffle"
+			argument[4]="--volume=50"
 		;;
 		"6")
-			argument[0]="--vid=no"
-			argument[1]="--loop-playlist=inf"
+			argument[0]="--loop-playlist=inf"
+			argument[1]="--shuffle"
+			argument[2]="--vid=no"
 		;;
 		"7")
 			argument[0]="--fullscreen"
 		;;
 		"8")
-			argument[0]="--window-scale=0.5"
+			argument[0]="--autofit-larger=1280x720"
 			argument[1]="--volume=25"
 		;;
 		"9")
-			argument[0]="--window-scale=0.75"
+			argument[0]="--geometry=1280x720"
 			argument[1]="--volume=25"
 		;;
 	esac
@@ -96,23 +101,8 @@ done
 }
 
 argumentselect
-if [ ! -z "${argument[2]}" ] && [[ "$fne" =~ ^flac$ ]] ; then
-	argument[2]="--volume=75"
-fi
-if [ -z "${argument[1]}" ] ; then
-	echo "[info] playlist : ${#fnl[@]}"
-	printf '\t%s\n' "${fnl[@]}"
-	echo "[info] argument : ${argument[0]}"
-	mpv "${fnl[@]}" "${argument[0]}"
-elif [ -z "${argument[2]}" ] ; then
-	echo "[info] playlist : ${#fnl[@]}"
-	printf '\t%s\n' "${fnl[@]}"
-	echo "[info] argument : ${argument[0]} ${argument[1]}"
-	mpv "${fnl[@]}" "${argument[0]}" "${argument[1]}"
-else
-	echo "[info] playlist : ${#fnl[@]}"
-	printf '\t%s\n' "${fnl[@]}"
-	echo "[info] argument : ${argument[0]} ${argument[1]} ${argument[2]}"
-	mpv "${fnl[@]}" "${argument[0]}" "${argument[1]}" "${argument[2]}"
-fi
+echo "[info] playlist : ${#fnl[@]}"
+printf '\t%s\n' "${fnl[@]}"
+echo "[info] argument : ${argument[@]}"
+mpv "${fnl[@]}" "${argument[@]}"
 exit 0
