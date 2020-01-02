@@ -2,7 +2,7 @@ Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sourcepath , targetpath
 	sourcepath = "C:\repository\git\vim"
-	targetpath = "C:\portable\vim\vim81"
+	targetpath = "C:\portable\vim\vim82"
 If Not WScript.Arguments.Count = 0 Then
 	sourcepath = WScript.Arguments.Item(0)
 	targetpath = WScript.Arguments.Item(1)
