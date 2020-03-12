@@ -1,9 +1,10 @@
 #!/bin/bash
 declare -a argument
 	argument[0]="--referer="
-	argument[1]="--check-certificate=false"
+	argument[1]="--no-conf=true"
 	argument[2]="--dir=$HOME/Downloads" #download path
 	argument[3]="--remote-time=true"
+	argument[4]="--check-certificate=false"
 
 function checksetting() {
 	dlpath=$(echo "${argument[2]}"|sed 's/--dir=//g')
@@ -26,13 +27,13 @@ function refererinput() {
 }
 
 function speedselect() {
-while [ -z "${argument[4]}" ]
+while [ -z "${argument[5]}" ]
 do
 echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = --max-download-limit=0 --max-upload-limit=0"
-echo "2 = --max-download-limit=2048K --max-upload-limit=512K (Default)"
-echo "3 = --max-download-limit=1024K --max-upload-limit=256K"
-echo "4 = --max-download-limit=512K --max-upload-limit=128K"
+echo "1 = --max-download-limit=0"
+echo "2 = --max-download-limit=2048K (Default)"
+echo "3 = --max-download-limit=1024K"
+echo "4 = --max-download-limit=512K"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="2"
@@ -44,20 +45,16 @@ if [[ "$as" =~ [0-9] ]] ; then
 			exit 0
 		;;
 		"1")
-			argument[4]="--max-download-limit=0"
-			argument[5]="--max-upload-limit=0"
+			argument[5]="--max-download-limit=0"
 		;;
 		"2")
-			argument[4]="--max-download-limit=2048K"
-			argument[5]="--max-upload-limit=512K"
+			argument[5]="--max-download-limit=2048K"
 		;;
 		"3")
-			argument[4]="--max-download-limit=1024K"
-			argument[5]="--max-upload-limit=256K"
+			argument[5]="--max-download-limit=1024K"
 		;;
 		"4")
-			argument[4]="--max-download-limit=512K"
-			argument[5]="--max-upload-limit=128K"
+			argument[5]="--max-download-limit=512K"
 		;;
 	esac
 fi
@@ -71,19 +68,19 @@ if [ -z "$1" ] ; then
 	speedselect
 	if [ -z "$ri" ] ; then
 		echo "[info] URI : $ui"
-		echo "[info] argument : ${argument[4]} ${argument[5]}"
+		echo "[info] argument : ${argument[5]}"
 		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$ui"
 	else
 		echo "[info] URI : $ui"
 		echo "[info] REFERER : $ri"
-		echo "[info] argument : ${argument[4]} ${argument[5]}"
+		echo "[info] argument : ${argument[5]}"
 		aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$ui" "${argument[0]}""$ri"
 	fi
 else
 	speedselect
 	echo "[info] URI : $1"
 	echo "[info] REFERER : $2"
-	echo "[info] argument : ${argument[4]} ${argument[5]}"
+	echo "[info] argument : ${argument[5]}"
 	aria2c "${argument[1]}" "${argument[2]}" "${argument[3]}" "${argument[4]}" "${argument[5]}" "$1" "${argument[0]}""$2"
 fi
 exit 0

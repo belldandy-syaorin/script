@@ -3,9 +3,10 @@ Dim bin , ri , ui
 	bin = "C:\portable\bin\aria2c.exe" 'bin path
 Dim argument(9)
 	argument(0) = "--referer="
-	argument(1) = "--check-certificate=false"
+	argument(1) = "--no-conf=true"
 	argument(2) = "--dir="&WshShell.ExpandEnvironmentStrings("%USERPROFILE%")&"\Downloads" 'download path
 	argument(3) = "--remote-time=true"
+	argument(4) = "--check-certificate=false"
 Call checksetting
 If WScript.Arguments.Count = 0 Then
 	Call uriinput
@@ -15,7 +16,7 @@ Else
 End If
 Dim autospeedselect
 autospeedselect = WshShell.Popup( _
-	"Yes = --max-download-limit=2048K --max-upload-limit=512K (Default)" &Chr(10) & _
+	"Yes = --max-download-limit=2048K (Default)" &Chr(10) & _
 	"No = Select Feature" &Chr(10) & _
 	"(After 5s Will Auto Select Default)" , _
 	5 , _
@@ -25,8 +26,7 @@ Select Case autospeedselect
 	Case 7
 		Call speedselect
 	Case Else
-		argument(4) = "--max-download-limit=2048K"
-		argument(5) = "--max-upload-limit=512K"
+		argument(5) = "--max-download-limit=2048K"
 End Select
 If ri = "" Then
 	Return = WshShell.run( _
@@ -93,26 +93,22 @@ Sub speedselect
 Dim argumentselect
 Do
 argumentselect = InputBox( _
-	"1 = --max-download-limit=0 --max-upload-limit=0" &Chr(10) & _
-	"2 = --max-download-limit=2048K --max-upload-limit=512K (Default)" &Chr(10) & _
-	"3 = --max-download-limit=1024K --max-upload-limit=256K" &Chr(10) & _
-	"4 = --max-download-limit=512K --max-upload-limit=128K" &Chr(10) & _
+	"1 = --max-download-limit=0" &Chr(10) & _
+	"2 = --max-download-limit=2048K (Default)" &Chr(10) & _
+	"3 = --max-download-limit=1024K" &Chr(10) & _
+	"4 = --max-download-limit=512K" &Chr(10) & _
 	"Select Feature (Other Number = Exit)" , _
 	"Input A Number For Your Choice" , 2)
 Loop While IsNumeric(argumentselect) = Flase
 Select Case argumentselect
 	Case 1
-		argument(4) = "--max-download-limit=0"
-		argument(5) = "--max-upload-limit=0"
+		argument(5) = "--max-download-limit=0"
 	Case 2
-		argument(4) = "--max-download-limit=2048K"
-		argument(5) = "--max-upload-limit=512K"
+		argument(5) = "--max-download-limit=2048K"
 	Case 3
-		argument(4) = "--max-download-limit=1024K"
-		argument(5) = "--max-upload-limit=256K"
+		argument(5) = "--max-download-limit=1024K"
 	Case 4
-		argument(4) = "--max-download-limit=512K"
-		argument(5) = "--max-upload-limit=128K"
+		argument(5) = "--max-download-limit=512K"
 	Case else
 		WScript.Quit
 End Select
