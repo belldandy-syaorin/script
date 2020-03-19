@@ -17,11 +17,11 @@ function argumentselect() {
 while [ -z "${argument[0]}" ]
 do
 echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
-echo "1 = --audio-display=no --geometry=1280x720 --loop-file=inf --volume=50 (Default for flac & mp3 & privatepl)"
+echo "1 = --audio-display=no --geometry=1280x720 --loop-file=inf (Default for flac & mp3 & privatepl)"
 echo "2 = --loop-file=inf" --vid=no
-echo "3 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --volume=50 (Default for multiple file (flac & mp3))"
+echo "3 = --audio-display=no --geometry=1280x720 --loop-playlist=inf (Default for multiple file (flac & mp3))"
 echo "4 = --loop-playlist=inf --vid=no (Default for multiple file (mkv & mp4))"
-echo "5 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --shuffle --volume=50 (Default for m3u8)"
+echo "5 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --shuffle (Default for m3u8)"
 echo "6 = --loop-playlist=inf --shuffle --vid=no"
 echo "7 = --fullscreen"
 echo "8 = --autofit-larger=1280x720 --volume=25"
@@ -56,7 +56,6 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[0]="--audio-display=no"
 			argument[1]="--geometry=1280x720"
 			argument[2]="--loop-file=inf"
-			argument[3]="--volume=50"
 		;;
 		"2")
 			argument[0]="--loop-file=inf"
@@ -66,7 +65,6 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[0]="--audio-display=no"
 			argument[1]="--geometry=1280x720"
 			argument[2]="--loop-playlist=inf"
-			argument[3]="--volume=50"
 		;;
 		"4")
 			argument[0]="--loop-playlist=inf"
@@ -77,7 +75,6 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[1]="--geometry=1280x720"
 			argument[2]="--loop-playlist=inf"
 			argument[3]="--shuffle"
-			argument[4]="--volume=50"
 		;;
 		"6")
 			argument[0]="--loop-playlist=inf"
