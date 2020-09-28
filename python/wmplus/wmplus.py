@@ -9,13 +9,14 @@ import win32gui
 
 byref = ctypes.byref
 user32 = ctypes.windll.user32
-size_default0 = [800 , 600];
-size_big0 = [1024 , 768];
-size_large0 = [1280 , 960];
-size_default1 = [800 , 450];
-size_big1 = [1024 , 576];
-size_large1 = [1280 , 720];
-size_mode = 0
+size0_default = [800 , 600];
+size0_big = [1024 , 768];
+size0_large = [1280 , 960];
+size0_mode = 0
+size1_default = [720 , 405];
+size1_big = [1280 , 720];
+size1_large = [1440 , 810];
+size1_mode = 0
 smartsize_default = [2 , 1];
 smartsize_big = [3 , 2];
 smartsize_large = [5 , 4];
@@ -34,11 +35,12 @@ taskbarsize = 30
 HOTKEYS = {
     1 : (win32con.VK_F3, win32con.MOD_WIN),
     2 : (win32con.VK_F4, win32con.MOD_WIN),
-    3 : (win32con.VK_F7, win32con.MOD_WIN),
-    4 : (win32con.VK_F8, win32con.MOD_WIN),
-    5 : (win32con.VK_F11, win32con.MOD_WIN),
-    6 : (win32con.VK_F12, win32con.MOD_WIN),
-    7 : (0xC0, win32con.MOD_WIN)
+    3 : (win32con.VK_F2, win32con.MOD_WIN),
+    4 : (win32con.VK_F7, win32con.MOD_WIN),
+    5 : (win32con.VK_F8, win32con.MOD_WIN),
+    6 : (win32con.VK_F11, win32con.MOD_WIN),
+    7 : (win32con.VK_F12, win32con.MOD_WIN),
+    8 : (0xC0, win32con.MOD_WIN)
 }
 
 def getargument():
@@ -107,27 +109,31 @@ class win_move:
 
 wm = win_move()
 
-def size():
+def size0():
     getargument()
-    global size_mode
-    if size_mode == 0:
-        win_size(size_default0[0] , size_default0[1])
-        size_mode = 1
-    elif size_mode == 1:
-        win_size(size_big0[0] , size_big0[1])
-        size_mode = 2
-    elif size_mode == 2:
-        win_size(size_large0[0] , size_large0[1])
-        size_mode = 3
-    elif size_mode == 3:
-        win_size(size_default1[0] , size_default1[1])
-        size_mode = 4
-    elif size_mode == 4:
-        win_size(size_big1[0] , size_big1[1])
-        size_mode = 5
-    elif size_mode == 5:
-        win_size(size_large1[0] , size_large1[1])
-        size_mode = 0
+    global size0_mode
+    if size0_mode == 0:
+        win_size(size0_default[0] , size0_default[1])
+        size0_mode = 1
+    elif size0_mode == 1:
+        win_size(size0_big[0] , size0_big[1])
+        size0_mode = 2
+    elif size0_mode == 2:
+        win_size(size0_large[0] , size0_large[1])
+        size0_mode = 0
+
+def size1():
+    getargument()
+    global size1_mode
+    if size1_mode == 0:
+        win_size(size1_default[0] , size1_default[1])
+        size1_mode = 1
+    elif size1_mode == 1:
+        win_size(size1_big[0] , size1_big[1])
+        size1_mode = 2
+    elif size1_mode == 2:
+        win_size(size1_large[0] , size1_large[1])
+        size1_mode = 0
 
 def smartsize():
     getargument()
@@ -203,13 +209,14 @@ def exit():
     user32.PostQuitMessage (0)
 
 HOTKEY_ACTIONS = {
-    1 : size,
-    2 : smartsize,
-    3 : hsmartsize,
-    4 : vsmartsize,
-    5 : taskbar_mode,
-    6 : exit,
-    7 : smartposition
+    1 : size0,
+    2 : size1,
+    3 : smartsize,
+    4 : hsmartsize,
+    5 : vsmartsize,
+    6 : taskbar_mode,
+    7 : exit,
+    8 : smartposition
 }
 
 for id, (vk, modifiers) in HOTKEYS.items ():

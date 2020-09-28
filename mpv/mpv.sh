@@ -24,8 +24,8 @@ echo "4 = --loop-playlist=inf --vid=no (Default for multiple file (mkv & mp4))"
 echo "5 = --audio-display=no --geometry=1280x720 --loop-playlist=inf --shuffle (Default for m3u8)"
 echo "6 = --loop-playlist=inf --shuffle --vid=no"
 echo "7 = --fullscreen"
-echo "8 = --autofit-larger=1280x720 --volume=25"
-echo "9 = --geometry=1280x720 --volume=25"
+echo "8 = --autofit-larger=1280x720 --volume=33"
+echo "9 = --geometry=1280x720 --volume=33"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	if [ -z "$fn" ] ; then
@@ -86,11 +86,11 @@ if [[ "$as" =~ [0-9] ]] ; then
 		;;
 		"8")
 			argument[0]="--autofit-larger=1280x720"
-			argument[1]="--volume=25"
+			argument[1]="--volume=33"
 		;;
 		"9")
 			argument[0]="--geometry=1280x720"
-			argument[1]="--volume=25"
+			argument[1]="--volume=33"
 		;;
 	esac
 fi

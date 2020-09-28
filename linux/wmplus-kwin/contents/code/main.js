@@ -1,10 +1,11 @@
-var size_default0 = [800 , 600];
-var size_big0 = [1024 , 768];
-var size_large0 = [1280 , 960];
-var size_default1 = [800 , 450];
-var size_big1 = [1024 , 576];
-var size_large1 = [1280 , 720];
-var size_mode = 0;
+var size0_default = [800 , 600];
+var size0_big = [1024 , 768];
+var size0_large = [1280 , 960];
+var size0_mode = 0;
+var size1_default = [720 , 405];
+var size1_big = [1280 , 720];
+var size1_large = [1440 , 810];
+var size1_mode = 0;
 var smartsize_default = [2 , 1];
 var smartsize_big = [3 , 2];
 var smartsize_large = [5 , 4];
@@ -18,43 +19,59 @@ var vsmartsize_big = [3 , 2];
 var vsmartsize_large = [5 , 4];
 var vsmartsize_mode = 0;
 
-function size() {
+function size0() {
 	var clients = workspace.clientList();
 	for (var i=0; i<clients.length; i++) {
 		if(clients[i].active) {
 			activeClient = clients[i];
 			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
 			var geo = activeClient.geometry;
-			switch (size_mode) {
+			switch (size0_mode) {
 				case 0:
-					geo.width = size_default0[0];
-					geo.height = size_default0[1];
-					size_mode = 1;
+					geo.width = size0_default[0];
+					geo.height = size0_default[1];
+					size0_mode = 1;
 					break;
 				case 1:
-					geo.width = size_big0[0];
-					geo.height = size_big0[1];
-					size_mode = 2;
+					geo.width = size0_big[0];
+					geo.height = size0_big[1];
+					size0_mode = 2;
 					break;
 				case 2:
-					geo.width = size_large0[0];
-					geo.height = size_large0[1];
-					size_mode = 3;
+					geo.width = size0_large[0];
+					geo.height = size0_large[1];
+					size0_mode = 0;
 					break;
-				case 3:
-					geo.width = size_default1[0];
-					geo.height = size_default1[1];
-					size_mode = 4;
+			}
+			geo.x = (wsgeo.width - geo.width) / 2;
+			geo.y = (wsgeo.height - geo.height) / 2;
+			activeClient.geometry = geo;
+		}
+	}
+}
+
+function size1() {
+	var clients = workspace.clientList();
+	for (var i=0; i<clients.length; i++) {
+		if(clients[i].active) {
+			activeClient = clients[i];
+			var wsgeo = workspace.clientArea(KWin.PlacementArea, activeClient.screen, 1);
+			var geo = activeClient.geometry;
+			switch (size1_mode) {
+				case 0:
+					geo.width = size1_default[0];
+					geo.height = size1_default[1];
+					size1_mode = 1;
 					break;
-				case 4:
-					geo.width = size_big1[0];
-					geo.height = size_big1[1];
-					size_mode = 5;
+				case 1:
+					geo.width = size1_big[0];
+					geo.height = size1_big[1];
+					size1_mode = 2;
 					break;
-				case 5:
-					geo.width = size_large1[0];
-					geo.height = size_large1[1];
-					size_mode = 0;
+				case 2:
+					geo.width = size1_large[0];
+					geo.height = size1_large[1];
+					size1_mode = 0;
 					break;
 			}
 			geo.x = (wsgeo.width - geo.width) / 2;
@@ -219,8 +236,9 @@ function position(posnum) {
 	}
 }
 
-registerShortcut("wmplus-kwin(size)", "wmplus-kwin(size)", "Meta+F3", function() { size() });
-registerShortcut("wmplus-kwin(smartsize)", "wmplus-kwin(smartsize)", "Meta+F4", function() { smartsize() });
+registerShortcut("wmplus-kwin(size0)", "wmplus-kwin(size0)", "Meta+F3", function() { size0() });
+registerShortcut("wmplus-kwin(size1)", "wmplus-kwin(size1)", "Meta+F4", function() { size1() });
+registerShortcut("wmplus-kwin(smartsize)", "wmplus-kwin(smartsize)", "Meta+F2", function() { smartsize() });
 registerShortcut("wmplus-kwin(hsmartsize)", "wmplus-kwin(hsmartsize)", "Meta+F7", function() { hsmartsize() });
 registerShortcut("wmplus-kwin(vsmartsize)", "wmplus-kwin(vsmartsize)", "Meta+F8", function() { vsmartsize() });
 registerShortcut("wmplus-kwin(position1)", "wmplus-kwin(position1)", "Meta+1", function() { position(1) });
