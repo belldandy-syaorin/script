@@ -12,8 +12,8 @@ echo "[info] Input A Number For Your Choice (After 5s Will Auto Select Default)"
 echo "1 = /f"
 echo "2 = /size:1024x768"
 echo "3 = /size:1280x960 (Default)"
-echo "4 = /size:50%"
-echo "5 = /size:80%"
+echo "4 = /size:1280x720"
+echo "5 = /size:1440x810"
 read -t 5 -p "Select Feature (0 = Exit) : " as
 if [ -z "$as" ] ; then
 	as="3"
@@ -34,10 +34,10 @@ if [[ "$as" =~ [0-9] ]] ; then
 			argument[0]="/size:1280x960"
 		;;
 		"4")
-			argument[0]="/size:50%"
+			argument[0]="/size:1280x720"
 		;;
 		"5")
-			argument[0]="/size:80%"
+			argument[0]="/size:1440x810"
 		;;
 	esac
 fi
