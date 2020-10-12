@@ -3,7 +3,7 @@ declare -a argument
 	argument[0]="$(hg log --limit 2|grep changeset:)"
 	argument[1]="$(echo "${argument[0]}"|awk NR==1'{printf "%s\n",$2}')"
 	argument[2]="$(echo "${argument[0]}"|awk NR==2'{printf "%s\n",$2}')"
-if [ -z "${argument[0]}" -o -z "${argument[1]}" ] ; then
+if [ -z "${argument[1]}" -o -z "${argument[2]}" ] ; then
 	echo "[info] Repository Log : n/a"
 	echo "[info] Exit"
 	exit 0
