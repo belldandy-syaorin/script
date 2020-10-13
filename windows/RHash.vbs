@@ -1,6 +1,6 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
 Set fso = CreateObject("Scripting.FileSystemObject")
-vbspath = "C:\repository\git\script\rhash\RHash.vbs" 'vbs path
+vbspath = "C:\repository\git\script\windows\RHash.vbs" 'vbs path
 Dim bin , fi , fl
 	bin = "C:\portable\bin\rhash.exe" 'bin path
 Dim argument(9)

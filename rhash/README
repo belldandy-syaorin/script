@@ -1,3 +1,0 @@
-//Windows
-	//bin
-		mklink rhash.exe <Link Target>
