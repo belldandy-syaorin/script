@@ -8,8 +8,8 @@ do
 		fl=$(ls -Al "$dirs")
 	fi
 	echo "[info] Target Directory :" "$dirs"
-	echo "[info] Directory        :" $(echo "${fl[@]}" | grep '^d' | wc -l)
-	echo "[info] File             :" $(echo "${fl[@]}" | grep '^-' | wc -l)
-	echo "[info] Link             :" $(echo "${fl[@]}" | grep '^l' | wc -l)
+	echo "[info] Directory        :" $(echo "${fl[@]}" | grep -a '^d' | wc -l)
+	echo "[info] File             :" $(echo "${fl[@]}" | grep -a '^-' | wc -l)
+	echo "[info] Link             :" $(echo "${fl[@]}" | grep -a '^l' | wc -l)
 done
 exit 0
