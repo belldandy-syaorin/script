@@ -1,5 +1,5 @@
 #!/bin/bash
-for dirs in $@
+for dirs in "$@"
 do
 	if [ ! -d "$dirs" ] ; then
 		echo "[info] Not Directory & Exit"
