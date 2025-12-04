@@ -11,7 +11,7 @@ fi
 echo "[info] Repository Log(Last 2)"
 hg log --graph --limit 2 --stat
 echo "[info] Repository Changeset(Last 2) Diff :" "${argument[1]}" "${argument[2]}"
-echo "g = GVIM , k = KDiff3 , v = VIM (After 5s Will Auto Exit)"
+echo "g = GVIM , k = KDiff3 , n = NVIM , v = VIM (After 5s Will Auto Exit)"
 read -t 5 -p "Select Feature (Not k/v or No Input = Exit) : " ans
 case $ans in
 	"g")
@@ -22,6 +22,11 @@ case $ans in
 	"k")
 		echo "[info] KDiff3"
 		hg kdiff3 -r"${argument[1]}" -r"${argument[2]}"
+		exit 0
+	;;
+	"n")
+		echo "[info] NVIM"
+		hg nvimdiff -r"${argument[1]}" -r"${argument[2]}"
 		exit 0
 	;;
 	"v")
